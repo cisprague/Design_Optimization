@@ -32,17 +32,21 @@ classdef Heat_Exchanger
             % Calculate flux per unit length
             h = obj.Top_Surface(a);
             flux = CalcFlux(obj.Lx, h,obj.Nx,obj.Ny,obj.k,obj.T2,obj.T1);
-            f = -flux;
+            f = flux;
         end
-        function [c, ceq] = confun(obj, a)
+        function [c, ceq] = Constraints(obj, a)
             hmax = max(obj.Top_Surface(a));
             hmin = min(obj.Top_Surface(a));
-            c = [hmax - obj.Lymax; hmin + obj.Lymin];
+            c(1) = hmax - obj.Lymax;
+            c(2) = hmin + obj.Lymin;
             ceq = [];
         end
         function opt = Optimize(obj, a0)
-            [aopt,fval] = fmincon(@objfun,a0,[],[],[],[],[],[],@confun);
-            opt = aopt
+            fun = @obj.Objective;
+            A = []; b = []; Aeq = []; beq = []; lb = []; ub = [];
+            nonlcon = @obj.Constraints;
+            options = optimoptions(@fmincon,'Algorithm','sqp');
+            opt = fmincon(fun,a0,A,b,Aeq,beq,lb,ub,nonlcon,options);
         end
     end
 end
