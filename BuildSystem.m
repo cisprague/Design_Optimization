@@ -188,7 +188,7 @@ end
 % loop over the periodic faces along the left and right sides
 for j = 1:Ny
     % get nx*dS/dx
-    nxdS = (xy(2,1,j+1) - xy(2,1,j))/dx;
+    nxdSdx = (xy(2,1,j+1) - xy(2,1,j))/dx;
     % get the indices of the temperature on either side of the periodic face
     TidxL = (Nx-1)*Ny + j;
     TidxR = j;

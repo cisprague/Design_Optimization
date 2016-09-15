@@ -22,3 +22,6 @@ for i = 1:Nx+1
         xy(2,i,j) = (j-1)*dy;
     end
 end
+
+end
+

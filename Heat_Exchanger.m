@@ -1,11 +1,16 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Heat Exchanger                                       %
-% Authored by Christopher Iliffe Sprague               %
-% Christopher.Iliffe.Sprague@gmail.com                 %
-% https://github.com/CISprague/Design-Optimization.git %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Heat Exchanger
+% Authored by Christopher Iliffe Sprague
+% Christopher.Iliffe.Sprague@gmail.com
+% https://github.com/CISprague/Design-Optimization.git
 
+%% Heat Exchanger Class
 classdef Heat_Exchanger
+    % Defines a heat exchanger with straight bottom, left, and right sides,
+    % as well as a user designed top surface that is variable in the horizontal
+    % direction. The heat exchanger's top and bottom temperatures, thermal
+    % conductivity, and optimization resolutions are provided by the user.
+
+    %% Properties
     properties
         % Horrizontal width and vertical thickness (cm)
         Lx; Ly;
@@ -17,8 +22,13 @@ classdef Heat_Exchanger
         T1; T2;
         % Number of elements along x direction and y direction
         Nx; Ny
-        % Horizontal domain
+        % Note: Ly must be defined as an anonymous function with
+        % variables (a,x), where a is a vector of coefficients of
+        % user define length, and x is the horizontal distance
+        % along the heat exchanger.
     end
+
+    %% Methods
     methods
         function h = Top_Surface(obj, a)
             % Insert coefficients
@@ -29,20 +39,35 @@ classdef Heat_Exchanger
             h = h(x).';
         end
         function f = objfun(obj,a)
-            % Calculate flux per unit length
-            h = obj.Top_Surface(a);
+            % Generate top surface mesh
+            h    = obj.Top_Surface(a);
+            % Calculate the flux per unit length
             flux = CalcFlux(obj.Lx, h,obj.Nx,obj.Ny,obj.k,obj.T2,obj.T1);
-            f = -flux;
+            % Negative sign to convert maximization to minimization
+            f    = -flux;
         end
-        function [c, ceq] = confun(obj, a)
-            hmax = max(obj.Top_Surface(a));
-            hmin = min(obj.Top_Surface(a));
-            c = [hmax - obj.Lymax; hmin + obj.Lymin];
-            ceq = [];
+        function [c, ceq] = thickness_limit(obj, a)
+            % Mesh of top surface
+            ts   = obj.Top_Surface(a);
+            % Heighest point
+            tmax = max(ts);
+            % Minimum point
+            tmin = min(ts);
+            % Constraint vector
+            c    = [tmax - obj.Lymax; -tmin + obj.Lymin];
+            ceq  = [];
         end
-        function opt = Optimize(obj, a0)
-            [aopt,fval] = fmincon(@objfun,a0,[],[],[],[],[],[],@confun);
-            opt = aopt
+        function [aopt, fval] = Optimize(obj, a0)
+            fun     = @obj.objfun;
+            nonlcon = @obj.thickness_limit;
+            A       = [];
+            b       = [];
+            Aeq     = [];
+            beq     = [];
+            lb      = [];
+            ub      = [];
+            options = optimoptions('fmincon','Display', 'iter');
+            [aopt, fval] = fmincon(fun,a0,A,b,Aeq,beq,lb,ub,nonlcon,options);
         end
     end
 end
