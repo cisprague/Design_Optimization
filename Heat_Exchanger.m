@@ -3,71 +3,85 @@
 % Christopher.Iliffe.Sprague@gmail.com
 % https://github.com/CISprague/Design-Optimization.git
 
-%% Heat Exchanger Class
 classdef Heat_Exchanger
-    % Defines a heat exchanger with straight bottom, left, and right sides,
-    % as well as a user designed top surface that is variable in the horizontal
-    % direction. The heat exchanger's top and bottom temperatures, thermal
-    % conductivity, and optimization resolutions are provided by the user.
-
-    %% Properties
-    properties
-        % Horrizontal width and vertical thickness (cm)
-        Lx; Ly;
-        % Minimum and maximum vertical thicknesses (cm)
-        Lymin; Lymax;
-        % Thermal conductivity (W/mK)
-        k;
-        % Environmental temperatures (c)
-        T1; T2;
-        % Number of elements along x direction and y direction
-        Nx; Ny
-        % Note: Ly must be defined as an anonymous function with
-        % variables (a,x), where a is a vector of coefficients of
-        % user define length, and x is the horizontal distance
-        % along the heat exchanger.
+  properties
+    Lx;           % Horizontal width (float)(metres).
+    Lymin; Lymax; % Minimum and maximum vertical thicknesses (float)(metres).
+    k;            % Thermal conductivity (float)(Watts•metres⁻¹•Kelvin⁻¹).
+    T1; T2;       % Top and bottom environmental temperatures (float)(Kelvin).
+    Nx; Ny;       % Number of elements along x and y directions (integer).
+  end
+  methods
+    function obj = Heat_Exchanger(Lx, Lymin, Lymax, k, T1, T2, Nx, Ny)
+      % Constructs Heat Exchanger class instance.
+      obj.Lx    = Lx;
+      obj.Lymin = Lymin;
+      obj.Lymax = Lymax;
+      obj.k     = k;
+      obj.T1    = T1;
+      obj.T2    = T2;
+      obj.Nx    = Nx;
+      obj.Ny    = Ny;
     end
-
-    %% Methods
-    methods
-        function h = Top_Surface(obj, a)
-            % Insert coefficients
-            h = @(x) obj.Ly(a, x);
-            % Horizontal domain
-            x = linspace(0, obj.Lx, obj.Nx+1);
-            % Top surface mesh
-            h = h(x).';
-        end
-        function f = objfun(obj,a)
-            % Generate top surface mesh
-            h    = obj.Top_Surface(a);
-            % Calculate the flux per unit length
-            flux = CalcFlux(obj.Lx, h,obj.Nx,obj.Ny,obj.k,obj.T2,obj.T1);
-            % Negative sign to convert maximization to minimization
-            f    = -flux;
-        end
-        function [c, ceq] = thickness_limit(obj, a)
-            % Mesh of top surface
-            ts   = obj.Top_Surface(a);
-            % Heighest point
-            tmax = max(ts);
-            % Minimum point
-            tmin = min(ts);
-            % Constraint vector
-            c    = [tmax - obj.Lymax; -tmin + obj.Lymin];
-            ceq  = [];
-        end
-        function [aopt, fval] = Optimize(obj, a0)
-            fun     = @obj.objfun;
-            nonlcon = @obj.thickness_limit;
-            A       = [];
-            b       = [];
-            Aeq     = [];
-            beq     = [];
-            lb      = [];
-            ub      = [];
-            options = optimoptions('fmincon','Display', 'iter');
-            [aopt, fval] = fmincon(fun,a0,A,b,Aeq,beq,lb,ub,nonlcon,options);
-        end
+    function ts = Surface(obj, a)
+      % Generates the form of the top surface as a function of (a,x),
+      % according to the specified number of coefficients.
+      % First necessary coefficient.
+      eqn = @(x) a(1);
+      % Summation of the sin series according to length of vector.
+      for n = 2:length(a);
+        eqn = @(x) eqn(x) + a(n)*sin((2*pi*(n-1)*x)/obj.Lx);
+      end
+      ts = eqn(linspace(0, obj.Lx, obj.Nx + 1)).';
     end
+    function f = Neg_Flux(obj,a)
+      % Calculates the negative flux of the given geometry.
+      % Generate top surface mesh
+      h    = obj.Surface(a);
+      % Calculate the flux per unit length
+      flux = CalcFlux(obj.Lx, h, obj.Nx, obj.Ny, obj.k, obj.T2, obj.T1);
+      % Negative sign to convert for minimization.
+      f    = -flux;
+    end
+    function [c, ceq] = Thickness_Limit(obj, a)
+      % Mesh of top surface
+      ts   = obj.Surface(a);
+      % Maximum point
+      tmax = max(ts);
+      % Minimum point
+      tmin = min(ts);
+      % Constraint vector
+      c    = [tmax - obj.Lymax; -tmin + obj.Lymin];
+      ceq  = [];
+    end
+    function [aopt, fval] = Optimize(obj, a0, alg)
+      % Specify the objective function to be minimized.
+      fun     = @obj.Neg_Flux;
+      % Specify the nonlinear inequality constraints.
+      nonlcon = @obj.Thickness_Limit;
+      % Ignore other specifications.
+      A   = []; b   = []; Aeq = []; beq = []; lb  = []; ub  = [];
+      % Specify optimization options.
+      options = optimoptions(           ...
+        'fmincon',                      ... % The optimisation algorithm.
+        'Display', 'iter',              ... % Display the optimisation output.
+        'UseParallel',true,             ... % Use multiple CPUs.
+        'Algorithm', alg,               ... % The specified algorithm.
+        'MaxFunctionEvaluations', 5000, ... % Many evaluations...
+        'MaxIterations', 5000           ... % Many iterations...
+      );
+      [aopt, fval] = fmincon(fun,a0,A,b,Aeq,beq,lb,ub,nonlcon,options);
+    end
+    function Visualize(obj, aopt)
+      ts = obj.Surface(aopt);
+      bs = zeros(obj.Nx + 1);
+      x = linspace(0, obj.Lx, obj.Nx + 1);
+      area(x, ts);
+      tstr = 'Heat Exchanger Geometry ($$Flux = ';
+      tstr = strcat(tstr, num2str(-obj.Neg_Flux(aopt)), '$$)');
+      title(tstr, 'Interpreter', 'latex');
+      xlabel('Width $$L_x$$ [metres]', 'Interpreter', 'latex')
+      ylabel('Thickness $$L_y$$ [metres]', 'Interpreter', 'latex')
+    end
+  end
 end
