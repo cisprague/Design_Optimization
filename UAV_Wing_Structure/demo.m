@@ -6,11 +6,13 @@ L = 1.0;
 E = 1.0;
 
 Nelem = 10;
-Iyy = ones(Nelem+1,1);
-force = ones(Nelem+1,1);
+Iyy = ones(Nelem+1,1)
+force = ones(Nelem+1,1)
 
 [u] = CalcBeamDisplacement(L, E, Iyy, force, Nelem);
 
+length(u)
+length(force);
 % plot the vertical displacement
 x = [0:L/Nelem:L];
 plot(x,u(1:2:2*(Nelem+1)),'ks-');
