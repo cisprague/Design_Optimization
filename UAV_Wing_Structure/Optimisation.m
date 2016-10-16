@@ -13,13 +13,12 @@ Raptor = UAV(... % With properties:
   );
 
 % Take an initial guess of the spar's radii.
-R = ones(100,1);
+R = zeros(80,1);
 for I=1:Raptor.N_Nodes(R)
     R(2*I-1,1) = Raptor.Rimin;
     R(2*I, 1)  = Raptor.Romax;
 end
-R
 
-[Ropt, fval] = Raptor.Optimize(R);
-Raptor.Plot_Spar_Displacement(Ropt);
-Raptor.Spar_Stress(Ropt)
+[Ropt, fval] = Raptor.Optimize(R, 'central')
+Raptor.Plot_Spar_Shape(Ropt);
+Raptor.Plot_Spar_Displacement(Ropt)
