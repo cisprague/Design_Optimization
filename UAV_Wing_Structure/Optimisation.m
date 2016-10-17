@@ -19,6 +19,7 @@ for I=1:Raptor.N_Nodes(R)
     R(2*I, 1)  = Raptor.Romax;
 end
 
-[Ropt, fval] = Raptor.Optimize(R, 'central')
+[Ropt,fval,exitflag,output,lambda,grad,hessian] = Raptor.Optimize(R, 'complex');
 Raptor.Plot_Spar_Shape(Ropt);
-Raptor.Plot_Spar_Displacement(Ropt)
+Raptor.Plot_Spar_Displacement(Ropt);
+Raptor.Plot_Spar_Stress(Ropt);
