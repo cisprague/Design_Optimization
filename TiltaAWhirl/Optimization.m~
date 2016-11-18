@@ -1,0 +1,56 @@
+clear all; close all;
+% Instantiate car with
+% nominal values.
+TW = Car(              ...
+    4.3,               ... r1 m
+    0.036,             ... alpha0 rad
+    20,                ... Q0
+    0.68,              ... omega rad/s
+    0.8,               ... r2 m
+    0.058,             ... alpha1 rad
+    [3, 8].*(2*pi/60), ... omega bounds rad/s
+    [0.1, 1.5],        ... r2 bounds m
+    [0,0.3],           ... alpha1 bounds rad
+    2000,              ... tau
+    100,               ... # of samples
+    0.05               ... noise
+);
+
+nss = [10,100,200,400,600,1000,2000];
+for i = 1:length(nss)
+    TW.samps = nss(i);
+    [x,fval] = TW.Optimize('particle-swarm');
+    fva
+
+%[x,fval] = TW.Optimize('particle-swarm')
+%save('OptPart','x','fval')
+
+% % Variable bounds
+% xb = [self.omegab; ...
+%       self.r2b;    ...
+%       self.alpha1b];
+% % Use Guassian process
+% np = 500;
+% xs1 = linspace(xb(1,1),xb(1,2),np)';
+% xs2 = linspace(xb(2,1),xb(2,2),np)';
+% xs3 = linspace(xb(3,1),xb(3,2),np)';
+% xs  = [xs1, xs2, xs3];
+% [m,s2] = gp(...
+%   hyp, @infExact, [], covfunc, ...
+%   likfunc, x, y, xs             ...
+% );
+% % plot
+% f = [m+1.96*sqrt(s2); ...
+%      flipdim(m-1.96*sqrt(s2),1)];
+% fill([xs;flipdim(xs,1)], f, [7,7,7]/8);
+% hold on;
+% plot(xs,m);
+% plot(x,y,'+');
+% ylabel(...
+%   '$\sigma\left(\frac{d\phi}{dt}\right)$',...
+%   'Interpreter', 'LaTex' ...
+% );
+% legend({'$\hat{f}(\omega)$', ...
+% '$\hat{f}(r_2)$','$\hat{f}(\alpha_1)$', ...
+% '$f(\omega)$', '$f(r_2)$','$f(\alpha_1)$'}, ...
+%  'Interpreter', 'LaTex');
