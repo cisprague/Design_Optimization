@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=latex 2017.2.4)  5 FEB 2017 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=latex 2017.2.4)  5 FEB 2017 12:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -7,8 +7,8 @@ de"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.
 {\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\
 documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname
  tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{
-\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode xhtml,.a.b.c.\input Templat
-eICATT
+\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode .a.b.c.\input  TemplateICAT
+T.tex
 (./TemplateICATT.tex (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/base/size10.clo
@@ -215,6 +215,9 @@ version 2016-07-18-16:08
 
 (./TemplateICATT.tmp)
 \tmp:dim=\skip46
+--------------------------------------
+--- Note --- for XML code, use the command line option `xml' or `xhtml'
+--------------------------------------
  (./TemplateICATT.xref)
 \:refout=\write3
 \openout3 = `TemplateICATT.xref'.
@@ -282,7 +285,7 @@ option `frames-fn'
 --------------------------------------
 --- Note --- for file extension name xht, use the command line option `xht'
 --------------------------------------
-TeX4ht package options: xhtml,html
+TeX4ht package options: html
 --------------------------------------
 --- Note --- To print a timestamp, use the command line option timestamp
 --------------------------------------
@@ -1038,12 +1041,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9085 strings out of 493014
- 117949 string characters out of 6139344
- 676660 words of memory out of 5000000
- 12454 multiletter control sequences out of 15000+600000
+ 9080 strings out of 493014
+ 117903 string characters out of 6139344
+ 676400 words of memory out of 5000000
+ 12450 multiletter control sequences out of 15000+600000
  16750 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,14n,44p,1509b,1593s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,14n,44p,1508b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on TemplateICATT.dvi (29 pages, 294036 bytes).
+Output written on TemplateICATT.dvi (29 pages, 293364 bytes).

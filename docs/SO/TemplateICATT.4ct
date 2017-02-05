@@ -3,41 +3,43 @@
 \doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-2000}{QQ2-1-2}{List of Tables}}{2}\relax 
 \doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-3000}{QQ2-1-3}{List of Figures}}{2}\relax 
 \doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-4000}{QQ2-1-4}{Listings}}{2}\relax 
-\doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-50001}{QQ2-1-5}{Introduction}}{3}\relax 
-\doTocEntry\tocsection{2}{\csname a:TocLink\endcsname{1}{x1-60002}{QQ2-1-6}{Trajectory Optimization}}{3}\relax 
-\doTocEntry\tocsubsection{2.1}{\csname a:TocLink\endcsname{1}{x1-70002.1}{QQ2-1-7}{Indirect Methods}}{3}\relax 
-\doTocEntry\tocsubsection{2.2}{\csname a:TocLink\endcsname{1}{x1-80002.2}{QQ2-1-8}{Direct Methods}}{3}\relax 
-\doTocEntry\tocsubsection{2.3}{\csname a:TocLink\endcsname{1}{x1-90002.3}{QQ2-1-9}{Problem Description}}{3}\relax 
-\doTocEntry\tocsubsection{2.4}{\csname a:TocLink\endcsname{1}{x1-100002.4}{QQ2-1-10}{System Description}}{4}\relax 
-\doTocEntry\tocsubsubsection{2.4.1}{\csname a:TocLink\endcsname{1}{x1-110002.4.1}{QQ2-1-11}{State Variables}}{4}\relax 
-\doTocEntry\tocsubsubsection{2.4.2}{\csname a:TocLink\endcsname{1}{x1-120002.4.2}{QQ2-1-12}{Boundary Conditions}}{4}\relax 
-\doTocEntry\tocsubsubsection{2.4.3}{\csname a:TocLink\endcsname{1}{x1-130002.4.3}{QQ2-1-13}{Path Constraints}}{4}\relax 
-\doTocEntry\tocsubsubsection{2.4.4}{\csname a:TocLink\endcsname{1}{x1-140002.4.4}{QQ2-1-14}{System Bounds}}{5}\relax 
-\doTocEntry\tocsubsubsection{2.4.5}{\csname a:TocLink\endcsname{1}{x1-150002.4.5}{QQ2-1-15}{Path Cost}}{5}\relax 
-\doTocEntry\tocsubsection{2.5}{\csname a:TocLink\endcsname{1}{x1-160002.5}{QQ2-1-16}{Direct Transcription}}{5}\relax 
-\doTocEntry\tocsubsubsection{2.5.1}{\csname a:TocLink\endcsname{1}{x1-170002.5.1}{QQ2-1-17}{Grid}}{5}\relax 
-\doTocEntry\tocsubsubsection{2.5.2}{\csname a:TocLink\endcsname{1}{x1-180002.5.2}{QQ2-1-18}{Defects}}{6}\relax 
-\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-18001r1}{}{\ignorespaces Direction Transcription Schematic}}{figure}\relax 
-\doTocEntry\tocsubsubsection{2.5.3}{\csname a:TocLink\endcsname{1}{x1-190002.5.3}{QQ2-1-20}{Nonlinear Programming Variables}}{9}\relax 
-\doTocEntry\tocsubsection{2.6}{\csname a:TocLink\endcsname{1}{x1-200002.6}{QQ2-1-21}{Trapezoidal Transcription}}{9}\relax 
-\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-210003}{QQ2-1-22}{Rocket}}{9}\relax 
-\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-220003.1}{QQ2-1-23}{Control}}{9}\relax 
-\doTocEntry\tocsubsection{3.2}{\csname a:TocLink\endcsname{1}{x1-230003.2}{QQ2-1-24}{Rigid Body}}{10}\relax 
-\doTocEntry\tocsubsubsection{3.2.1}{\csname a:TocLink\endcsname{1}{x1-240003.2.1}{QQ2-1-25}{Orientation}}{10}\relax 
-\doTocEntry\tocsubsubsection{3.2.2}{\csname a:TocLink\endcsname{1}{x1-250003.2.2}{QQ2-1-26}{Inertia}}{10}\relax 
-\doTocEntry\tocsubsection{3.3}{\csname a:TocLink\endcsname{1}{x1-260003.3}{QQ2-1-27}{Dynamics}}{11}\relax 
-\doTocEntry\tocsubsubsection{3.3.1}{\csname a:TocLink\endcsname{1}{x1-270003.3.1}{QQ2-1-28}{Control}}{11}\relax 
-\doTocEntry\tocsubsubsection{3.3.2}{\csname a:TocLink\endcsname{1}{x1-280003.3.2}{QQ2-1-29}{Acceleration}}{11}\relax 
-\doTocEntry\tocsubsection{3.4}{\csname a:TocLink\endcsname{1}{x1-290003.4}{QQ2-1-30}{State}}{12}\relax 
-\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-300004}{QQ2-1-31}{Results}}{12}\relax 
-\doTocEntry\tocsection{5}{\csname a:TocLink\endcsname{1}{x1-310005}{QQ2-1-32}{Conclusions}}{13}\relax 
-\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-31001r2}{}{\ignorespaces Convergence with 5 Nodes}}{figure}\relax 
-\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-31002r3}{}{\ignorespaces Convergence with 10 Nodes}}{figure}\relax 
-\doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-31003r4}{}{\ignorespaces Trajectory with 5 Nodes}}{figure}\relax 
-\doTocEntry\toclof{5}{\csname a:TocLink\endcsname{1}{x1-31004r5}{}{\ignorespaces Trajectory with 10 Nodes}}{figure}\relax 
-\doTocEntry\toclof{6}{\csname a:TocLink\endcsname{1}{x1-31005r6}{}{\ignorespaces Trajectory with 15 Nodes}}{figure}\relax 
-\doTocEntry\toclof{7}{\csname a:TocLink\endcsname{1}{x1-31006r7}{}{\ignorespaces Trajectory with 25 Nodes}}{figure}\relax 
-\doTocEntry\tocsection{6}{\csname a:TocLink\endcsname{1}{x1-320006}{QQ2-1-39}{Source Code}}{33}\relax 
-\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-32002}{}{\numberline {1}Rocket Class - Matlab}}{33}\relax 
-\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-32278}{}{\numberline {2}Rocket Class - Python}}{33}\relax 
+\doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-50001}{QQ2-1-5}{Problem Model}}{3}\relax 
+\doTocEntry\tocsubsection{1.1}{\csname a:TocLink\endcsname{1}{x1-60001.1}{QQ2-1-6}{Specifications}}{3}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-6002}{}{\numberline {1}UAV Instantiation}}{5}\relax 
+\doTocEntry\toclot{1}{\csname a:TocLink\endcsname{1}{x1-6018r1}{}{\ignorespaces Problem Specifications}}{table}\relax 
+\doTocEntry\tocsubsection{1.2}{\csname a:TocLink\endcsname{1}{x1-70001.2}{QQ2-1-9}{Problem Formulation}}{9}\relax 
+\doTocEntry\tocsubsection{1.3}{\csname a:TocLink\endcsname{1}{x1-80001.3}{QQ2-1-10}{Geometrical Parametrization}}{9}\relax 
+\doTocEntry\tocsubsubsection{1.3.1}{\csname a:TocLink\endcsname{1}{x1-90001.3.1}{QQ2-1-11}{Design Vector}}{9}\relax 
+\doTocEntry\tocsubsubsection{1.3.2}{\csname a:TocLink\endcsname{1}{x1-100001.3.2}{QQ2-1-12}{Spanwise Location}}{9}\relax 
+\doTocEntry\tocsubsubsection{1.3.3}{\csname a:TocLink\endcsname{1}{x1-110001.3.3}{QQ2-1-13}{Volume and Mass}}{10}\relax 
+\doTocEntry\tocsubsection{1.4}{\csname a:TocLink\endcsname{1}{x1-120001.4}{QQ2-1-14}{Material Stress Constraints}}{10}\relax 
+\doTocEntry\tocsubsubsection{1.4.1}{\csname a:TocLink\endcsname{1}{x1-130001.4.1}{QQ2-1-15}{Load Distribution}}{10}\relax 
+\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-13001r1}{}{\ignorespaces Spanwise Linear and Perturbed Force Distributions}}{figure}\relax 
+\doTocEntry\tocsubsubsection{1.4.2}{\csname a:TocLink\endcsname{1}{x1-140001.4.2}{QQ2-1-17}{Second Moment of Area}}{13}\relax 
+\doTocEntry\tocsubsubsection{1.4.3}{\csname a:TocLink\endcsname{1}{x1-150001.4.3}{QQ2-1-18}{Displacement and Stress}}{13}\relax 
+\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-15001r2}{}{\ignorespaces Nominal Stress Statistics with 20 Nodes}}{figure}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-15003}{}{\numberline {2}Gauss-Hermite Abscissas and Weights}}{16}\relax 
+\doTocEntry\tocsubsection{1.5}{\csname a:TocLink\endcsname{1}{x1-160001.5}{QQ2-1-21}{Manufacturing Constraints}}{16}\relax 
+\doTocEntry\tocsubsubsection{1.5.1}{\csname a:TocLink\endcsname{1}{x1-170001.5.1}{QQ2-1-22}{Radii Bounds}}{16}\relax 
+\doTocEntry\tocsubsubsection{1.5.2}{\csname a:TocLink\endcsname{1}{x1-180001.5.2}{QQ2-1-23}{Thickness}}{16}\relax 
+\doTocEntry\tocsection{2}{\csname a:TocLink\endcsname{1}{x1-190002}{QQ2-1-24}{Optimization}}{16}\relax 
+\doTocEntry\tocsubsection{2.1}{\csname a:TocLink\endcsname{1}{x1-200002.1}{QQ2-1-25}{Sequential Quadratic Programming}}{16}\relax 
+\doTocEntry\tocsubsection{2.2}{\csname a:TocLink\endcsname{1}{x1-210002.2}{QQ2-1-26}{Objective and Constraint Gradients}}{17}\relax 
+\doTocEntry\tocsubsubsection{2.2.1}{\csname a:TocLink\endcsname{1}{x1-220002.2.1}{QQ2-1-27}{Forward Difference}}{17}\relax 
+\doTocEntry\tocsubsubsection{2.2.2}{\csname a:TocLink\endcsname{1}{x1-230002.2.2}{QQ2-1-28}{Central Difference}}{17}\relax 
+\doTocEntry\tocsubsubsection{2.2.3}{\csname a:TocLink\endcsname{1}{x1-240002.2.3}{QQ2-1-29}{Complex Step}}{17}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-24002}{}{\numberline {3}Complex Step Method}}{19}\relax 
+\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-250003}{QQ2-1-31}{Results}}{20}\relax 
+\doTocEntry\toclof{a}{\csname a:TocLink\endcsname{1}{x1-25001r1}{}{\ignorespaces Complex Step Convergence with 25 Nodes and 3 Collocation Points\relax }}{subfigure}\relax 
+\doTocEntry\toclof{b}{\csname a:TocLink\endcsname{1}{x1-25002r2}{}{\ignorespaces Complex Step Convergence with 25 Nodes and 5 Collocation Points\relax }}{subfigure}\relax 
+\doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-25003r4}{}{\ignorespaces Complex step convergence}}{figure}\relax 
+\doTocEntry\toclof{a}{\csname a:TocLink\endcsname{1}{x1-25004r1}{}{\ignorespaces Optimized Design with 25 Nodes and 3 Collocation Points\relax }}{subfigure}\relax 
+\doTocEntry\toclof{b}{\csname a:TocLink\endcsname{1}{x1-25005r2}{}{\ignorespaces Optimized Design with 25 Nodes and 5 Collocation Points\relax }}{subfigure}\relax 
+\doTocEntry\toclof{6}{\csname a:TocLink\endcsname{1}{x1-25006r6}{}{\ignorespaces Optimized Geometry}}{figure}\relax 
+\doTocEntry\toclof{a}{\csname a:TocLink\endcsname{1}{x1-25007r1}{}{\ignorespaces Optimized Stress Statistics with 25 Nodes and 3 Collocation Points.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{b}{\csname a:TocLink\endcsname{1}{x1-25008r2}{}{\ignorespaces Optimized Stress Statistics with 25 Nodes and 5 Collocation Points.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{8}{\csname a:TocLink\endcsname{1}{x1-25009r8}{}{\ignorespaces Optimized Stress Statistics}}{figure}\relax 
+\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-260003.1}{QQ2-1-41}{Source Code}}{30}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-26002}{}{\numberline {4}UAV Optimization Example}}{30}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-26029}{}{\numberline {5}UAV Class}}{30}\relax 
 \par 

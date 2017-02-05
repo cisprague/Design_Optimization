@@ -18,359 +18,324 @@
 
 % Title.
 % ------
-\title{Direct Trajectory Optimization of Upright Reusable Rocket Landing}
+\title{Stochastic Shape Optimisation of UAV Wing under Uncertainty}
 %
 % Single address.
 % ---------------
 \name{Christopher Iliffe Sprague}
 \address{}
-
+%
+% For example:
+% ------------
+%\address{School\\
+%	Department\\
+%	Address}
+%
+% Two addresses (uncomment and modify for two-address case).
+% ----------------------------------------------------------
+%\twoauthors
+%  {A. Author-one, B. Author-two\sthanks{Thanks to XYZ agency for funding.}}
+%	{School A-B\\
+%	Department A-B\\
+%	Address A-B}
+%  {C. Author-three, D. Author-four\sthanks{The fourth author performed the work
+%	while at ...}}
+%	{School C-D\\
+%	Department C-D\\
+%	Address C-D}
+%
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-    Recently within the aerospace industry, several demonstrations of successful soft, upright rocket landings have taken place; namely by SpaceX and Blue Origin. In this paper, such an application is examined through the scope of trajectory optimization and nonlinear programming. A general dynamical model of a rocket, equipped with a single thruster capable of gimbaling, is formulated. A direct method of discretizing state-time dynamics is applied to the dynamical model, from which a nonlinear program is developed. Using gradient based optimization, the nonlinear program representing the landing of a rocket is optimized with the objective of minimizing the rocket's propellant expenditure, while abiding to the constraints of landing \textit{softly} at the location of its target. It is shown that this paper's dynamical model and trajectory optimization method yield optimal propellant expenditures comparable with that of literature.
+    This paper examines the design of a wing for a new long-endurance aircraft that will be used as a telecommunications platform. In particular, the problem of optimizing the shape of the wing's spar, acting as the aircraft's main structural support, in order to minimize its mass, is analyzed and solved. In doing so, a robust object-orientated programming approach is taken to transcribe the problem and flexibly find optimal solutions from user defined design guesses. Using a complex step finite difference method and stochastic collocation, the geometry of the wing's spar is optimized with respect to its mass, under uncertain loading conditions. It is shown that a design mass of \%70 percent lower than the nominal is feasible.
 \end{abstract}
     
-\keywords{Trajectory Optimization, Direct Methods}
+\keywords{Wing Structure, Shape Optimization}
 
 \tableofcontents
 \listoftables
 \listoffigures
 \lstlistoflistings
 
+\section{Problem Model}
+\subsection{Specifications}
+Preceding the construction of the optimization problem, it is necessary to define the constant metrics that characterize the nature of the problem. For the case of an annular spar, the problem parametrization requires several design metrics to be taken into account, namely: wing semi-span $L$, material density $\rho$, Young's modulus $E$, ultimate tensile/compressive strength $\sigma_{max}$, aircraft operational mass $M$, minimum spar thickness $T_{min}$, minimum inner wall radius $r_{min}$, and maximum outer wall radius $R_{max}$. 
 
-\section{Introduction}
-The applications of trajectory optimization range from lunar landings to robotic locomotion. Through the developments of space exploration over the past few decades, new methods of spacecraft trajectory optimization of come to surface. Trajectory optimization problems have been tackled from a variety of perspectives, for example: optimal control \cite{Zhou2012}, machine learning \cite{DBLP:journals/corr/Sanchez-Sanchez16}, and convex programming \cite{Acikmese2007}. This paper takes the perspective of gradient based optimization.
+Additionally, the operational conditions that the aircraft will be subjected to need to be taken into account, namely: gravitational acceleration $g$, and maximum operational G-force $G$. In this particular investigation, attention will be directed towards the case of a carbon fiber spar, whose specifications are enumerated in Table \ref{specs}. One can instantiate a UAV of this nature through an object-oriented approach, as shown in Listing \ref{UAV}. The full source code of the UAV class is shown in Listing \ref{uavclass}.
 
-\section{Trajectory Optimization}
-Conventionally, in the case of a planetary lander, or in this case a rocket returning to Earth, trajectory optimization is performed using either direct or indirect methods. 
-\subsection{Indirect Methods}
-Indirect methods operate by first analytically constructing the necessary and sufficient conditions for optimality pertaining to the particular problem at hand, then secondly discretizing these conditions to formulate a constrained parameter optimization problem. Most often in the case of a planetary lander or the like, these necessary conditions are derived from Pontryagin's minimum principle \cite{Grabowski2009}. This principle states that, at every moment in time the dynamical system's control should be chosen to maximize the Hamiltonian of the system. The reader is advised to consult \cite{VonStryk1992} for my information about this method. 
-\subsection{Direct Methods}
-Direct methods operate by discretizing the trajectory optimization problem directly, in order to formulate a constrained parameter optimization problem. Direct transcription methods, in general, have several advantages over indirect transcription methods. The necessity to analytically determine initial costate variables is circumvented, and the optimization problem size is reduced by a factor of two. One of the most significant merits is that, one does not need to specify the structure of the problem, a priori. In general, direct transcription methods are very robust and are able to converge to optimal solutions from poor initial guesses.
+\begin{lstlisting}[caption=UAV Instantiation, label=UAV, float]
+% Instantiate the wing
+Raptor = UAV(... % With properties:
+  7.5,       ... % Wing semi-span [m].
+  1600,      ... % Spar density [kg/m^3].
+  7e10,      ... % Modulus of elasticity [Pa].
+  600e6,     ... % Maximum spar strength [Pa].
+  500,       ... % Mass of aircraft [Kg].
+  9.807,     ... % Earth's gravity [m/s^2].
+  2.5e-3,    ... % Minimum spar thickness [m].
+  1e-2,      ... % Minimum inner spar radius [m].
+  5e-2,      ... % Maximum outer spar radius [m].
+  2.5,       ... % Maximum operational G-force.
+  5,         ... % Number of collocation points.
+  4          ... % Number of perturbations pts.
+  );
+\end{lstlisting}
 
-\subsection{Problem Description}
-For a general dynamical system, the problem of trajectory optimization is formulated as
-\begin{equation*}
+\begin{table}
+\centering
+\caption{Problem Specifications}
+\begin{tabular}{|l|l|l|}
+\hline
+Parameter            & Symbol    & Value         \\ \hline
+Semi-Span            & $L$       & $7.5~m$       \\ \hline
+Density              & $\rho$    & $1600~kg/m^3$ \\ \hline
+Young's Modulus      & $E$       & $70~GPa$      \\ \hline
+Ultimate Strength             & $\sigma_{max}$  & $600~MPa$     \\ \hline
+Aircraft Mass                 & $M$       & $500~kg$      \\ \hline
+Minimum Thickness    & $T_{min}$ & $2.5~mm$      \\ \hline
+Minimum Inner Radius & $r_{min}$ & $1~cm$        \\ \hline
+Maximum Outer Radius & $R_{max}$ & $5~cm$        \\ \hline
+Gravity              & $g$       & $9.81~m/s^2$  \\ \hline
+G-Force              & $G$       & $2.5$         \\ \hline
+\end{tabular}
+\label{specs}
+\end{table}
+
+\subsection{Problem Formulation}\label{opt}
+The objective of this optimization problem is to minimize the total mass of the spar through structural alteration, while not allowing its structural stress $\sigma$ at any spanwise location to exceed its material's ultimate strength $\sigma_{max}$ during its maximal operational loading conditions. In this particular optimization process, the uncertainty of the wing's load distributions is taken into account. That is, the stress constraint of the spar becomes the wing's average stress plus six standard deviations. This statistical constraint characterization is discussed further in Section \ref{load}. Additionally, there are also manufacturing constraints that dictate the spar's inner radius $r$ and outer radius $R$ to satisfy $r \geq r_{min}$ and $R \leq R_{max}$, while satisfying a thickness constraints $R - r \geq T_{min}$. In a more formal manner, this problem's formulation is shown as:
+$$
 \begin{aligned}
-& \underset{\mathbf{u}(t)}{\text{minimize}}
-& & \phi(t_s,t_f,\mathbf{x_s},\mathbf{x_f}) + \int^{t_f}_{t_s} \mathcal{L}(\mathbf{x}(t),\mathbf{u}(t), t)dt\\
-& \text{subject to}
-& & \dot{\mathbf{x}} = \mathbf{a}(\mathbf{x},t) + \mathbf{u}(t)~\text{dynamic constraints}\\
-&&& \mathcal{G}(t_s,t_f,\mathbf{x}_s,\mathbf{x}_f)\leq0 ~ \text{boundary conditions} \\
-&&& \mathbf{u} \in \mathcal{U}(\mathbf{x},t) ~ \text{propulsion constraints}
+& \underset{\mathbf{R}}{\text{minimize}} 
+& & m(\mathbf{R}) \mid \mathbf{R} \mapsto \{ r(x), R(x) \} \mid x \in [0,L] \\
+& \underset{\forall x}{\text{subject to}}
+& &  r_{min} \leq r(x) \leq r_{min} + T_{min}\\
+& & & R_{max} - T_{min} \leq R(x) \leq R_{max}\\
+& & & r(x) - R(x) \leq -T_{min} \\
+& & & E(\sigma(x,\xi)) + 6\sqrt{Var(\sigma(x,\xi))} - \sigma_{max} \leq 0
 \end{aligned}
-\end{equation*}
-Essentially, this formal formulation asks for the control at every moment in time $\mathbf{u}(t)$ in order to minimize the initial and terminal costs $\phi(t_s,t_f,\mathbf{x_s},\mathbf{x_f})$ and the path costs $\int^{t_f}_{t_s} \mathcal{L}(\mathbf{x}(t),\mathbf{u}(t), t)dt$, all while abiding to dynamic constraints and boundary constraints, which are all dictated by the state of the dynamical system $\mathbf{x}(t)$. For the case of a rocket landing, it is quite obvious that the boundary constraints would mandate that the rocket's final state $\mathbf{x}(t_f)$ be equal to the rocket's target state, which is chosen beforehand. The rocket's dynamic constraints are not as intuitive, and are derived from the way in which the system is discretized.
+$$
+Essentially, the annular spar's inner and outer spanwise radii $\{ r(x), R(x) \}$ must be manipulated until the spar's total mass $m(\mathbf{R})$ has reached a minimum value for all possible satisfactory forms of $r(x)$ and $R(x)$. 
 
-\subsection{System Description}
-Following the common notation of optimal control, the trajectory of dynamical system can be formulated as a system of time-varying variables.
+\subsection{Geometrical Parametrization}
+Because finite element methods will be used to solve this optimization problem, it is required to discretize the spar's geometry into a series of spanwise finite elements. Herein, the wing's spar will be represented by a series of nodes, indexed by $i$, where $i=1$ and $i=n$ signify the locations of the wing's root and tip respectively. As such, it can be deduced that there are $n$ nodes and $n-1$ finite elements along the span of the spar. Hence, the set of node indexes $\mathcal{N}$ and finite element indexes $\mathcal{E}$ are defined as follows
 $$
-\mathbf{z} = 
-\begin{bmatrix}
-\mathbf{x}(t) \\
-\mathbf{u}(t)
-\end{bmatrix}
+\begin{gathered}
+\mathcal{N} = [i, i+1, \dots, n] \\
+\mathcal{E} = [j, j+1, \dots, n-1]
+\end{gathered}
 $$
-consisting of the system's \textit{state variables} $\mathbf{x}(t)$ and the \textit{control variables} $\mathbf{u}(t)$. Herein, vectors will be typeset in bold.
 
-\subsubsection{State Variables}
-The way in which the dynamical system evolves over time is described by the system dynamics. These dynamics, for the scope of this paper's discussion, are described by a system of ordinary differential equations, more commonly known as \textit{state equations}. The state equations, in their generic form, are written as
-$$
-\dot{\mathbf{x}} = \frac{d\mathbf{x}}{dt} = \mathbf{f}(\mathbf{x}(t),\mathbf{u}(t),t)
-$$
-Note that this description, in its generic form described a non-autonomous system, hence the right hand side's explicit dependence on time $t$. In the case of many aerospace applications, the system of ordinary differential equations governing its dynamics does not explicitly depend on time. For example, in the case of a spacecraft on an interplanetary trajectory, its dynamics do not depend on time, but rather the inverse square of its distance relative to surrounding celestial bodies.
 
-\subsubsection{Boundary Conditions}
-In the problem of trajectory optimization, two conditions must be strictly satisfied. That is, that the system's initial dynamic variables
+\subsubsection{Design Vector}\label{R}
+It is appropriate to begin the optimization process with the formulation of the design vector $\mathbf{R}$, composed of inner radii $r$ and outer radii $R$. Abiding to the form of a column vector, it is necessary to apply a change of variables and define the design vector as follows,
 $$
-\mathbf{\psi}_0 = \mathbf{\psi}(\mathbf{x}(t_0),\mathbf{u}(t_0),t_0)
+\begin{gathered}
+\mathbf{R} = [\xi_k, \xi_{k+1}, \dots, \xi_{2n}]^T \\
+\{\xi_{2k-1}, \xi_{2k}\} \leftarrow \{r_i, R_i\} \forall i \in \mathcal{I}
+\end{gathered}
 $$
-at the initial time $t_0$, and the system's terminal dynamics variables,
-$$
-\mathbf{\psi}_f = \mathbf{\psi}(\mathbf{x}(t_f),\mathbf{u}(t_f),t_f)
-$$
-at the terminal time $t_f$ define the \textit{boundary conditions} of the trajectory optimization problem.
+It can be seen that the inner and outer radii are sequenced to occur for every other index in the design vector $\mathbf{R}$.
 
-\subsubsection{Path Constraints}
-In many dynamical systems, the problem of trajectory optimization leads itself to path constraints. These path constraints can range from obstacle avoidance in quad-copters to trajectory energy in spacecraft Lagrange point insertions. These path constraints can be formally stated as 
-$$
-\mathbf{g}(\mathbf{x}(t),\mathbf{u}(t),t) = 0
-$$
-Note, that this generic description of a trajectory optimization problem's path constraints forms a strong analogue to equality constraints in design optimization.
+\subsubsection{Spanwise Location}
+Having deduced the number of nodes $n$ from the user supplied design vector, the spanwise location along the spar can be discretized in a similar manner as, $$ \mathbf{x} = [ x_i, x_{i+1}, \dots, x_n] \mid x_1 = 0 , x_n = L$$, where it is noted that the first and final index values of $x_i$ satisfy the length of the wing's semi-span.
 
-\subsubsection{System Bounds}
-Of course, for many reasons it is necessary to bound a trajectory optimization problem, including, but not limited to: hardware constraints and simulation constraints. For example, one would bound the angular velocity of their fictional spacecraft so that it is not spinning into eternity. Additionally, one may want to place rectangular bounds on the environment of their spacecraft's simulation, for example: a spacecraft's position should be within the solar system. Aside from state constraints, there are also control constraints. In the case of the reusable rocket being examined in this paper, these constraints would be magnitude and direction of the rocket's thrust. The bounding on the system's state is formulated as
+\subsubsection{Volume and Mass}
+At each node $i$ along the wing's span, the spar's cross section is represented as a circular annulus of inner and outer radii, $r_i$ and $R_i$, respectively, whose area is defined by $ A_i = \pi (R_i^2 - r_i^2) $. Assuming this cross sectional area characterization is consistent across all nodes, the inner and outer surfaces of each finite element $j$ are linearly interpolated between their corresponding nodes $i=j$ and $i=j+1$. Hence the nodes' cross sectional areas are integrated along the interpolations, yielding the volume of each finite element as follows
+$$V_j = \frac{\pi}{3} (r_j^2 - R_j^2 + r_j r_{j+1} - R_j R_{j+1} + r_{j+1}^2 - R_{j+1}^2 )(x_j - x_{j+1}) $$ 
+As such, the total volume of the spar can be computed by a summation across all finite elements $V=\sum_{j=1}^{n-1} V_j$. Subsequently the spar's total mass is obtained as $m=\rho V$, and hence the optimization problem's objective function $m(\mathbf{R})$.
+
+\subsection{Material Stress Constraints}
+As formulated in Section \ref{opt}, the structural stress at any spanwise location along the spar must not exceed its material's ultimate strength, $\sigma_i - \sigma_{max} \leq 0 ~ \forall i \in \mathcal{I}$. Modeling the wing's spar as a cantilever beam, Euler-Bernoulli beam theory can be exploited to compute the spar's nodal stress.
+
+\subsubsection{Load Distribution}\label{load}
+In this study, a linear load distribution is no longer assumed. Rather, the force distribution experienced by the aircraft's spar is formulated as the nominal linear force distribution plus a probabilistic perturbation given by $$\delta(x,\xi)=\sum_{n=1}^{4}\xi_n\cos\left(\frac{(2n-1)\pi x}{2L}\right)$$ with $\xi_n\sim\mathcal{N}\left(0,\frac{f_{nom}(0)}{10n}\right)$. Hence the force along the wingspan can be formulated as 
+$$ F(x,\xi) = \frac{GMg}{L} \left ( 1-\frac{x_i}{L} \right) + \delta(x,\xi)$$.
+With the specifications given in Table \ref{specs} and Listing \ref{UAV}, the nature of the spar's perturbed force distribution can be seen in Figure \ref{fig:force}.
+
+\begin{figure}
+    \caption{Spanwise Linear and Perturbed Force Distributions}
+    \centering
+    \includegraphics[width=0.48\textwidth]{pics/load.eps}
+    \label{fig:force}
+\end{figure}
+
+\subsubsection{Second Moment of Area}
+In order to calculate the displacement of the spar at any location along its span, the second moment of inertia at each node must first be calculated. For a circular annulus describing the cross section of any node along the spar's span, the second moment of area is formulated as such
+$$ I_i = \frac{\pi}{4} \left ( R_i^4 - r_i^4 \right )$$
+
+\subsubsection{Displacement and Stress}
+Assuming a transversely applied load distribution and cross sectional symmetry, a cubic Hermite finite-element basis is used to solve the Euler-Bernoulli beam equations. The vertical and angular displacement of the spar at each node along the beam are calculated, using the aforementioned formulations of the load distribution and second moment of area. The beam's vertical displacement is formulated as follows $ \mathbf{\delta} = [\delta_i, \delta_{i+1}, \dots, \delta_n]^T $. Using the spar's displacements, its nodal tensile stresses are computed and formulated as such
+$\mathbf{\sigma} = [\sigma_i, \sigma_{i+1}, \dots, \sigma_n]^T $. Hence the constraint function must satisfy the following 
+$$E(\sigma_i) + 6\sqrt{Var(\sigma_i)} - \sigma_{max} \leq 0 ~\forall i \in \mathcal{I}$$ 
+Using stochastic collocation and Gauss-Hermite quadrature, with the 4 uncorrelated Gaussian random variables indicated in Section \ref{load}, the mean stress is computed as
 $$
-\mathbf{x}_l \leq \mathbf{x}(t) \leq \mathbf{x}_u
+E(\sigma(x,\xi))=\left(\prod_{n=1}^4 \frac{1}{\sqrt{2\pi\sigma_n}}\right)\sum_{i_1}^m \dots \sum_{i_2}^m \left(\prod_{n=1}^4 w_{i_n}\right)
 $$
-, and on the system's controls as 
+Within the loop of computing the expected stress value, the standard deviation is computed as well, with the following formulation
 $$
-\mathbf{u}_l \leq \mathbf{u}(t) \leq \mathbf{u}_u
+\sqrt{Var(\sigma(x,\xi))}=\sqrt{E(\sigma(x,\xi)^2)-E(\sigma(x,\xi))^2}
 $$.
-
-\subsubsection{Path Cost}
-The whole point of trajectory optimization is select a control policy $\mathbf{u}(t)$ to minimize or maximize some measure of performance. In some cases, this measure of performance might be the time to travel from a starting location to an ending location in a dynamical system such as a quad copter. In the case of the rocket landing problem being investigated in this paper, the measure of performance is, of course, propellant expenditure. That is, the goal of the trajectory optimization process is to softly land the rocket at its target, while utilizing as little fuel as possible. For a general dynamical system, the path cost or objective function is defined as
-$$
-J = \phi(\mathbf{x}(t_0),\mathbf{x}(t_f),t_0,t_f)
-$$
-In the case of a landing that reduces fuel usage, otherwise know as a mass optimal landing, the final mass will be used explicitly to determine the measure of performance.
-
-\subsection{Direct Transcription}
-In direct transcription methods, the continuous state $\mathbf{x}(t)$ and control $\mathbf{u}(t)$ are discretized into a finite dimensional description. Through this technique, the original optimal control problem is transformed into a nonlinear programming problem (NLP). For the sake of intuition, transforming the nonlinear programming problem back to an optimal control problem would be akin to having an infinite quantity of states, controls, and constraints.
-
-\subsubsection{Grid}
-The first step in transforming a continuous optimal control problem into a finite dimension nonlinear programming problem is to define the resolution of the discretization $n$, or the number of nodes. Including the statement of the dynamical system's simulation starting time $t_I$ and final time $t_F$. From these statements, one can formulate the time grid
-$$
-[t_1,t_2.,\dots,t_n]
-$$,
-where one should note that $t_I = t_1$ and $t_F = t_n$, which form part of the system's boundary conditions. Intuitively, it is followed that the states are discretized as 
-$$
-\mathbf{x}_i = \mathbf{x}(t_i)
-$$
-and the controls as
-$$
-\mathbf{u}_i = \mathbf{u}(t_i)
-$$
-
-\subsubsection{Defects}
-Once the system's original optimal control description has been transcribed through direct transcription, the values of the system's states $\mathbf{x}_i$ and controls $\mathbf{u}_i$ are represented by a (possibly) large set of NLP variables. The aforementioned bounds on both the system's state and control are simply instantiated at each node $n$ in the discretization. Perhaps the most crucial part of this direct trajectory optimization process is enforcing the system's inherent dynamics at each node. That is, an analytical quadrature procedure is used to compare the system's states at collocated nodes, in order to asses the validity of the optimizer's placement of each of the system's states. The schematic of this process can be seen in Figure \ref{fig:trajopt}.
-
+The nominal statistics for the average expected stress distribution can be seen in Figure \ref{fig:nomstress}
 \begin{figure}
     \centering
-    \includegraphics[width=0.48\textwidth]{pics/trajopt.png}
-    \caption{Direction Transcription Schematic}
-    \label{fig:trajopt}
-    \cite{Nagy2001}
+    \includegraphics[width=0.48\textwidth]{pics/stres-stat-nom.eps}
+    \caption{Nominal Stress Statistics with 20 Nodes}
+    \label{fig:nomstress}
 \end{figure}
+The unadjusted abscissas and weights corresponding to the $m$ collocation points are computed through the Gauss-Hermite subroutine given in Listing \ref{gh}.
+\begin{lstlisting}[label=gh,caption=Gauss-Hermite Abscissas and Weights]
+function [xi, w] = GaussHermite(obj,n)
+    % Computes abscissas x and weights w
+    % for Gauss-Hermite quadrature of order n
+    i   = 1:n-1;
+    a   = sqrt(i/2);
+    % Use a diagonal matrix for real roots
+    CM  = diag(a,1) + diag(a,-1);
+    % V = column eigenvectors
+    % D = diagonal matrix of eigenvalues
+    [V D]   = eig(CM);
+    % Get abscissas
+    [xi i] = sort(diag(D));
+    V       = V(:,i)';
+    % Weights
+    w       = sqrt(pi) * V(:,1).^2;
+end
+\end{lstlisting}
+For further background on the derrivation of this method, the reader is advised to consult \cite{Lazarov2012}.
 
-\subsubsection{Nonlinear Programming Variables}
-As previously noted, under the direct transcription process, in which the system's continuous state and control descriptions are transformed to a finite dimensional parameter constrained problem, a single NLP \textit{decision} vector is dealt with. This decision vector is formulated as
-$$
-\mathbf{z} =
-\begin{bmatrix}
-\mathbf{x}_0 \\
-\mathbf{u}_0 \\
-\mathbf{x}_1 \\
-\mathbf{u}_1 \\
-\vdots \\
-\mathbf{x}_n \\
-\mathbf{u}_n \\
-t_0 \\
-t_f 
-\end{bmatrix}
-$$,
-where $t_0$ and $t_f$ are regarded as auxiliary variables. The auxiliary variables, in this case the time grid boundaries, determine the behaviour of the optimizer's manipulation of the state and control variables, through the time step size passed to the analytical quadrature method.
+\subsection{Manufacturing Constraints}
+As required by the optimization problem's specifications, the inner and outer radii of each annular cross section cannot be less than $T_{min}$ apart, the inner radius cannot be smaller than $r_{min}$, and the outer radius cannot be larger than $R_{max}$.
 
-\subsection{Trapezoidal Transcription}
-In order to compute the defects at each node in the grid space, a method to analytically propagate the system's dynamics is used. In this paper, herein the method of trapezoidal quadrature will be used. Within the grid space, at node $n$, the defect is defined as 
+\subsubsection{Radii Bounds}
+In formulating the range to which the inner radii $r_i$ and outer radii $R_i$ are bounded, it is necessary to formally define lower and upper bound vectors $\mathbf{L}$ and $\mathbf{U}$, respectively, that satisfy $\mathbf{L} \leq \mathbf{R} \leq \mathbf{U}$, corresponding to the form of the transformed design vector $\mathbf{R}$ described in Section \ref{R}. The lower and upper bounds for the radii, corresponding to the constraints described in Section \ref{opt}, are formulated as such
 $$
-\mathbf{\zeta}_n = \mathbf{x}_n - \mathbf{x}_{n-1} - \frac{h_n}{2}(\mathbf{f}_n + \mathbf{f}_{n-1})
-$$.
-Note that $h_n$ is the collocation step size, defined by
-$$
-h_n = t_n - t_{n-1}
-$$,
-and $\mathbf{f}_n$ is described by the system's equations of motion at node $n$ as
-$$
-\mathbf{f}_n = \mathbf{f}(\mathbf{x}(t_n),\mathbf{u}(t_n),t_n)
-$$.
-The resulting characterization of the defect forms the equality constraints of the dynamical system's trajectory optimization problem. If these equality constraints are satisfied at each node, then the dynamics of the optimized trajectory will be feasible according to trapezoidal quadrature.
-
-\section{Rocket}
-In order to optimize the trajectory of a rocket, it is first necessary to construct a dynamical model, which accurately describes a rocket's dynamics.
-\subsection{Control}
-It is appropriate to begin with defining the possible controls which the optimizer can take. In the case of a rocket, the main control is its thruster. While many thruster configurations exist for rockets, a common one to assume is a single thruster situated about the rocket's tail end, capable of gimbaling. With this configuration, in the reference frame of a rocket's body, the resulting control vector is formulated as $$ \mathbf{u_b} = \hat{\gamma}\Gamma $$, where $\hat{\gamma}$ is the direction of the thrust in the body's frame and $\Gamma$ is the magnitude of the thrust. The controls at any moment in time are defined as the thrust magnitude $\Gamma$, inclination angle $\eta$, and azimuth angle $\zeta$, describing the thrust vector in the body frame as $$ \mathbf{u_b} = \left[
-\begin{array}{c}
- \Gamma  \sin (\zeta ) \cos (\eta ) \\
- \Gamma  \sin (\zeta ) \sin (\eta ) \\
- \Gamma  \cos (\zeta ) \\
-\end{array}
-\right] $$
-This leads to the definition of the control vector
-$$
-\mathbf{A} = \left[
-\begin{array}{c}
-\Gamma \\
-\eta \\
-\zeta \\
-\end{array}
-\right]
+\begin{gathered}
+\mathbf{L} = [\lambda_k, \dots, \lambda_{2n}]^T \mid \{ \lambda_{2k-1}, \lambda_{2k} \} \leftarrow \{ r_{min}, r_{min} + T_{min} \} \\
+\mathbf{U} = [\upsilon_k, \dots, \upsilon_{2n}]^T \mid \{ \upsilon_{2k-1}, \upsilon_{2k} \} \leftarrow \{ R_{max} - T_{min}, R_{max} \}
+\end{gathered}
 $$
 
-\subsection{Rigid Body}
-It is sufficient to model the rocket as a cylinder, where the length of the rocket is $l$ and the radius of the rocket is $r$. 
-\subsubsection{Orientation}
-Firstly, it is necessary to establish some coordinate conventions. Firstly, the primary inertial reference frame is defined as a stationary reference frame, from which a body (i.e. the rocket) will be measured in reference to. The $Z$ axis is defined as being directed upward, out of the ground, towards the sky. The $X$ and $Y$ axes are arbitrarily directed, completing the triad forming the right handed coordinate system. 
+\subsubsection{Thickness}
+In order to enforce the constraint that the annular spar's wall thickness may not be smaller than $T_{min}$ and that the outer radii must always be greater than the inner radii $R_i > r_i ~ \forall i \in \mathcal{I}$, linear inequality constraints must be instantiated. In doing so, it is required to formulate a $n \times 2n$ matrix $\mathbf{A}$ and $n \times 1$ column vector $\mathbf{b}$ that satisfy $\mathbf{A}\mathbf{R} \leq \mathbf{b}$. The matrices are defined as follows
+$$
+\begin{gathered}
+\mathbf{A} = 
+ \begin{bmatrix}
+  \alpha_{i,k} & \cdots & \alpha_{i,2n} \\
+  \vdots  & \ddots & \vdots  \\
+  \alpha_{n,k} & \cdots & \alpha_{n,2n} \\
+ \end{bmatrix}
+ \mid \{ \alpha_{i,2i-1}, \alpha_{i,2i} \} \leftarrow \{1,-1 \} \\
+ \mathbf{b} = [\beta_i, \dots, \beta_n]^T \mid \beta_i \leftarrow -T_{min}
+\end{gathered}
+$$
+where $\mathbf{R}$ is defined as the $2n \times 1$ column vector described in Section \ref{R}. For further information on formatting constraints and objectives to accommodate Matlab's built in functions, the reader is advised to consult \cite{Attaway2013}.
 
-The rocket's $z$ axis is taken to be directed from the rocket's tail to its nose, centered about its center of mass (i.e. halfway along the rocket's length for this discussion). Again, as with the inertial coordinate system, the rocket's $x$ and $y$ axes are arbitrarily defined to complete the triad, forming the right handed coordinate system. With these conventions, rotations about the rocket's $z$ axis is known as rolling, and rotations about the $x$ and $y$ axes describe pitching and yawing (somewhat arbitrarily since the rocket is axisymmetric).
+\section{Optimization}
+\subsection{Sequential Quadratic Programming}
+Sequential quadratic programming (SQP) has proven itself as one of the most successful methods for solving nonlinearly constrained optimization problems. Essentially, SQP aims to model the nonlinear programming problem (NLP) at a given approximate solution $\mathbf{R}^h$ by a quadratic programming subproblem, then use the subproblem to construct a better approximation $\mathbf{R}^{h+1}$. This process is iterated until convergence to a solution $\mathbf{R}^*$ is achieved. SQP is not a feasible point method; neither the point nor any of the subsequent iterates are required to be feasible. However, the SQP method does satisfy the bounds $\mathbf{L}$ and $\mathbf{U}$ at every iteration, and is ideal for small to medium scale problem such as in the case of this paper's optimization problem, where optimality returns are generally diminished for $n>40$. This method of nonlinear constrained optimization is handled natively by Matlab's \lstinline{fmincon} function \cite{Attaway2013}, and described in more detail in \cite{Boggs1995}.
 
-The rocket's orientation in space with respect to the inertial frame of the simulation is robustly described using quaternions, rather than Euler angles, which often become vexatious due to their inherent propensity to encounter singularities. Taking the body's $z$ axis to be along its axial direction, positively away from the thruster's location, and the $x$ and $y$ axes to be arbitrarily directed orthogonally to the $z$ axis, completing the right-handed triad, the quaternion can be formulated as 
-$$ \mathbf{q} = \left[
-\begin{array}{c}
-q_r \\
-q_i \\
-q_j \\
-q_k \\
-\end{array}
-\right] $$
-, where $\mathbf{q} = \left(1~0~0~0\right)^T$ describes the body's orientation to be in alignment with the inertial frame. Note that, as part of the NLP constraints, $q_r^2=q_i^2+q_j^2+q_k^2$. The resulting rotation matrix, describing the unit vectors of the body's axes, is computed as 
-\begin{multline*}
-\mathbf{R} = \\
-\left[
-\begin{array}{ccc}
- -2 q_j^2-2 q_k^2+1 & 2 \left(q_i q_j-q_k q_r\right) & 2 \left(q_i q_k+q_j
-   q_r\right) \\
- 2 \left(q_i q_j+q_k q_r\right) & -2 q_i^2-2 q_k^2+1 & 2 \left(q_j q_k-q_i
-   q_r\right) \\
- 2 \left(q_i q_k-q_j q_r\right) & 2 \left(q_i q_r+q_j q_k\right) & -2 q_i^2-2
-   q_j^2+1 \\
-\end{array}
-\right]
-\end{multline*}.
-This rotation matrix allows vectors, originally described in the body's frame, to be represented in the inertial frame.
-\subsubsection{Inertia}
-Modelling the rocket as a cylinder with length $l$ and radius $r$, the three-dimensional inertia tensor can be formulated as 
-$$
-\mathbf{I} = \left[
-\begin{array}{ccc}
- \frac{m}{12}  \left(3r^2+l^2\right) & 0 & 0 \\
- 0 & \frac{m}{12}  \left(3r^2+l^2\right) & 0 \\
- 0 & 0 & \frac{mr^2}{2} \\
-\end{array}
-\right]
-$$.
-which is used in the computation of the rocket's angular acceleration.
-\subsection{Dynamics}\label{dynamics}
-\subsubsection{Control}
-Having constructed the robust quaternion based rotation matrix, the translational force due to the rocket's control vector in its local frame $\mathbf{u_b}$ can be described in the global inertial frame by premultiplying it by the aforementioned rotation matrix as follows
-$$
-\mathbf{u} = \mathbf{R}\cdot \mathbf{u_b}
-$$.
-Assuming the thruster's location in the rocket's coordinate system is $\mathbf{r_u}=\left(0~0~-l/2\right)^T$, the moment imparted by the control is
-$$
-\mathbf{\tau} = \left[
-\begin{array}{c}
- -\frac{6 \Gamma  l \sin (\zeta ) \sin (\eta )}{l^2 m+m w^2} \\
- \frac{6 \Gamma  l \sin (\zeta ) \cos (\eta )}{l^2 m+m w^2} \\
- 0 \\
-\end{array}
-\right]
-$$
+\subsection{Objective and Constraint Gradients}
+In order to achieve an optimal design vector $\mathbf{R}^*$ that satisfies $m(\mathbf{R}^*) \leq m(\mathbf{R}) \forall \mathbf{R} \mapsto \{r_i, R_i\} \forall i \in \mathcal{I}$, both the necessary and sufficient conditions for optimality need to be realized. It is necessary for an optima at a stationary point $\mathbf{\bar{R}}$ to have a first derivative of zero $\nabla \mathbf{\bar{R}} = \mathbf{0}$. It is sufficient to call the stationary point a local minimum $\mathbf{R^*}$ if $\nabla^2 \mathbf{R^*} > \mathbf{0}$. For further information on conditions of optimality, the reader should consult \cite{Kuhn1951}.
 
-\subsubsection{Acceleration}
-Having developed the model of the physical influences particular to the rocket environment, the full equation of translational motion is shown as 
-$$
-\frac{d^2\mathbf{p}}{dt^2} = \mathbf{g} + \frac{\mathbf{u}}{m}
-$$
-, where $\mathbf{p}$ is the position of the rocket, $\mathbf{g}=\left(0~0~-9.807\right)^T$ is the acceleration due to gravity, and $m$ is the mass of the rocket governed by
-$$
-\frac{dm}{dt} = -\frac{\Gamma}{\text{Isp}\cdot g}
-$$,
-where $\text{Isp}\approx 311~s$ is the specific impulse of the rocket's propulsion system. The angular acceleration of the rocket is as follows
-$$
-\frac{d\mathbf{\omega}}{dt} = \mathbf{\tau}\cdot \mathbf{I}^{-1}
-$$,
-where $\mathbf{\omega}$ is the rocket's angular velocity, from which the time rate of change of the quaternions, describing the rocket's orientation, can be computed through quaternion multiplication as follows
-$$
-\frac{d\mathbf{q}}{dt} = \frac{1}{2}
-\left[
-\begin{array}{c}
- 0 \\
-\mathbf{\omega} \\
-\end{array}
-\right] \otimes \mathbf{q}
-$$
-\subsection{State}
-The state of the dynamical system, particular to the rocket, can be formalized as follows
-$$
-\mathbf{S} =
-\left[
-\begin{array}{cccc}
-\mathbf{p}\\
-\mathbf{v}\\
-\mathbf{q}\\
-\mathbf{\omega}\\
-m\\
-\end{array}\right]
-=\left[
-\begin{array}{cccccccccccccc}
-x\\y\\z\\v_x\\v_y\\v_z\\q_r\\q_i\\q_j\\q_k\\
-\omega_x \\ \omega_y \\ \omega_z \\ m
-\end{array}\right]
-$$ with a dimensionality of fourteen.
+\subsubsection{Forward Difference}
+Among the simplest methods of finite difference derivative approximations is the forward step method
+$$ \mathbf{\nabla}_{\xi_i}\mathbf{f}(\mathbf{R}) =
+\frac{\mathbf{f}(\mathbf{R} + h_i\mathbf{e}_i) - \mathbf{f}(\mathbf{R})}{h_i} + \mathcal{O}(h_i)$$
+, where $\mathbf{e}_i$ represents a vector of zeros with the $i^{th}$ index equal to $1$, $\mathcal{O}(h_i)$ represents the truncation error, and $h_i$ represents the step size. Herein, $h_i$ represents the positive distance from $\lvert \xi_i \rvert$ to the next larger floating-point number of the same precision as $\xi_i$. It should be noted that $\mathbf{f}$ may represent either the problem's objective function $m(\mathbf{R})$ or constraint function $\mathbf{c}(\mathbf{R})$.
+
+\subsubsection{Central Difference}
+Similarly to the forward difference method, the approximate derivative of either the objective or constraint functions may be approximated with a perturbation to the design vector $\mathbf{R}$. Under the central difference paradigm, the finite difference derivative approximation becomes
+$$ \mathbf{\nabla}_{\xi_i}\mathbf{f}(\mathbf{R}) =
+\frac{\mathbf{f}(\mathbf{R} + h_i\mathbf{e}_i) - \mathbf{f}(\mathbf{R} - h_i\mathbf{e}_i)}{2h_i} + \mathcal{O}(h_i^2)$$
+It should be noticed that the central difference method is second-order accurate since the dominate term in its truncation error is $\mathcal{O}(h_i^2)$. Therefor the central difference method is more accurate than the forward difference method due to its smaller truncation error.
+
+\subsubsection{Complex Step}
+Among the best of the finite difference methods is complex-step. It has shown to be very accurate, robust, and easy to implement, while maintaining a reasonable computational cost. The relationship between the real and imaginary parts of the function at hand is exploited to yield a derivative approximation of the following form
+$$ \mathbf{\nabla}_{\xi_i}\mathbf{f}(\mathbf{R}) =
+\frac{\Im [ \mathbf{f}(\mathbf{R} + h_i\mathbf{e}_i \sqrt{-1}) ] }{h_i} + \mathcal{O}(h_i^2)$$
+
+The complex step method converges quadratically with decreasing step size. This method is particularly advantageous because it is insensitive to small step sizes and eventually achieves the accuracy of its function evaluations. The reader can learn more about its derivation in \cite{Lyness1968}. Herein, focus will be directed towards the use of the complex step method to approximate the gradients of both the objective function $m(\mathbf{R})$ and constraint function $\mathbf{C}(\mathbf{R})$. The complex step method can be formulated to approximate the functions' Jacobian matrices as shown in Listing \ref{complexalg}. As an example, to approximate the gradient of the objective function, one should execute \lstinline[breaklines=true]{obj.Complex_Jacobian(@obj.Stress_Constraints, R)}.
+
+\begin{lstlisting}[caption=Complex Step Method, label=complexalg, float]
+function jac = Complex_Jacobian(obj, funct, R)
+  fval = funct(R);
+  n    = numel(R);
+  m    = numel(fval);
+  jac  = zeros(m,n);
+  h    = eps(R)*n;
+  for I=1:n
+    r        = R;
+    r(I,1)   = r(I,1) + h(I,1)*i;
+    jac(:,I) = imag(funct(r))/h(I,1);
+  end
+  jac = jac.';
+end
+\end{lstlisting}
 
 \section{Results}
-Herein, in the analysis of this paper, the rocket's state is initialized as
-$$
-\mathbf{x}=[100,100,100,5,5,-5,1,0,0,0,0,0,0,10000]^T
-$$
-and the target's state is initialized as
-$$
-\mathbf{x}=[0,0,0,0,0,0,1,0,0,0,0,0,0,\text{None}]^T
-$$.
-Hence, the rocket has a mass of 10000 kilograms.
-Note that the rocket is not given any target for its mass, as this is the metric to be optimized. The lower bound of the rocket's state is initialized as 
-\begin{multline*}
-\mathbf{LB}_\mathbf{x} = [-1000,-1000,0,-100,-100,-100,\\0,0,0,0,-100,-100,-100,0]^T
-\end{multline*}
-and the upper bound is initialized as
-\begin{multline*}
-\mathbf{UB}_\mathbf{x} = [1000,1000,1000,100,100,100,\\1,1,1,1,100,100,100,10000]^T
-\end{multline*}.
-In addition to the rocket's state, bounds are also placed on the rocket's controls. The control's lower bound is defined as
-$$
-\mathbf{LB}_\mathbf{u} = [0,0,0]^T
-$$
-and upper bound as
-$$
-\mathbf{UB}_\mathbf{u} = [44000,\pi,2\pi]^T
-$$
-Using the sequential quadratic programming algorithm, with five grid nodes $n=5$, a final mass of $m_f = 9863.16~kg$ is achieved, as shown Figure \ref{fig:conv5}. With ten grid nodes $n=10$, a final mass of $m_f=9902.53~kg$ is achieved, with a convergence seen in Figure \ref{fig:conv10}. Thus, as one can see, the accuracy of both the dynamical model and optimization method are confirmed, and more accurate results will be obtained with increasing nodes. The physical characterizations of the system's state and control for $n=5$, $n=10$, $n=15$, and $n=25$ nodes are seen in Figure \ref{fig:5nt}, \ref{fig:10nt}, \ref{fig:15nt}, \ref{fig:25nt}, respectively. The final masses achieved through this trajectory optimization process, among all node amounts, compare to that of an analogous example with equivalent metrics, using the indirect method, implemented in the documentation of the European Space Agency's open-source optimizer, PyGMO \cite{Izzo2012}. It should be noted, however, that increasing the number of nodes beyond $n=25$ proved to be incessant; even with parallel CPU core usage, computations were rather long winded do to sheer number of variables in the NLP problem.
+Having instantiated an aircraft with the specifications enumerated in Table \ref{specs}, one can supply an initial guess to the optimizer. The initial guess of the $2n \times 1$ design vector $\mathbf{R_0}$ will characterize the nominal design of the spar's radii, such that $ \{r_i, R_i\} \leftarrow \{0.0415, 0.05 \} \forall i \in \mathcal{I}$, yielding an initial total spar mass of $m_0 = 29.32~kg$. With the use of the complex step finite difference method and a varying amount of collocation points, the optimizer settled upon a final mass of $m=8.59221~kg$, which is a $\%70.7026$ decrease from the nominal mass, as shown through the convergence of the optimizer in Figure \ref{fig:conv}. The resulting spar geometries are seen in Figure \ref{fig:geo}. As one can see from Figure \ref{fig:optstats}, the average stress and standard deviations are markedly different from the corresponding nominal plot in Figure \ref{fig:nomstress}. It is also seen throughout the figures that varying the number of collocation points did not affect the final optimal mass of the spar. It is seen that the new constraints enforced by the uncertainty model have made their effect known, as it is seen in Figure \ref{fig:optstats} that the six standard deviations above the mean stress have settled upon the constraint.
 
-\section{Conclusions}
-This paper demonstrated a feasible trajectory optimization methodology to replicate the \textit{soft}, upright landing of a rocket, as first demonstrated by SpaceX and Blue Origin. Future improvements will include the migration to a low-level language, such as C++, to save on computational expenses. Additionally, different methods of transcription will be added to the current software library. And lastly, the software library will abstract itself to more general usage for such applications as interplanetary spacecraft trajectory optimization and quad-copters.
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{pics/traj5nconv.eps} 
-\caption{Convergence with 5 Nodes}\label{fig:conv5}
+
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.9\linewidth]{pics/complex-conv-25n-3c.eps} 
+\caption{Complex Step Convergence with 25 Nodes and 3 Collocation Points}
+\end{subfigure}
+
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.9\linewidth]{pics/complex-conv-25n-5c.eps}
+\caption{Complex Step Convergence with 25 Nodes and 5 Collocation Points}
+\end{subfigure}
+
+\caption{Complex step convergence}
+\label{fig:conv}
+\end{figure}
+
+
+\begin{figure}
+
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.9\linewidth]{pics/complex-shape-25n.eps} 
+\caption{Optimized Design with 25 Nodes and 3 Collocation Points}
+\end{subfigure}
+
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.9\linewidth]{pics/complex-shape-25n-5c.eps}
+\caption{Optimized Design with 25 Nodes and 5 Collocation Points}
+\end{subfigure}
+
+\caption{Optimized Geometry}
+\label{fig:geo}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{pics/traj10nconv.eps}
-\caption{Convergence with 10 Nodes}\label{fig:conv10}
+
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.9\linewidth]{pics/complex-stress-stat-25n.eps} 
+\caption{Optimized Stress Statistics with 25 Nodes and 3 Collocation Points.}
+\end{subfigure}
+
+\begin{subfigure}{0.49\textwidth}
+\includegraphics[width=0.9\linewidth]{pics/complex-stress-stat-25n_5c.eps}
+\caption{Optimized Stress Statistics with 25 Nodes and 5 Collocation Points.}
+\end{subfigure}
+
+\caption{Optimized Stress Statistics}
+\label{fig:optstats}
 \end{figure}
+
+\bibliography{refs.bib} 
+\bibliographystyle{IEEEtran}
 
 \onecolumn
-\begin{figure}
-\includegraphics[width=1\textwidth]{pics/traj5n.eps}
-\caption{Trajectory with 5 Nodes}\label{fig:5nt}
-\end{figure}
+\subsection{Source Code}
+\lstinputlisting[basicstyle=\ttfamily, caption=UAV Optimization Example, label=uavex]{code/Optimisation.m}
+\lstinputlisting[basicstyle=\ttfamily, caption=UAV Class, label=uavclass]{code/UAV.m}
 
-\begin{figure}
-\includegraphics[width=1\textwidth]{pics/traj10n.eps}
-\caption{Trajectory with 10 Nodes}\label{fig:10nt}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=1\textwidth]{pics/traj15n.eps}
-\caption{Trajectory with 15 Nodes}\label{fig:15nt}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=1\textwidth]{pics/traj25n.eps}
-\caption{Trajectory with 25 Nodes}\label{fig:25nt}
-\end{figure}
-
-\twocolumn
-\bibliographystyle{ieeetr}
-\bibliography{refs.bib}
-
-\section{Source Code}
-\lstinputlisting[caption=Rocket Class - Matlab]{code/Rocket.m}
-\lstinputlisting[language=python, caption=Rocket Class - Python]{code/Rocket.py}
 
 
 \end{document}

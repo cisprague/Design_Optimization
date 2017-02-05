@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1" ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
-<!--http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd-->  
-<html xmlns="http://www.w3.org/1999/xhtml"  
-> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
 <head><title>SHAPE OPTIMISATION OF UAV WING</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
-<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
-<!-- xhtml,html --> 
-<meta name="src" content="TemplateICATT.tex" /> 
-<link rel="stylesheet" type="text/css" href="TemplateICATT.css" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="TemplateICATT.tex"> 
+<link rel="stylesheet" type="text/css" href="TemplateICATT.css"> 
 </head><body 
 >
    <div class="maketitle">
@@ -26,8 +23,8 @@ class="abstract"
 <div class="center" 
 >
 <!--l. 51--><p class="noindent" >
-</p><!--l. 51--><p class="noindent" ><span 
-class="ptmb7t-">ABSTRACT</span></p></div>
+<!--l. 51--><p class="noindent" ><span 
+class="ptmb7t-">ABSTRACT</span></div>
 <!--l. 52--><p class="noindent" >This paper examines the design of a wing for a new long-endurance
 aircraft that will be used as a telecommunications platform. In
 particular, the problem of optimizing the shape of the wing&#8217;s spar,
@@ -41,12 +38,10 @@ investigated in relation to the problem&#8217;s objective and constraints.
 It is shown that an optimal spar mass, over 60% lower than
 the nominal, is consistently achieved while satisfying all
 constraints.
-</p>
    </div>
 <!--l. 55--><p class="indent" >   <span 
 class="ptmbi7t-">Index Terms</span><span 
 class="ptmb7t-">&#8212; </span>Wing Structure, Shape Optimization
-</p>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
@@ -73,11 +68,11 @@ href="#x1-140001.4.2" id="QQ2-1-17">Second Moment of Area</a></span>
 <br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.4.3 <a 
 href="#x1-150001.4.3" id="QQ2-1-18">Displacement and Stress</a></span>
 <br />   &#x00A0;<span class="subsectionToc" >1.5 <a 
-href="#x1-160001.5" id="QQ2-1-19">Manufacturing Constraints</a></span>                       <br />      &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.5.1 <a 
+href="#x1-160001.5" id="QQ2-1-19">Manufacturing Constraints</a></span>
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.5.1 <a 
 href="#x1-170001.5.1" id="QQ2-1-20">Radii Bounds</a></span>
-                                                  <br />      &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.5.2 <a 
-href="#x1-180001.5.2" id="QQ2-1-21">Thickness</a></span>
-                                                  <br />      <span class="sectionToc" >2 <a 
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.5.2 <a 
+href="#x1-180001.5.2" id="QQ2-1-21">Thickness</a></span>                                 <br />      <span class="sectionToc" >2 <a 
 href="#x1-190002" id="QQ2-1-22">Optimization</a></span>
                                                   <br />      &#x00A0;<span class="subsectionToc" >2.1 <a 
 href="#x1-200002.1" id="QQ2-1-23">Sequential Quadratic Programming</a></span>
@@ -141,11 +136,11 @@ href="#x1-50001">Problem Model</a></span>
 href="#x1-60001.1">Specifications</a></span>
                                                   <br />      &#x00A0;<span class="subsectionToc" >1.2 <a 
 href="#x1-70001.2">Problem Formulation</a></span>
-
-<br />   &#x00A0;<span class="subsectionToc" >1.3 <a 
+                                                  <br />      &#x00A0;<span class="subsectionToc" >1.3 <a 
 href="#x1-80001.3">Geometrical Parametrization</a></span>
-<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.3.1 <a 
+                                                  <br />      &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.3.1 <a 
 href="#x1-90001.3.1">Design Vector</a></span>
+
 <br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.3.2 <a 
 href="#x1-100001.3.2">Spanwise Location</a></span>
 <br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >1.3.3 <a 
@@ -191,12 +186,10 @@ href="#x1-300005.3">Source Code</a></span>
    </div>
 <!--l. 62--><p class="noindent" ><span 
 class="ptmb7t-">1.</span>
-</p>
    <h3 class="sectionHead"><span class="titlemark">1    </span> <a 
  id="x1-50001"></a>Problem Model</h3>
 <!--l. 63--><p class="noindent" ><span 
 class="ptmb7t-">1.1.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">1.1    </span> <a 
  id="x1-60001.1"></a>Specifications</h4>
 <!--l. 64--><p class="noindent" >Preceding the construction of the optimization problem, it is
@@ -220,7 +213,7 @@ class="cmmi-7">min</span></sub>, and maximum outer wall radius
 <span 
 class="cmmi-10">R</span><sub><span 
 class="cmmi-7">max</span></sub>.
-</p><!--l. 66--><p class="indent" >   Additionally, the operational conditions that the aircraft
+<!--l. 66--><p class="indent" >   Additionally, the operational conditions that the aircraft
 will be subjected to need to be taken into account, namely:
 gravitational acceleration <span 
 class="cmmi-10">g</span>, and maximum operational G-force <span 
@@ -233,11 +226,11 @@ through an object-oriented approach, as shown in Listing <a
 href="#x1-6001r1">1<!--tex4ht:ref: UAV --></a>.
 The full source code of the UAV class is shown in Listing
 <a 
-href="#x1-30028r8">8<!--tex4ht:ref: uavclass --></a>.                                                </p>
-                                                     <!--l. 68-->
+href="#x1-30028r8">8<!--tex4ht:ref: uavclass --></a>.
+   <!--l. 68-->
 
 <!--l. 68--><p class="indent" >   <a 
- id="x1-6001r1"></a></p><hr class="float" /><div class="float" 
+ id="x1-6001r1"></a><hr class="float"><div class="float" 
 >
 
 <a 
@@ -538,7 +531,7 @@ class="pcrr7t-x-x-80">;</span>
    <div class="table">
 
 <!--l. 85--><p class="indent" >   <a 
- id="x1-6016r1"></a></p><hr class="float" /><div class="float" 
+ id="x1-6016r1"></a><hr class="float"><div class="float" 
 >
 
  <div class="caption" 
@@ -548,16 +541,16 @@ class="content">Problem Specifications</span></div><!--tex4ht:label?: x1-6016r1 
 <div class="tabular"> <table id="TBL-2" class="tabular" 
 cellspacing="0" cellpadding="0" rules="groups" 
 ><colgroup id="TBL-2-1g"><col 
-id="TBL-2-1" /></colgroup><colgroup id="TBL-2-2g"><col 
-id="TBL-2-2" /></colgroup><colgroup id="TBL-2-3g"><col 
-id="TBL-2-3" /></colgroup><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+id="TBL-2-1"></colgroup><colgroup id="TBL-2-2g"><col 
+id="TBL-2-2"></colgroup><colgroup id="TBL-2-3g"><col 
+id="TBL-2-3"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-1"  
 class="td11">Parameter                      </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-2"  
 class="td11">Symbol</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-3"  
 class="td11">Value             </td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-1"  
 class="td11">Semi-Span                     </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-2"  
 class="td11"><span 
@@ -568,7 +561,7 @@ class="cmmi-10">.</span><span
 class="cmr-10">5</span><span 
 class="cmmi-10">&#x00A0;m       </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-1"  
 class="td11">Density                          </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-2"  
 class="td11"><span 
@@ -578,7 +571,7 @@ class="cmr-10">1600</span><span
 class="cmmi-10">&#x00A0;kg&#x2215;m</span><sup><span 
 class="cmr-7">3</span></sup></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-4-1"  
 class="td11">Young&#8217;s Modulus           </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-4-2"  
 class="td11"><span 
@@ -587,7 +580,7 @@ class="td11"><span
 class="cmr-10">70</span><span 
 class="cmmi-10">&#x00A0;GPa     </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-5-1"  
 class="td11">Ultimate Strength          </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-5-2"  
 class="td11"><span 
@@ -597,7 +590,7 @@ class="td11"><span
 class="cmr-10">600</span><span 
 class="cmmi-10">&#x00A0;MPa   </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-6-1"  
 class="td11">Aircraft Mass                 </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-6-2"  
 class="td11"><span 
@@ -606,7 +599,7 @@ class="td11"><span
 class="cmr-10">500</span><span 
 class="cmmi-10">&#x00A0;kg      </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-7-1"  
 class="td11">Minimum Thickness      </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-7-2"  
 class="td11"><span 
@@ -618,7 +611,7 @@ class="cmmi-10">.</span><span
 class="cmr-10">5</span><span 
 class="cmmi-10">&#x00A0;mm     </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-8-1"  
 class="td11">Minimum Inner Radius </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-8-2"  
 class="td11"><span 
@@ -628,7 +621,7 @@ class="td11"><span
 class="cmr-10">1</span><span 
 class="cmmi-10">&#x00A0;cm        </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-9-1"  
 class="td11">Maximum Outer Radius</td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-9-2"  
 class="td11"><span 
@@ -638,7 +631,7 @@ class="td11"><span
 class="cmr-10">5</span><span 
 class="cmmi-10">&#x00A0;cm        </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-10-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-10-1"  
 class="td11">Gravity                           </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-10-2"  
 class="td11"><span 
@@ -650,7 +643,7 @@ class="cmr-10">81</span><span
 class="cmmi-10">&#x00A0;m&#x2215;s</span><sup><span 
 class="cmr-7">2</span></sup>   </td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-11-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-11-1"  
 class="td11">G-Force                          </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-11-2"  
 class="td11"><span 
@@ -660,7 +653,7 @@ class="cmr-10">2</span><span
 class="cmmi-10">.</span><span 
 class="cmr-10">5             </span></td>
 </tr><tr 
-class="hline"><td><hr /></td><td><hr /></td><td><hr /></td></tr><tr  
+class="hline"><td><hr></td><td><hr></td><td><hr></td></tr><tr  
  style="vertical-align:baseline;" id="TBL-2-12-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-12-1"  
 class="td11">                </td></tr></table></div>
 
@@ -698,17 +691,15 @@ class="cmsy-10">&#x2265; </span><span
 class="cmmi-10">T</span><sub><span 
 class="cmmi-7">min</span></sub>. In a more formal manner, this problem&#8217;s
 formulation is shown as follow:
-</p>
    <center class="math-display" >
 <img 
 src="TemplateICATT0x.png" alt="m inimize m (R ) | R &#x21A6;&#x2192; {r(x),R(x)} | x &#x2208; [0,L]
    R
-subjectto rmin &#x2264; r(x ) &#x2264; rmin + Tmin
-   &#x2200;x
+subje&#x2200;cxtto rmin &#x2264; r(x ) &#x2264; rmin + Tmin
+
          Rmax - Tmin &#x2264; R(x) &#x2264; Rmax
          r(x)- R (x ) &#x2264; - Tmin
-         &#x03C3; (x) - &#x03C3;   &#x2264; 0
-                 max " class="math-display"  /></center>
+         &#x03C3; (x) - &#x03C3;max &#x2264; 0 " class="math-display" ></center>
 Essentially, the annular spar&#8217;s inner and outer spanwise radii
 <span 
 class="cmsy-10">{</span><span 
@@ -737,7 +728,6 @@ class="cmmi-10">x</span><span
 class="cmr-10">)</span>.
 <!--l. 119--><p class="noindent" ><span 
 class="ptmb7t-">1.3.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">1.3    </span> <a 
  id="x1-80001.3"></a>Geometrical Parametrization</h4>
 <!--l. 120--><p class="noindent" >Because finite element methods will be used to solve this
@@ -762,15 +752,14 @@ class="cmsy-10"><img
 src="cmsy10-4e.png" alt="N" class="10x-x-4e" /> </span>and finite element indexes <span 
 class="cmsy-10"><img 
 src="cmsy10-45.png" alt="E" class="10x-x-45" /> </span>are defined as
-follows                                            </p>
-                                                     <center class="math-display" >
+follows                                               <center class="math-display" >
                                                   <img 
 src="TemplateICATT1x.png" alt="  N = [i,i+ 1,...,n]
+
 E = [j,j + 1,...,n- 1]
-                                                  " class="math-display"  /></center>
+                                                  " class="math-display" ></center>
                                                   <!--l. 129--><p class="noindent" ><span 
 class="ptmri7t-">1.3.1.</span>
-                                                  </p>
                                                      <h5 class="subsubsectionHead"><span class="titlemark">1.3.1    </span> <a 
  id="x1-90001.3.1"></a>Design Vector</h5>
                                                   <!--l. 130--><p class="noindent" >It is appropriate to begin the optimization process with the
@@ -781,36 +770,32 @@ class="cmmi-10">r </span>and
 class="cmmi-10">R</span>. Abiding to the form of a column vector, it is
                                                   necessary to apply a change of variables and define the design
                                                   vector as follows,
-                                                  </p>
                                                      <center class="math-display" >
                                                   <img 
-src="TemplateICATT2x.png" alt="                     T
-  R = [&#x03BE;k,&#x03BE;k+1,...,&#x03BE;2n]
-{&#x03BE;2k-1,&#x03BE;2k} &#x2190; {ri,Ri}&#x2200;i &#x2208; I " class="math-display"  /></center> It
+src="TemplateICATT2x.png" alt="  R = [&#x03BE;k,&#x03BE;k+1,...,&#x03BE;2n]T
+
+{&#x03BE;2k-1,&#x03BE;2k} &#x2190; {ri,Ri}&#x2200;i &#x2208; I " class="math-display" ></center> It
                                                   can be seen that the inner and outer radii are sequenced to occur
                                                   for every other index in the design vector <span 
 class="cmbx-10">R</span>.
                                                   <!--l. 139--><p class="noindent" ><span 
 class="ptmri7t-">1.3.2.</span>
-                                                  </p>
                                                      <h5 class="subsubsectionHead"><span class="titlemark">1.3.2    </span> <a 
  id="x1-100001.3.2"></a>Spanwise Location</h5>
                                                   <!--l. 140--><p class="noindent" >Having deduced the number of nodes <span 
 class="cmmi-10">n </span>from the user supplied
                                                   design vector, the spanwise location along the spar can be
                                                   discretized in a similar manner as,
-                                                  </p>
-
-   <center class="math-display" >
-<img 
-src="TemplateICATT3x.png" alt="x = [xi,xi+1,...,xn] | x1 = 0,xn = L " class="math-display"  /></center>,
-where it is noted that the first and final index values of <span 
+                                                     <center class="math-display" >
+                                                  <img 
+src="TemplateICATT3x.png" alt="x = [xi,xi+1,...,xn] | x1 = 0,xn = L " class="math-display" ></center>,
+                                                  where it is noted that the first and final index values of <span 
 class="cmmi-10">x</span><sub><span 
 class="cmmi-7">i</span></sub> satisfy
-the length of the wing&#8217;s semi-span.
+                                                  the length of the wing&#8217;s semi-span.
+
 <!--l. 142--><p class="noindent" ><span 
 class="ptmri7t-">1.3.3.</span>
-</p>
    <h5 class="subsubsectionHead"><span class="titlemark">1.3.3    </span> <a 
  id="x1-110001.3.3"></a>Volume and Mass</h5>
 <!--l. 143--><p class="noindent" >At each node <span 
@@ -848,11 +833,10 @@ class="cmmi-10">j </span><span
 class="cmr-10">+ 1</span>. Hence the nodes&#8217; cross sectional areas
 are integrated along the interpolations, yielding the volume of
 each finite element as follows
-</p>
    <center class="math-display" >
 <img 
-src="TemplateICATT4x.png" alt="    &#x03C0;- 2   2                 2     2
-Vj = 3(rj- Rj+rjrj+1- RjRj+1+r j+1- R j+1)(xj- xj+1) " class="math-display"  /></center> As
+src="TemplateICATT4x.png" alt="Vj = &#x03C0;-(r2j- R2j+rjrj+1- RjRj+1+r2j+1- R2j+1)(xj- xj+1)
+     3 " class="math-display" ></center> As
 such, the total volume of the spar can be computed by a
 summation across all finite elements <span 
 class="cmmi-10">V </span><span 
@@ -878,7 +862,6 @@ class="cmbx-10">R</span><span
 class="cmr-10">)</span>.
 <!--l. 147--><p class="noindent" ><span 
 class="ptmb7t-">1.4.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">1.4    </span> <a 
  id="x1-120001.4"></a>Material Stress Constraints</h4>
 <!--l. 148--><p class="noindent" >As formulated in Section <a 
@@ -899,27 +882,26 @@ class="cmsy-10">&#x2208;<img
 src="cmsy10-49.png" alt="I" class="10x-x-49" /></span>. Modeling the wing&#8217;s spar as a
 cantilever beam, Euler-Bernoulli beam theory can be exploited to
 compute the spar&#8217;s nodal stress.
-</p><!--l. 150--><p class="noindent" ><span 
+<!--l. 150--><p class="noindent" ><span 
 class="ptmri7t-">1.4.1.</span>
-</p>
    <h5 class="subsubsectionHead"><span class="titlemark">1.4.1    </span> <a 
- id="x1-130001.4.1"></a>Load Distribution</h5>                           <!--l. 151--><p class="noindent" >In this study, it is assumed that the force distribution in the
-                                                  spanwise direction has an approximately linear distribution, with
-                                                  maximum load at the root and zero load at the tip. Hence the force
-                                                  at each node can be formulated as follows
-                                                  </p>
-                                                     <center class="math-display" >
-                                                  <img 
+ id="x1-130001.4.1"></a>Load Distribution</h5>
+<!--l. 151--><p class="noindent" >In this study, it is assumed that the force distribution in the
+spanwise direction has an approximately linear distribution, with
+maximum load at the root and zero load at the tip. Hence the force
+at each node can be formulated as follows
+   <center class="math-display" >
+<img 
 src="TemplateICATT5x.png" alt="     GM g (    x)
 Fi = ----- 1-  -i
-      L        L " class="math-display"  /></center>
+      L        L " class="math-display" ></center>
                                                   With the specifications given in Table <a 
 href="#x1-6016r1">1<!--tex4ht:ref: specs --></a> and Listing <a 
 href="#x1-6001r1">1<!--tex4ht:ref: UAV --></a>, the
                                                   nature of the spar&#8217;s force distribution can be seen in Figure
                                                   <a 
 href="#x1-13001r1">1<!--tex4ht:ref: fig:force --></a>.
-                                                     <hr class="figure" /><div class="figure" 
+                                                  <!--l. 154--><p class="indent" >      <hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -930,12 +912,12 @@ href="#x1-13001r1">1<!--tex4ht:ref: fig:force --></a>.
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;1</span>: </span><span  
 class="content">Spanwise Force Distribution.</span></div><!--tex4ht:label?: x1-13001r1 -->
-<img 
-src="TemplateICATT6x.png" alt="PIC" class="graphics" width="243.09818pt" height="191.98203pt"  /><!--tex4ht:graphics  
+<!--l. 157--><p class="noindent" ><img 
+src="TemplateICATT6x.png" alt="PIC" class="graphics" width="243.09818pt" height="191.98203pt" ><!--tex4ht:graphics  
 name="TemplateICATT6x.png" src="Pics/Span_Force.eps"  
 -->
 
-   </div><hr class="endfigure" />
+<!--l. 159--><p class="indent" >   </div><hr class="endfigure">
    <span 
 class="ptmri7t-">1.4.2.</span>
    <h5 class="subsubsectionHead"><span class="titlemark">1.4.2    </span> <a 
@@ -945,15 +927,13 @@ along its span, the second moment of inertia at each node must
 first be calculated. For a circular annulus describing the cross
 section of any node along the spar&#8217;s span, the second moment of
 area is formulated as such
-</p>
    <center class="math-display" >
 <img 
-src="TemplateICATT7x.png" alt="    &#x03C0; ( 4   4)
-Ii = 4 Ri - ri
-" class="math-display"  /></center>
+src="TemplateICATT7x.png" alt="Ii = &#x03C0;-(R4i - r4i)
+    4
+" class="math-display" ></center>
 <!--l. 165--><p class="noindent" ><span 
 class="ptmri7t-">1.4.3.</span>
-</p>
    <h5 class="subsubsectionHead"><span class="titlemark">1.4.3    </span> <a 
  id="x1-150001.4.3"></a>Displacement and Stress</h5>
 <!--l. 166--><p class="noindent" >Assuming a transversely applied load distribution and cross
@@ -993,16 +973,14 @@ class="cmmi-7">n</span></sub><span
 class="cmr-10">]</span><sup><span 
 class="cmmi-7">T</span></sup>. Hence the constraint function must satisfy
 the following
-</p>
    <center class="math-display" >
 <img 
-src="TemplateICATT8x.png" alt="&#x03C3;i - &#x03C3;max &#x2264; 0 &#x2200;i &#x2208; I " class="math-display"  /></center>
+src="TemplateICATT8x.png" alt="&#x03C3;i - &#x03C3;max &#x2264; 0 &#x2200;i &#x2208; I " class="math-display" ></center>
 Because the derivation of this method is beyond the scope of
 this paper, the reader is advised to consult <span class="cite">[<span 
 class="ptmb7t-">?</span>]</span> for further
 information.                                        <!--l. 171--><p class="noindent" ><span 
 class="ptmb7t-">1.5.</span>
-                                                  </p>
                                                      <h4 class="subsectionHead"><span class="titlemark">1.5    </span> <a 
  id="x1-160001.5"></a>Manufacturing Constraints</h4>
                                                   <!--l. 172--><p class="noindent" >As required by the optimization problem&#8217;s specifications, the
@@ -1015,9 +993,8 @@ class="cmmi-7">min</span></sub>,
                                                   and the outer radius cannot be larger than <span 
 class="cmmi-10">R</span><sub><span 
 class="cmmi-7">max</span></sub>.
-                                                  </p><!--l. 174--><p class="noindent" ><span 
+                                                  <!--l. 174--><p class="noindent" ><span 
 class="ptmri7t-">1.5.1.</span>
-                                                  </p>
                                                      <h5 class="subsubsectionHead"><span class="titlemark">1.5.1    </span> <a 
  id="x1-170001.5.1"></a>Radii Bounds</h5>
                                                   <!--l. 175--><p class="noindent" >In formulating the range to which the inner radii <span 
@@ -1041,16 +1018,14 @@ href="#x1-90001.3.1">1.3.1<!--tex4ht:ref: R --></a>. The lower and upper bounds 
                                                   radii, corresponding to the constraints described in Section <a 
 href="#x1-70001.2">1.2<!--tex4ht:ref: opt --></a>,
                                                   are formulated as such
-                                                  </p>
                                                      <center class="math-display" >
                                                   <img 
-src="TemplateICATT9x.png" alt="               T
-L = [&#x03BB;k,...,&#x03BB;2n] | {&#x03BB;2k-1,&#x03BB;2k} &#x2190; {rmin,rmin + Tmin}
-U = [&#x03C5;k,...,&#x03C5;2n]T | {&#x03C5;2k-1,&#x03C5;2k} &#x2190; {Rmax - Tmin,Rmax}
-                                                  " class="math-display"  /></center>
+src="TemplateICATT9x.png" alt="L = [&#x03BB;k,...,&#x03BB;2n]T | {&#x03BB;2k-1,&#x03BB;2k} &#x2190; {rmin,rmin + Tmin}
+              T
+U = [&#x03C5;k,...,&#x03C5;2n]  | {&#x03C5;2k-1,&#x03C5;2k} &#x2190; {Rmax - Tmin,Rmax}
+                                                  " class="math-display" ></center>
                                                   <!--l. 183--><p class="noindent" ><span 
 class="ptmri7t-">1.5.2.</span>
-                                                  </p>
                                                      <h5 class="subsubsectionHead"><span class="titlemark">1.5.2    </span> <a 
  id="x1-180001.5.2"></a>Thickness</h5>
                                                   <!--l. 184--><p class="noindent" >In order to enforce the constraint that the annular spar&#8217;s wall
@@ -1083,16 +1058,14 @@ class="cmbx-10">AR </span><span
 class="cmsy-10">&#x2264; </span><span 
 class="cmbx-10">b</span>. The matrices are defined as
                                                   follows
-                                                  </p>
-
-   <center class="math-display" >
-<img 
+                                                     <center class="math-display" >
+                                                  <img 
 src="TemplateICATT10x.png" alt="    &#x230A; &#x03B1;    &#x22C5;&#x22C5;&#x22C5;  &#x03B1;   &#x230B;
     |  i.,k  .     i,2.n|
 A = &#x2308;  ..    ..    .. &#x2309; | {&#x03B1;i,2i-1,&#x03B1;i,2i} &#x2190; {1,- 1}
       &#x03B1;n,k  &#x22C5;&#x22C5;&#x22C5;  &#x03B1;n,2n
          b = [&#x03B2; ,...,&#x03B2; ]T | &#x03B2; &#x2190; - T
-              i     n     i     min  " class="math-display"  /></center>
+              i     n     i     min  " class="math-display" ></center>
 where <span 
 class="cmbx-10">R </span>is defined as the <span 
 class="cmr-10">2</span><span 
@@ -1106,12 +1079,10 @@ reader is advised to consult <span class="cite">[<span
 class="ptmb7t-">?</span>]</span>.
 <!--l. 199--><p class="noindent" ><span 
 class="ptmb7t-">2.</span>
-</p>
    <h3 class="sectionHead"><span class="titlemark">2    </span> <a 
  id="x1-190002"></a>Optimization</h3>
 <!--l. 200--><p class="noindent" ><span 
 class="ptmb7t-">2.1.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">2.1    </span> <a 
  id="x1-200002.1"></a>Sequential Quadratic Programming</h4>
 <!--l. 201--><p class="noindent" >Sequential quadratic programming (SQP) has proven itself as
@@ -1144,9 +1115,8 @@ class="pcrr7t-x-x-80">fmincon</span> function <span class="cite">[<span
 class="ptmb7t-">?</span>]</span>, and described in more
 detail in <span class="cite">[<span 
 class="ptmb7t-">?</span>]</span>.
-</p><!--l. 203--><p class="noindent" ><span 
+<!--l. 203--><p class="noindent" ><span 
 class="ptmb7t-">2.2.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">2.2    </span> <a 
  id="x1-210002.2"></a>Objective and Constraint Gradients</h4>
 <!--l. 204--><p class="noindent" >In order to achieve an optimal design vector <span 
@@ -1165,7 +1135,7 @@ class="cmbx-10">R</span><span
 class="cmr-10">)</span><span 
 class="cmsy-10">&#x2200;</span><span 
 class="cmbx-10">R</span><img 
-src="TemplateICATT11x.png" alt="&#x21A6;&#x2192;"  class="mapsto"  /><span 
+src="TemplateICATT11x.png" alt="&#x21A6;&#x2192;"  class="mapsto" ><span 
 class="cmsy-10">{</span><span 
 class="cmmi-10">r</span><sub><span 
 class="cmmi-7">i</span></sub><span 
@@ -1194,18 +1164,17 @@ class="cmmi-10">&#x003E; </span><span
 class="cmbx-10">0</span>. For further
 information on conditions of optimality, the reader should consult
 <span class="cite">[<span 
-class="ptmb7t-">?</span>]</span>.                                               </p><!--l. 206--><p class="noindent" ><span 
+class="ptmb7t-">?</span>]</span>.
+<!--l. 206--><p class="noindent" ><span 
 class="ptmri7t-">2.2.1.</span>
-                                                  </p>
-                                                     <h5 class="subsubsectionHead"><span class="titlemark">2.2.1    </span> <a 
+   <h5 class="subsubsectionHead"><span class="titlemark">2.2.1    </span> <a 
  id="x1-220002.2.1"></a>Forward Difference</h5>
-                                                  <!--l. 207--><p class="noindent" >Among the simplest methods of finite difference derivative
-                                                  approximations is the forward step method
-                                                  </p>
-                                                     <center class="math-display" >
+<!--l. 207--><p class="noindent" >Among the simplest methods of finite difference derivative
+approximations is the forward step method                    <center class="math-display" >
                                                   <img 
-src="TemplateICATT12x.png" alt="&#x2207;  f(R ) = f(R-+-hiei)--f(R)-+ O(h )
-  &#x03BE;i             hi             i " class="math-display"  /></center> ,
+src="TemplateICATT12x.png" alt="          f(R + he )- f(R)
+&#x2207; &#x03BE;if(R ) =-------ii--------+ O(hi)
+                 hi " class="math-display" ></center> ,
                                                   where <span 
 class="cmbx-10">e</span><sub><span 
 class="cmmi-7">i</span></sub> represents a vector of zeros with the <span 
@@ -1245,7 +1214,6 @@ class="cmbx-10">R</span><span
 class="cmr-10">)</span>.
                                                   <!--l. 212--><p class="noindent" ><span 
 class="ptmri7t-">2.2.2.</span>
-                                                  </p>
                                                      <h5 class="subsubsectionHead"><span class="titlemark">2.2.2    </span> <a 
  id="x1-230002.2.2"></a>Central Difference</h5>
                                                   <!--l. 213--><p class="noindent" >Similarly to the forward difference method, the approximate
@@ -1254,11 +1222,10 @@ class="ptmri7t-">2.2.2.</span>
 class="cmbx-10">R</span>. Under
                                                   the central difference paradigm, the finite difference derivative
                                                   approximation becomes
-                                                  </p>
                                                      <center class="math-display" >
                                                   <img 
-src="TemplateICATT13x.png" alt="&#x2207; &#x03BE;if(R ) = f(R-+-hiei)--f(R---hiei) +O (h2i)
-                    2hi " class="math-display"  /></center>
+src="TemplateICATT13x.png" alt="          f(R-+-hiei)--f(R---hiei)      2
+&#x2207; &#x03BE;if(R ) =          2hi          +O (hi) " class="math-display" ></center>
                                                   It should be noticed that the central difference method is
                                                   second-order accurate since the dominate term in its truncation
                                                   error is <span 
@@ -1271,25 +1238,23 @@ class="cmr-7">2</span></sup><span
 class="cmr-10">)</span>. Therefor the central difference method is more
                                                   accurate than the forward difference method due to its smaller
                                                   truncation error.
-
-<!--l. 218--><p class="noindent" ><span 
+                                                  <!--l. 218--><p class="noindent" ><span 
 class="ptmri7t-">2.2.3.</span>
-</p>
-   <h5 class="subsubsectionHead"><span class="titlemark">2.2.3    </span> <a 
+                                                     <h5 class="subsubsectionHead"><span class="titlemark">2.2.3    </span> <a 
  id="x1-240002.2.3"></a>Complex Step</h5>
-<!--l. 219--><p class="noindent" >Among the best of the finite difference methods is complex-step.
-It has shown to be very accurate, robust, and easy to implement,
-while maintaining a reasonable computational cost. The
-relationship between the real and imaginary parts of the function
-at hand is exploited to yield a derivative approximation of the
-following form
-</p>
+                                                  <!--l. 219--><p class="noindent" >Among the best of the finite difference methods is complex-step.
+                                                  It has shown to be very accurate, robust, and easy to implement,
+                                                  while maintaining a reasonable computational cost. The
+                                                  relationship between the real and imaginary parts of the function
+                                                  at hand is exploited to yield a derivative approximation of the
+                                                  following form
+
    <center class="math-display" >
 <img 
-src="TemplateICATT14x.png" alt="          &#x2111;[f(R + he &#x221A;--1)]
-&#x2207; &#x03BE;if(R ) =---------ii------+ O(h2i)
-                 hi
-" class="math-display"  /></center>
+src="TemplateICATT14x.png" alt="                     &#x221A;---
+          &#x2111;[f(R-+-hiei---1)]     2
+&#x2207; &#x03BE;if(R ) =       hi        + O(hi)
+" class="math-display" ></center>
 <!--l. 223--><p class="indent" >   The complex step method converges quadratically with
 decreasing step size. This method is particularly advantageous
 because it is insensitive to small step sizes and eventually
@@ -1323,12 +1288,11 @@ class="pcrr7t-x-x-80">,</span><span
 class="pcrr7t-x-x-80">&#x00A0;</span><span 
 class="pcrr7t-x-x-80">R</span><span 
 class="pcrr7t-x-x-80">)</span>.
-</p>
    <!--l. 225-->
 
 <!--l. 225--><p class="indent" >   <a 
  id="x1-24001r2"></a><a 
- id="x1-25001r3"></a></p><hr class="float" /><div class="float" 
+ id="x1-25001r3"></a><hr class="float"><div class="float" 
 >
 
 <a 
@@ -1583,14 +1547,14 @@ class="cmsy-7">*</span></sup> <span
 class="cmmi-10">&#x003C; </span><span 
 class="cmr-10">5</span><span 
 class="cmmi-10">&#x00A0;kg</span>.
-</p><!--l. 244--><p class="indent" >   One can easily instantiate an initial guess <span 
+<!--l. 244--><p class="indent" >   One can easily instantiate an initial guess <span 
 class="cmbx-10">R</span><sub><span 
 class="cmbx-7">0</span></sub> of the design
 vector, with <span 
 class="cmmi-10">n </span><span 
 class="cmr-10">= 20 </span>nodes for instance, as shown in Listing <a 
 href="#x1-25001r3">3<!--tex4ht:ref: 40n --></a>.
-</p><!--l. 245-->
+<!--l. 245-->
 <a 
  id="x1-25002"></a>
 <br />
@@ -1745,7 +1709,7 @@ doubt that <span
 class="cmmi-10">m</span><sup><span 
 class="cmsy-7">*</span></sup> is certainly a local minimum of the optimization
 problem.
-</p><!--l. 255--><p class="indent" >   Visually, the spar geometry, vertical displacement, and stress
+<!--l. 255--><p class="indent" >   Visually, the spar geometry, vertical displacement, and stress
 can be see for all the finite difference methods in Figures
 <a 
 href="#x1-29001r2">2<!--tex4ht:ref: fig:forward40 --></a>, <a 
@@ -1764,9 +1728,8 @@ class="cmmi-10">&#x00A0;kg</span>. However, it
 was quite apparent that the optimization process using the
 complex step method was far more expeditious than the other
 methods.
-</p><!--l. 257--><p class="noindent" ><span 
+<!--l. 257--><p class="noindent" ><span 
 class="ptmb7t-">4.</span>
-</p>
    <h3 class="sectionHead"><span class="titlemark">4    </span> <a 
  id="x1-260004"></a>Conclusions</h3>
 <!--l. 258--><p class="noindent" >A virtually identical value of the spar&#8217;s optimal mass <span 
@@ -1777,8 +1740,8 @@ class="cmmi-10">.</span><span
 class="cmr-10">9069</span>,
 over <span 
 class="cmr-10">60% </span>better than the nominal mass, has been achieved
-consistently across three separate finite difference methods.    Validity can thereby be concluded for the optimality of the
-                                                  resultant masses and design vectors, as well as the method by
+consistently across three separate finite difference methods.
+Validity can thereby be concluded for the optimality of the     resultant masses and design vectors, as well as the method by
                                                   which the complex Jacobian matrices were computed in the
                                                   complex step implementation. Through implementation, as
                                                   expected, it was seen that the complex step method yielded
@@ -1790,20 +1753,18 @@ consistently across three separate finite difference methods.    Validity can th
                                                   has indeed solidified this intuition, by yielding geometries which
                                                   meet the upper constraints towards the root and lower constraints
                                                   towards the tip.
-                                                  </p><!--l. 263--><p class="noindent" ><span 
+                                                  <!--l. 263--><p class="noindent" ><span 
 class="ptmb7t-">5.</span>
-                                                  </p>
                                                      <h3 class="sectionHead"><span class="titlemark">5    </span> <a 
  id="x1-270005"></a>Appendix</h3>
                                                   <!--l. 264--><p class="noindent" ><span 
 class="ptmb7t-">5.1.</span>
-                                                  </p>
                                                      <h4 class="subsectionHead"><span class="titlemark">5.1    </span> <a 
  id="x1-280005.1"></a>Optimization Outputs</h4>
                                                      <!--l. 265-->
 
 <!--l. 265--><p class="indent" >   <a 
- id="x1-28001r4"></a></p><hr class="float" /><div class="float" 
+ id="x1-28001r4"></a><hr class="float"><div class="float" 
 >
 
 <a 
@@ -1985,7 +1946,7 @@ class="pcrr7t-x-x-80">-14</span>
    <!--l. 283-->
 
 <!--l. 283--><p class="indent" >   <a 
- id="x1-28018r5"></a></p><hr class="float" /><div class="float" 
+ id="x1-28018r5"></a><hr class="float"><div class="float" 
 >
 
 <a 
@@ -2167,7 +2128,7 @@ class="pcrr7t-x-x-80">-14</span>
    <!--l. 301-->
 
 <!--l. 301--><p class="indent" >   <a 
- id="x1-28035r6"></a></p><hr class="float" /><div class="float" 
+ id="x1-28035r6"></a><hr class="float"><div class="float" 
 >
 
 <a 
@@ -2350,7 +2311,7 @@ class="pcrr7t-x-x-80">-14</span>
 class="ptmb7t-">5.2.</span>
    <h4 class="subsectionHead"><span class="titlemark">5.2    </span> <a 
  id="x1-290005.2"></a>Optimization Figures</h4>
-   <hr class="figure" /><div class="figure" 
+<!--l. 321--><p class="noindent" ><hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -2360,33 +2321,33 @@ class="ptmb7t-">5.2.</span>
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;2</span>: </span><span  
-class="content">Forward Difference with 20 Nodes</span></div><!--tex4ht:label?: x1-29001r2 --><a 
+class="content">Forward Difference with 20 Nodes</span></div><!--tex4ht:label?: x1-29001r2 -->
+<!--l. 325--><p class="noindent" ><a 
  id="x1-29002r1"></a>
 <span 
 class="ptmr7t-x-x-90">Geometry</span>
 <!--l. 327--><p class="noindent" ><img 
-src="TemplateICATT15x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+src="TemplateICATT15x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT15x.png" src="Pics/forward40shape.eps"  
 -->
 &#x00A0; <a 
  id="x1-29003r2"></a>
  <span 
 class="ptmr7t-x-x-90">Vertical Displacement</span>
- <img 
-src="TemplateICATT16x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+ <!--l. 334--><p class="noindent" ><img 
+src="TemplateICATT16x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT16x.png" src="Pics/forward40disp.eps"  
 -->                                                &#x00A0; <a 
  id="x1-29004r3"></a>
  <span 
 class="ptmr7t-x-x-90">Stress</span>
- <img 
-src="TemplateICATT17x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+ <!--l. 341--><p class="noindent" ><img 
+src="TemplateICATT17x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT17x.png" src="Pics/forward40stress.eps"  
 -->
 
-</p>
-   </div><hr class="endfigure" />
-   <hr class="figure" /><div class="figure" 
+<!--l. 344--><p class="noindent" ></div><hr class="endfigure">
+<!--l. 346--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -2396,33 +2357,33 @@ name="TemplateICATT17x.png" src="Pics/forward40stress.eps"
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;4</span>: </span><span  
-class="content">Central Difference with 20 Nodes</span></div><!--tex4ht:label?: x1-29005r4 --><a 
+class="content">Central Difference with 20 Nodes</span></div><!--tex4ht:label?: x1-29005r4 -->
+<!--l. 350--><p class="noindent" ><a 
  id="x1-29006r1"></a>
 <span 
 class="ptmr7t-x-x-90">Geometry</span>
 <!--l. 352--><p class="noindent" ><img 
-src="TemplateICATT18x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+src="TemplateICATT18x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT18x.png" src="Pics/central40shape.eps"  
 -->
 &#x00A0; <a 
  id="x1-29007r2"></a>
  <span 
 class="ptmr7t-x-x-90">Vertical Displacement</span>
- <img 
-src="TemplateICATT19x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+ <!--l. 359--><p class="noindent" ><img 
+src="TemplateICATT19x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT19x.png" src="Pics/central40disp.eps"  
 -->                                                &#x00A0; <a 
  id="x1-29008r3"></a>
  <span 
 class="ptmr7t-x-x-90">Stress</span>
- <img 
-src="TemplateICATT20x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+ <!--l. 366--><p class="noindent" ><img 
+src="TemplateICATT20x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT20x.png" src="Pics/central40stress.eps"  
 -->
 
-</p>
-   </div><hr class="endfigure" />
-   <hr class="figure" /><div class="figure" 
+<!--l. 369--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 371--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -2433,33 +2394,32 @@ name="TemplateICATT20x.png" src="Pics/central40stress.eps"
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;6</span>: </span><span  
 class="content">Complex Difference with 20 Nodes</span></div><!--tex4ht:label?: x1-29009r6 -->
-<a 
+<!--l. 375--><p class="noindent" ><a 
  id="x1-29010r1"></a>
 <span 
 class="ptmr7t-x-x-90">Geometry</span>
 <!--l. 377--><p class="noindent" ><img 
-src="TemplateICATT21x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+src="TemplateICATT21x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT21x.png" src="Pics/complex40shape.eps"  
 -->
 &#x00A0; <a 
  id="x1-29011r2"></a>
  <span 
 class="ptmr7t-x-x-90">Vertical Displacement</span>
- <img 
-src="TemplateICATT22x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+ <!--l. 384--><p class="noindent" ><img 
+src="TemplateICATT22x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT22x.png" src="Pics/complex40disp.eps"  
 -->                                                &#x00A0; <a 
  id="x1-29012r3"></a>
  <span 
 class="ptmr7t-x-x-90">Stress</span>
- <img 
-src="TemplateICATT23x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt"  /><!--tex4ht:graphics  
+ <!--l. 391--><p class="noindent" ><img 
+src="TemplateICATT23x.png" alt="PIC" class="graphics" width="253.22952pt" height="189.92294pt" ><!--tex4ht:graphics  
 name="TemplateICATT23x.png" src="Pics/complex40stress.eps"  
 -->
 
-</p>
-   </div><hr class="endfigure" />
-   <hr class="figure" /><div class="figure" 
+<!--l. 394--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 396--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -2472,32 +2432,31 @@ name="TemplateICATT23x.png" src="Pics/complex40stress.eps"
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;8</span>: </span><span  
 class="content">Objective Convergence with 20 Nodes</span></div><!--tex4ht:label?: x1-29013r8 -->
-<a 
+<!--l. 401--><p class="noindent" ><a 
  id="x1-29014r1"></a>
 <span 
 class="ptmr7t-x-x-90">Forward Difference</span>
 <!--l. 403--><p class="noindent" ><img 
-src="TemplateICATT24x.png" alt="PIC" class="graphics" width="227.90501pt" height="188.02336pt"  /><!--tex4ht:graphics  
+src="TemplateICATT24x.png" alt="PIC" class="graphics" width="227.90501pt" height="188.02336pt" ><!--tex4ht:graphics  
 name="TemplateICATT24x.png" src="Pics/forward40opt.eps"  
 -->
 &#x00A0; <a 
  id="x1-29015r2"></a>
  <span 
 class="ptmr7t-x-x-90">Central Difference</span>
- <img 
-src="TemplateICATT25x.png" alt="PIC" class="graphics" width="227.90501pt" height="188.02336pt"  /><!--tex4ht:graphics  
+ <!--l. 410--><p class="noindent" ><img 
+src="TemplateICATT25x.png" alt="PIC" class="graphics" width="227.90501pt" height="188.02336pt" ><!--tex4ht:graphics  
 name="TemplateICATT25x.png" src="Pics/central40opt.eps"  
 -->                                                &#x00A0; <a 
  id="x1-29016r3"></a>
  <span 
 class="ptmr7t-x-x-90">Complex Difference</span>
- <img 
-src="TemplateICATT26x.png" alt="PIC" class="graphics" width="227.90501pt" height="188.02336pt"  /><!--tex4ht:graphics  
+ <!--l. 417--><p class="noindent" ><img 
+src="TemplateICATT26x.png" alt="PIC" class="graphics" width="227.90501pt" height="188.02336pt" ><!--tex4ht:graphics  
 name="TemplateICATT26x.png" src="Pics/complex40opt.eps"  
 -->
 
-</p>
-   </div><hr class="endfigure" />
+<!--l. 420--><p class="indent" >   </div><hr class="endfigure">
    <span 
 class="ptmb7t-">5.3.</span>
    <h4 class="subsectionHead"><span class="titlemark">5.3    </span> <a 

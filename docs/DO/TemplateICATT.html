@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1" ?> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
-<!--http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd-->  
-<html xmlns="http://www.w3.org/1999/xhtml"  
-> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
 <head><title>DYNAMIC OPTIMISATION OF TILT-A-WHIRL</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
-<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
-<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)" /> 
-<!-- xhtml,html --> 
-<meta name="src" content="TemplateICATT.tex" /> 
-<link rel="stylesheet" type="text/css" href="TemplateICATT.css" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="TemplateICATT.tex"> 
+<link rel="stylesheet" type="text/css" href="TemplateICATT.css"> 
 </head><body 
 >
    <div class="maketitle">
@@ -26,8 +23,8 @@ class="abstract"
 <div class="center" 
 >
 <!--l. 51--><p class="noindent" >
-</p><!--l. 51--><p class="noindent" ><span 
-class="ptmb7t-">ABSTRACT</span></p></div>
+<!--l. 51--><p class="noindent" ><span 
+class="ptmb7t-">ABSTRACT</span></div>
 <!--l. 52--><p class="noindent" >This paper examines the design optimization of a Tilt-A-Whirl ride,
 as an extension of Kautz&#8217;s <span 
 class="ptmri7t-">Chaos at the amusement park:</span>
@@ -48,13 +45,11 @@ that a final objective value of over 200% better than the
 nominal, yielded from the parameters presented in <span class="cite">[<span 
 class="ptmb7t-">?</span>]</span>, is
 achievable.
-</p>
    </div>
 <!--l. 55--><p class="indent" >   <span 
 class="ptmbi7t-">Index Terms</span><span 
 class="ptmb7t-">&#8212; </span>Amusement Ride, Design Optimization,
 Particle Swarm, Gaussian Process
-</p>
    <h3 class="likesectionHead"><a 
  id="x1-1000"></a>Contents</h3>
    <div class="tableofcontents">
@@ -75,11 +70,11 @@ href="#x1-100002" id="QQ2-1-18">Optimization</a></span>
 <br />   &#x00A0;<span class="subsectionToc" >2.1 <a 
 href="#x1-110002.1" id="QQ2-1-19">True Objective Function</a></span>
 <br />   &#x00A0;<span class="subsectionToc" >2.2 <a 
-href="#x1-120002.2" id="QQ2-1-21">Problem Statement</a></span>                             <br />      &#x00A0;<span class="subsectionToc" >2.3 <a 
+href="#x1-120002.2" id="QQ2-1-21">Problem Statement</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >2.3 <a 
 href="#x1-130002.3" id="QQ2-1-23">Surrogate model</a></span>
-                                                  <br />      &#x00A0;&#x00A0;<span class="subsubsectionToc" >2.3.1 <a 
-href="#x1-140002.3.1" id="QQ2-1-24">Sampling</a></span>
-                                                  <br />      &#x00A0;&#x00A0;<span class="subsubsectionToc" >2.3.2 <a 
+<br />   &#x00A0;&#x00A0;<span class="subsubsectionToc" >2.3.1 <a 
+href="#x1-140002.3.1" id="QQ2-1-24">Sampling</a></span>                                  <br />      &#x00A0;&#x00A0;<span class="subsubsectionToc" >2.3.2 <a 
 href="#x1-150002.3.2" id="QQ2-1-26">Gaussian Process</a></span>
                                                   <br />      &#x00A0;<span class="subsectionToc" >2.4 <a 
 href="#x1-160002.4" id="QQ2-1-37">Particle Swarm</a></span>
@@ -248,11 +243,10 @@ href="#x1-160002.4">Particle Swarm</a></span>
 href="#x1-170003">Results</a></span>
                                                   <br />      <span class="sectionToc" >4 <a 
 href="#x1-180004">Source Code</a></span>
+                                                     </div>
 
-   </div>
 <!--l. 61--><p class="noindent" ><span 
 class="ptmb7t-">1.</span>
-</p>
    <h3 class="sectionHead"><span class="titlemark">1    </span> <a 
  id="x1-40001"></a>Background</h3>
 <!--l. 62--><p class="noindent" >Following the work of <span class="cite">[<span 
@@ -266,14 +260,12 @@ track that tilts the platforms in all possible directions. While the
 translation and orientation of the platforms are completely
 predictable, each car whirls around in an independent and chaotic
 fashion.
-</p><!--l. 64--><p class="noindent" ><span 
+<!--l. 64--><p class="noindent" ><span 
 class="ptmb7t-">1.1.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">1.1    </span> <a 
  id="x1-50001.1"></a>Parameters</h4>
 <!--l. 65--><p class="noindent" ><span 
 class="ptmri7t-">1.1.1.</span>
-</p>
    <h5 class="subsubsectionHead"><span class="titlemark">1.1.1    </span> <a 
  id="x1-60001.1.1"></a>Constants</h5>
 <!--l. 66--><p class="noindent" >For this paper&#8217;s application, there are three design variables which
@@ -298,18 +290,17 @@ class="cmmi-10">&#x00A0;rad</span>, and the parameter
 class="cmmi-10">Q</span><sub><span 
 class="cmr-7">0</span></sub> <span 
 class="cmr-10">= </span><img 
-src="TemplateICATT0x.png" alt="(m &#x2215;&#x03C1;)"  class="left" align="middle" /><img 
-src="TemplateICATT1x.png" alt="&#x2218; ---
-  gr32"  class="sqrt"  /> <span 
+src="TemplateICATT0x.png" alt="(m &#x2215;&#x03C1;)"  class="left" align="middle"><img 
+src="TemplateICATT1x.png" alt="  ---
+&#x2218; gr32"  class="sqrt" > <span 
 class="cmr-10">= 20</span>, where <span 
 class="cmmi-10">m </span>is the mass of the car, <span 
 class="cmmi-10">&#x03C1; </span>is
 a damping coefficient to account for friction, and <span 
 class="cmmi-10">g </span>is the
 acceleration due to gravity.
-</p><!--l. 68--><p class="noindent" ><span 
+<!--l. 68--><p class="noindent" ><span 
 class="ptmri7t-">1.1.2.</span>
-</p>
    <h5 class="subsubsectionHead"><span class="titlemark">1.1.2    </span> <a 
  id="x1-70001.1.2"></a>Design</h5>
 <!--l. 69--><p class="noindent" >For the design optimization problem analyzed in this paper, three
@@ -317,7 +308,8 @@ parameters are chosen to be manipulable, namely: the extrinsic
 angular velocity of the platform <span 
 class="cmmi-10">&#x03C9; </span><span 
 class="cmr-10">=</span> <img 
-src="TemplateICATT2x.png" alt="&#x02D9;&#x03B8;"  class="dot"  /> <span 
+src="TemplateICATT2x.png" alt="&#x02D9;
+&#x03B8;"  class="dot" > <span 
 class="cmsy-10">&#x2208; </span><span 
 class="cmr-10">[0</span><span 
 class="cmmi-10">.</span><span 
@@ -332,14 +324,14 @@ approximate center of gravity of the car <span
 class="cmmi-10">r</span><sub><span 
 class="cmr-7">2</span></sub> <span 
 class="cmsy-10">&#x2208;</span><img 
-src="TemplateICATT3x.png" alt="[0.1,1.5]"  class="left" align="middle" /><span 
+src="TemplateICATT3x.png" alt="[0.1,1.5]"  class="left" align="middle"><span 
 class="cmmi-10">&#x00A0;m</span>, and
 the maximum/minimum incline angle of the beam from
 the center of the ride to the platform <span 
 class="cmmi-10">&#x03B1;</span><sub><span 
 class="cmr-7">1</span></sub> <span 
 class="cmsy-10">&#x2208;</span><img 
-src="TemplateICATT4x.png" alt="[0,0.3]"  class="left" align="middle" /><span 
+src="TemplateICATT4x.png" alt="[0,0.3]"  class="left" align="middle"><span 
 class="cmmi-10">&#x00A0;rad</span>.
 The nominal values of the design variables are given as
 <span 
@@ -373,16 +365,15 @@ the constant parameters and variable design parameters can be
 seen within a clearer context in Figure <a 
 href="#x1-7023r2">2<!--tex4ht:ref: fig:tawplan --></a>. In an object-orientated
 manner, a Tilt-A-Whirl car can be programmatically instantiated
-with these nominal parameters and bounds, as shown in       Listing <a 
+with these nominal parameters and bounds, as shown in
+Listing <a 
 href="#x1-7001r1">1<!--tex4ht:ref: caropt --></a>. The remaining parameters are discussed in latter
-                                                  sections.
-                                                  </p>
-                                                     <!--l. 71-->
-                                                  <a 
+sections.
+   <!--l. 71-->
+<a 
  id="x1-7001r1"></a>
-                                                  <a 
- id="x1-7002"></a>
-                                                  <br />
+<a 
+ id="x1-7002"></a>                                                  <br />
                                                       <div class="caption" 
 ><span class="id">Listing&#x00A0;1:
                                                       </span><span  
@@ -744,7 +735,7 @@ class="pcrr7t-x-x-80">&#x00A0;</span><br /><span class="label"><a
 class="pcrr7t-x-x-80">)</span><span 
 class="pcrr7t-x-x-80">;</span>
                                                      </div>
-                                                     <hr class="figure" /><div class="figure" 
+                                                  <!--l. 90--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -754,39 +745,39 @@ class="pcrr7t-x-x-80">;</span>
  id="x1-11001r4"></a>
 
 <!--l. 92--><p class="noindent" >
-</p><!--l. 93--><p class="noindent" ><img 
+<!--l. 93--><p class="noindent" ><img 
 src="Pics/tawplan.png" alt="PIC"  
- /> <a 
+> <a 
  id="x1-7019r1"></a>
 <span 
 class="ptmr7t-x-x-90">Overhead</span>
-</p><!--l. 97--><p class="noindent" ></p><!--l. 98--><p class="noindent" ><img 
+<!--l. 97--><p class="noindent" ><!--l. 98--><p class="noindent" ><img 
 src="Pics/tawperspective.png" alt="PIC"  
- /> <a 
+> <a 
  id="x1-7020r2"></a>
 <span 
 class="ptmr7t-x-x-90">Three dimensional</span>
-</p><!--l. 102--><p class="noindent" ></p><!--l. 103--><p class="noindent" ><img 
+<!--l. 102--><p class="noindent" ><!--l. 103--><p class="noindent" ><img 
 src="Pics/tawtangential.png" alt="PIC"  
- /> <a 
+> <a 
  id="x1-7021r3"></a>
 <span 
 class="ptmr7t-x-x-90">Tangential</span>
-</p><!--l. 107--><p class="noindent" ></p><!--l. 108--><p class="noindent" ><img 
+<!--l. 107--><p class="noindent" ><!--l. 108--><p class="noindent" ><img 
 src="Pics/tawradial.png" alt="PIC"  
- /> <a 
+> <a 
  id="x1-7022r4"></a>
 <span 
 class="ptmr7t-x-x-90">Radial</span>
-<br /> </p><div class="caption" 
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;2</span>: </span><span  
 class="content">Views of the Tilt-A-Whirl model.</span></div><!--tex4ht:label?: x1-7023r2 -->
-<span class="cite">[<span 
+<!--l. 113--><p class="noindent" ><span class="cite">[<span 
 class="ptmb7t-">?</span>]</span>
 
-   </div><hr class="endfigure" />
+<!--l. 115--><p class="indent" >   </div><hr class="endfigure">
    <span 
 class="ptmb7t-">1.2.</span>
    <h4 class="subsectionHead"><span class="titlemark">1.2    </span> <a 
@@ -794,7 +785,6 @@ class="ptmb7t-">1.2.</span>
 <!--l. 118--><p class="noindent" >From <span class="cite">[<span 
 class="ptmb7t-">?</span>]</span>, the second order differential equation of motion
 governing the Tilt-A-Whirl is defined as
-</p>
    <table 
 class="equation"><tr><td><a 
  id="x1-8001r1"></a>
@@ -802,9 +792,9 @@ class="equation"><tr><td><a
 <img 
 src="TemplateICATT5x.png" alt="d2&#x03D5; + -&#x03B3;-d&#x03D5;-+ (&#x03F5; - &#x03B3;2&#x03B1;)sin (&#x03D5;) + &#x03B3;2&#x03B2; cos(&#x03D5;) = 0
 d&#x03C4;2   Q0 d&#x03C4;
-" class="math-display"  /></center></td><td class="equation-label">(1)</td></tr></table>
+" class="math-display" ></center></td><td class="equation-label">(1)</td></tr></table>
 <!--l. 122--><p class="nopar" >
-, where the dimensionless parameters are defined as </p><table 
+, where the dimensionless parameters are defined as <table 
 class="gather"><tr><td class="gather1"><img 
 src="TemplateICATT6x.png" alt="     &#x03C4; = 3&#x03C9;t
        1-&#x2218; -g-
@@ -814,7 +804,7 @@ src="TemplateICATT6x.png" alt="     &#x03C4; = 3&#x03C9;t
 
 &#x03B1; = &#x03B1;0 - &#x03B1;1 cos(&#x03C4;)
   &#x03B2; = 3&#x03B1;1sin (&#x03C4;)
-"  /><a 
+" ><a 
  id="x1-8007r2"></a><a 
  id="x1-8008r3"></a><a 
  id="x1-8009r4"></a><a 
@@ -1265,21 +1255,20 @@ class="pcrb7t-x-x-80">end</span>
    </div>
 <!--l. 158--><p class="noindent" ><span 
 class="ptmb7t-">1.3.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">1.3    </span> <a 
  id="x1-90001.3"></a>Numerical Integration</h4>
 <!--l. 159--><p class="noindent" >Of course, because Equation <a 
 href="#x1-8001r1">1<!--tex4ht:ref: eq:motion --></a> is rather nonlinear and chaotic, an
 analytical closed form solution does not exist. Thus, in order to
-observe the behavior of the system over time, it is necessary    to numerically integrate the equation of motion. From a
-                                                  programmatic approach, one can implement Matlab&#8217;s <span 
+observe the behavior of the system over time, it is necessary
+to numerically integrate the equation of motion. From a
+programmatic approach, one can implement Matlab&#8217;s <span 
 class="ptmri7t-">ode45 </span><span class="cite">[<span 
-class="ptmb7t-">?</span>]</span>,
-                                                  using the widely popular Runge-Kutta method of fourth and
+class="ptmb7t-">?</span>]</span>, using the widely popular Runge-Kutta method of fourth and
                                                   fifth order. From the object oriented appoach taken in this
                                                   paper, this process manifests itself in the form of Listing <a 
 href="#x1-9001r3">3<!--tex4ht:ref: ode --></a>.
-                                                  </p><!--l. 160-->
+                                                  <!--l. 160-->
                                                   <a 
  id="x1-9002"></a>
                                                   <br />
@@ -1382,25 +1371,23 @@ class="pcrb7t-x-x-80">end</span>
                                                      </div>
                                                   <!--l. 169--><p class="noindent" ><span 
 class="ptmb7t-">2.</span>
-                                                  </p>
                                                      <h3 class="sectionHead"><span class="titlemark">2    </span> <a 
  id="x1-100002"></a>Optimization</h3>
                                                   <!--l. 170--><p class="noindent" >It is supposed that the unpredictability of each car&#8217;s intrinsic
                                                   angular velocity <img 
-src="TemplateICATT7x.png" alt="&#x02D9;&#x03D5;"  class="dot"  /> is directly correlated to passenger enjoyment.
+src="TemplateICATT7x.png" alt="&#x02D9;&#x03D5;"  class="dot" > is directly correlated to passenger enjoyment.
                                                   Thus the objective measure of design performance is defined as
                                                   the standard deviation of each car&#8217;s intrinsic angular velocity
                                                   <span 
 class="cmmi-10">&#x03C3;</span><img 
 src="TemplateICATT8x.png" alt="(d&#x03D5;)
- dt"  class="left" align="middle" />, where <img 
+ dt"  class="left" align="middle">, where <img 
 src="TemplateICATT9x.png" alt="d&#x03D5;
-dt"  class="frac" align="middle" /> is obtained through numerical integration, as
+dt"  class="frac" align="middle"> is obtained through numerical integration, as
                                                   discussed in Section <a 
 href="#x1-90001.3">1.3<!--tex4ht:ref: sec:int --></a>.
-                                                  </p><!--l. 172--><p class="noindent" ><span 
+                                                  <!--l. 172--><p class="noindent" ><span 
 class="ptmb7t-">2.1.</span>
-                                                  </p>
                                                      <h4 class="subsectionHead"><span class="titlemark">2.1    </span> <a 
  id="x1-110002.1"></a>True Objective Function</h4>
                                                   <!--l. 173--><p class="noindent" >Herein, the <span 
@@ -1408,15 +1395,15 @@ class="ptmri7t-">true </span>objective function <span
 class="cmmi-10">&#x03C3;</span><img 
 src="TemplateICATT10x.png" alt="(   )
   d&#x03D5;-
-  dt"  class="left" align="middle" /> is referred to as a
+  dt"  class="left" align="middle"> is referred to as a
                                                   function of design parameters <span 
 class="cmmi-10">&#x03C3;</span><img 
 src="TemplateICATT11x.png" alt="(&#x03C9;, r,&#x03B1; )
-   2  1"  class="left" align="middle" />, or less verbosely as <span 
+   2  1"  class="left" align="middle">, or less verbosely as <span 
 class="cmmi-10">&#x03C3;</span>.
                                                   After numerical integration of the system&#8217;s dynamics, a large list
                                                   of <img 
-src="TemplateICATT12x.png" alt="&#x03D5;&#x02D9;"  class="dot"  /> data points are obtained, from which the computation of <span 
+src="TemplateICATT12x.png" alt="&#x03D5;&#x02D9;"  class="dot" > data points are obtained, from which the computation of <span 
 class="cmmi-10">&#x03C3;</span>
                                                   draws from. However, because the system&#8217;s dynamics, described
                                                   in Equation <a 
@@ -1426,7 +1413,7 @@ class="cmmi-10">&#x03C4;</span>, it is necessary to redimensionalize when comput
                                                   standard deviation of the car&#8217;s intrinsic angular velocity. The
                                                   programmatic transcription of this objective function is seen in
                                                   Listing <a 
-href="#x1-11001r4">4<!--tex4ht:ref: obj --></a>. </p><!--l. 174-->
+href="#x1-11001r4">4<!--tex4ht:ref: obj --></a>. <!--l. 174-->
                                                   <a 
  id="x1-11002"></a>
                                                   <br />
@@ -1664,23 +1651,23 @@ class="pcrr7t-x-x-80">&#x00A0;</span><br /><span class="label"><a
 class="pcrb7t-x-x-80">end</span>
                                                      </div>
                                                   <!--l. 187--><p class="indent" >   Note that only the last two thirds of the <img 
-src="TemplateICATT13x.png" alt="&#x03D5;&#x02D9;"  class="dot"  /> data points are taken
+src="TemplateICATT13x.png" alt="&#x03D5;&#x02D9;"  class="dot" > data points are taken
                                                   into account. This is done to disregard the start-up of the system,
                                                   and only take heed to the terminal dynamics, so as to compute a
                                                   purer standard deviation.
-
-</p><!--l. 189--><p class="indent" >   The nature of the <span 
+                                                  <!--l. 189--><p class="indent" >      The nature of the <span 
 class="ptmri7t-">true </span>objective function <span 
 class="cmmi-10">&#x03C3; </span>can be seen by
-keeping <span 
+                                                  keeping <span 
 class="cmmi-10">&#x03B1;</span><sub><span 
 class="cmr-7">1</span></sub> and <span 
 class="cmmi-10">r</span><sub><span 
 class="cmr-7">2</span></sub> constant, while manipulating <span 
 class="cmmi-10">&#x03C9;</span>, as shown in
-Figure <a 
+                                                  Figure <a 
 href="#x1-12002r3">3<!--tex4ht:ref: fig:noise --></a>. Of course, the evaluation of this objective function is
-quite computationally expensive, as each evaluation elicits the
+                                                  quite computationally expensive, as each evaluation elicits the
+
 numerical integration of the system&#8217;s equation of motion. It can
 also be seen that the <span 
 class="ptmri7t-">true </span>objective function is rather noisy, not
@@ -1690,9 +1677,8 @@ class="ptmri7t-">fmincon</span>
 class="ptmb7t-">?</span>]</span>, at all. A conventional optimization algorithm would indeed
 become trapped within the multiple local extrema that are
 exhibited.
-</p><!--l. 191--><p class="noindent" ><span 
+<!--l. 191--><p class="noindent" ><span 
 class="ptmb7t-">2.2.</span>
-</p>
    <h4 class="subsectionHead"><span class="titlemark">2.2    </span> <a 
  id="x1-120002.2"></a>Problem Statement</h4>
 <!--l. 192--><p class="noindent" >Taking note of the nominal constant parameter values and design
@@ -1700,7 +1686,6 @@ parameter bounds described in Section <a
 href="#x1-50001.1">1.1<!--tex4ht:ref: sec:param --></a>, the statement
 of the optimization problem is more formally formulated
 as
-</p>
    <table 
 class="equation"><tr><td><a 
  id="x1-12001r7"></a>
@@ -1712,10 +1697,9 @@ subjectto  3 &#x2264; &#x03C9;---&#x2264; 8 rpm
               2&#x03C0;
          0.1 &#x2264; r2 &#x2264; 1.5m
          0 &#x2264; &#x03B1;1 &#x2264; 0.3rad
-" class="math-display"  /></center></td><td class="equation-label">(7)</td></tr></table>
+" class="math-display" ></center></td><td class="equation-label">(7)</td></tr></table>
 <!--l. 202--><p class="nopar" >
-</p>
-   <hr class="figure" /><div class="figure" 
+<!--l. 204--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -1726,8 +1710,8 @@ subjectto  3 &#x2264; &#x03C9;---&#x2264; 8 rpm
 
 <!--l. 206--><p class="noindent" ><img 
 src="Pics/stddphi.png" alt="PIC"  
- />
-<br /> </p><div class="caption" 
+>
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;3</span>: </span><span  
@@ -1737,7 +1721,7 @@ class="cmr-10">(</span><span
 class="cmmi-10">&#x03C9;</span><span 
 class="cmr-10">)</span></span></div><!--tex4ht:label?: x1-12002r3 -->
 
-   </div><hr class="endfigure" />
+<!--l. 209--><p class="indent" >   </div><hr class="endfigure">
    <span 
 class="ptmb7t-">2.3.</span>
    <h4 class="subsectionHead"><span class="titlemark">2.3    </span> <a 
@@ -1748,9 +1732,8 @@ class="cmmi-10">&#x03C3; </span>is so noisy, chaotic, and
 computationally costly to evaluate, the appropriate course of
 action is to model the system&#8217;s time-dependent behavior with a
 surrogate model.
-</p><!--l. 214--><p class="noindent" ><span 
+<!--l. 214--><p class="noindent" ><span 
 class="ptmri7t-">2.3.1.</span>
-</p>
    <h5 class="subsubsectionHead"><span class="titlemark">2.3.1    </span> <a 
  id="x1-140002.3.1"></a>Sampling</h5>
 <!--l. 215--><p class="noindent" >The <span 
@@ -1762,7 +1745,7 @@ class="ptmb7t-">?</span>]</span>. Latin hypercube sampling allows for near rando
 the design space, to allow for the proper construction of the
 surrogate model. Programmatically this sampling is transcribed as
 shown in Listing <a 
-href="#x1-14001r5">5<!--tex4ht:ref: lhssamp --></a>. </p><!--l. 216-->
+href="#x1-14001r5">5<!--tex4ht:ref: lhssamp --></a>. <!--l. 216-->
 <a 
  id="x1-14002"></a>
 <br />
@@ -2206,9 +2189,8 @@ class="ptmri7t-">true </span>objective function values at those
 parameters. The reader is encouraged to consult <span class="cite">[<span 
 class="ptmb7t-">?</span>]</span> for a rigorous
 analysis of Latin hypercube sampling.
-</p><!--l. 249--><p class="noindent" ><span 
+<!--l. 249--><p class="noindent" ><span 
 class="ptmri7t-">2.3.2.</span>
-</p>
    <h5 class="subsubsectionHead"><span class="titlemark">2.3.2    </span> <a 
  id="x1-150002.3.2"></a>Gaussian Process</h5>
 <!--l. 250--><p class="noindent" >Using the work of Rasmussen <span class="cite">[<span 
@@ -2224,7 +2206,7 @@ href="#x1-140002.3.1">2.3.1<!--tex4ht:ref: sec:lhs --></a>, the surrogate model 
 instantiated in Listing <a 
 href="#x1-15001r6">6<!--tex4ht:ref: gauss --></a>, from which the Gaussian process
 hyperparameters are returned.
-</p><!--l. 252--><p class="indent" >   Using the <span 
+<!--l. 252--><p class="indent" >   Using the <span 
 class="ptmri7t-">true </span>objective function samples, the
 surrogate model effectively learns the topology of the
 design space, through the training occurring during
@@ -2255,12 +2237,11 @@ class="pcrr7t-x-x-80">,</span><span
 class="pcrr7t-x-x-80">&#x00A0;</span><span 
 class="pcrr7t-x-x-80">ys</span><span 
 class="pcrr7t-x-x-80">)</span>,
-in which the Gaussian process hyperparameters are minimized.  Note that, in Listing <a 
+in which the Gaussian process hyperparameters are minimized.
+Note that, in Listing <a 
 href="#x1-15001r6">6<!--tex4ht:ref: gauss --></a>, the hyperparameters and sampling points
-                                                  are saved, and used later unless the Gaussian process parameters
-                                                  have changed. This allows for significantly faster work-flow when
+are saved, and used later unless the Gaussian process parameters have changed. This allows for significantly faster work-flow when
                                                   testing different optimization algorithms.
-                                                  </p>
                                                      <!--l. 254-->
                                                   <a 
  id="x1-15002"></a>
@@ -2914,11 +2895,11 @@ class="pcrb7t-x-x-80">end</span>
 href="#x1-15001r6">6<!--tex4ht:ref: gauss --></a>, the surrogate model in Listing <a 
 href="#x1-15044r7">7<!--tex4ht:ref: sur --></a> acts as a callable
                                                   function, herein refereed to as <img 
-src="TemplateICATT15x.png" alt="&#x02C6;&#x03C3;"  class="circ"  />, that can be <span 
+src="TemplateICATT15x.png" alt="&#x02C6;&#x03C3;"  class="circ" >, that can be <span 
 class="ptmri7t-">inexpensively</span>
                                                   evaluated in the optimization process. One major advantage of the
                                                   surrogate objective function <img 
-src="TemplateICATT16x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> in Listing <a 
+src="TemplateICATT16x.png" alt="&#x02C6;&#x03C3;"  class="circ" > in Listing <a 
 href="#x1-15044r7">7<!--tex4ht:ref: sur --></a> over the <span 
 class="ptmri7t-">true</span>
                                                   objective function <span 
@@ -2926,7 +2907,6 @@ class="cmmi-10">&#x03C3; </span>in Listing <a
 href="#x1-11001r4">4<!--tex4ht:ref: obj --></a>, is that it is smooth and
                                                   is much nicer to optimize, especially with gradient based
                                                   methods.
-                                                  </p>
                                                      <!--l. 300-->
                                                   <a 
  id="x1-15045"></a>
@@ -3087,21 +3067,20 @@ href="#x1-15057r5">5<!--tex4ht:ref: fig:gauss --></a>, with 200 Latin
 href="#x1-15057r5">5<!--tex4ht:ref: fig:gauss --></a>
                                                   compared that of Figure <a 
 href="#x1-12002r3">3<!--tex4ht:ref: fig:noise --></a>.
-                                                  </p>
-                                                     <hr class="figure" /><div class="figure" 
+                                                  <!--l. 313--><p class="indent" >      <hr class="figure"><div class="figure" 
 >
 
 <a 
  id="x1-15057r5"></a>
 
 <!--l. 315--><p class="noindent" >
-</p><!--l. 316--><p class="noindent" ><img 
-src="TemplateICATT17x.png" alt="PIC" class="graphics" width="223.34941pt" height="176.3843pt"  /><!--tex4ht:graphics  
+<!--l. 316--><p class="noindent" ><img 
+src="TemplateICATT17x.png" alt="PIC" class="graphics" width="223.34941pt" height="176.3843pt" ><!--tex4ht:graphics  
 name="TemplateICATT17x.png" src="Pics/stddphi-omega.eps"  
 --> <a 
  id="x1-15054r1"></a>
 <img 
-src="TemplateICATT19x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT19x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">&#x03C9;</span><span 
 class="cmr-9">) </span><span 
@@ -3111,14 +3090,14 @@ class="cmr-6">2</span></sub><span
 class="cmmi-9">,&#x03B1;</span><sub><span 
 class="cmr-6">1</span></sub> <span 
 class="ptmr7t-x-x-90">nominal.</span>
-</p><!--l. 320--><p class="noindent" >
-</p><!--l. 321--><p class="noindent" ><img 
-src="TemplateICATT20x.png" alt="PIC" class="graphics" width="223.34941pt" height="176.3843pt"  /><!--tex4ht:graphics  
+<!--l. 320--><p class="noindent" >
+<!--l. 321--><p class="noindent" ><img 
+src="TemplateICATT20x.png" alt="PIC" class="graphics" width="223.34941pt" height="176.3843pt" ><!--tex4ht:graphics  
 name="TemplateICATT20x.png" src="Pics/stddphi-r2.eps"  
 --> <a 
  id="x1-15055r2"></a>
 <img 
-src="TemplateICATT22x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT22x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">r</span><sub><span 
 class="cmr-6">2</span></sub><span 
@@ -3127,14 +3106,14 @@ class="ptmr7t-x-x-90">with </span><span
 class="cmmi-9">&#x03C9;,&#x03B1;</span><sub><span 
 class="cmr-6">1</span></sub> <span 
 class="ptmr7t-x-x-90">nominal.</span>
-</p><!--l. 325--><p class="noindent" >
-</p><!--l. 326--><p class="noindent" ><img 
-src="TemplateICATT23x.png" alt="PIC" class="graphics" width="223.34941pt" height="176.3843pt"  /><!--tex4ht:graphics  
+<!--l. 325--><p class="noindent" >
+<!--l. 326--><p class="noindent" ><img 
+src="TemplateICATT23x.png" alt="PIC" class="graphics" width="223.34941pt" height="176.3843pt" ><!--tex4ht:graphics  
 name="TemplateICATT23x.png" src="Pics/stddphi-alpha1.eps"  
 --> <a 
  id="x1-15056r3"></a>
 <img 
-src="TemplateICATT25x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT25x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">&#x03B1;</span><sub><span 
 class="cmr-6">1</span></sub><span 
@@ -3143,14 +3122,14 @@ class="ptmr7t-x-x-90">with </span><span
 class="cmmi-9">&#x03C9;,r</span><sub><span 
 class="cmr-6">2</span></sub> <span 
 class="ptmr7t-x-x-90">nominal.</span>
-<br /> </p><div class="caption" 
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;5</span>: </span><span  
 class="content">Single Variable <img 
-src="TemplateICATT26x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /></span></div><!--tex4ht:label?: x1-15057r5 -->
+src="TemplateICATT26x.png" alt="&#x02C6;&#x03C3;"  class="circ" ></span></div><!--tex4ht:label?: x1-15057r5 -->
 
-   </div><hr class="endfigure" />
+<!--l. 332--><p class="indent" >   </div><hr class="endfigure">
 <!--l. 334--><p class="indent" >   With the use of <span class="lstinline"></span><span 
 class="pcrb7t-x-x-80">function</span><span 
 class="pcrr7t-x-x-80">&#x00A0;</span><span 
@@ -3178,39 +3157,38 @@ the topology of the design space within the neighborhood of the
 nominal parameters can be seen in Figure <a 
 href="#x1-15061r7">7<!--tex4ht:ref: fig:nomtop --></a>. It can be seen that
 both <img 
-src="TemplateICATT27x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT27x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-10">(</span><span 
 class="cmmi-10">r</span><sub><span 
 class="cmr-7">2</span></sub><span 
 class="cmmi-10">,&#x03B1;</span><sub><span 
 class="cmr-7">1</span></sub><span 
 class="cmr-10">) </span>and <img 
-src="TemplateICATT28x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT28x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-10">(</span><span 
 class="cmmi-10">&#x03C9;,&#x03B1;</span><sub><span 
 class="cmr-7">1</span></sub><span 
 class="cmr-10">) </span>are fairly nice look, while <img 
-src="TemplateICATT29x.png" alt="&#x03C3;&#x02C6;"  class="circ"  /><span 
+src="TemplateICATT29x.png" alt="&#x03C3;&#x02C6;"  class="circ" ><span 
 class="cmr-10">(</span><span 
 class="cmmi-10">&#x03C9;,r</span><sub><span 
 class="cmr-7">2</span></sub><span 
 class="cmr-10">)</span>
 seems rather treacherous.
-</p>
-   <hr class="figure" /><div class="figure" 
+<!--l. 336--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
  id="x1-15061r7"></a>
 
 <!--l. 338--><p class="noindent" >
-</p><!--l. 339--><p class="noindent" ><img 
-src="TemplateICATT30x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt"  /><!--tex4ht:graphics  
+<!--l. 339--><p class="noindent" ><img 
+src="TemplateICATT30x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt" ><!--tex4ht:graphics  
 name="TemplateICATT30x.png" src="Pics/surf-a1-r2-nom.eps"  
 --> <a 
  id="x1-15058r1"></a>
 <img 
-src="TemplateICATT32x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT32x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">r</span><sub><span 
 class="cmr-6">2</span></sub><span 
@@ -3220,14 +3198,14 @@ class="cmr-9">) </span><span
 class="ptmr7t-x-x-90">with </span><span 
 class="cmmi-9">&#x03C9; </span><span 
 class="ptmr7t-x-x-90">nominal.</span>
-</p><!--l. 343--><p class="noindent" >
-</p><!--l. 344--><p class="noindent" ><img 
-src="TemplateICATT33x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt"  /><!--tex4ht:graphics  
+<!--l. 343--><p class="noindent" >
+<!--l. 344--><p class="noindent" ><img 
+src="TemplateICATT33x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt" ><!--tex4ht:graphics  
 name="TemplateICATT33x.png" src="Pics/surf-w-a1-nom.eps"  
 --> <a 
  id="x1-15059r2"></a>
 <img 
-src="TemplateICATT35x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT35x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">&#x03C9;,&#x03B1;</span><sub><span 
 class="cmr-6">1</span></sub><span 
@@ -3236,14 +3214,14 @@ class="ptmr7t-x-x-90">with </span><span
 class="cmmi-9">r</span><sub><span 
 class="cmr-6">2</span></sub> <span 
 class="ptmr7t-x-x-90">nominal.</span>
-</p><!--l. 348--><p class="noindent" >
-</p><!--l. 349--><p class="noindent" ><img 
-src="TemplateICATT36x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt"  /><!--tex4ht:graphics  
+<!--l. 348--><p class="noindent" >
+<!--l. 349--><p class="noindent" ><img 
+src="TemplateICATT36x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt" ><!--tex4ht:graphics  
 name="TemplateICATT36x.png" src="Pics/surf-w-r2-nom.eps"  
 --> <a 
  id="x1-15060r3"></a>
 <img 
-src="TemplateICATT38x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT38x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">&#x03C9;,r</span><sub><span 
 class="cmr-6">2</span></sub><span 
@@ -3252,14 +3230,14 @@ class="ptmr7t-x-x-90">with </span><span
 class="cmmi-9">&#x03B1;</span><sub><span 
 class="cmr-6">1</span></sub> <span 
 class="ptmr7t-x-x-90">nominal.</span>
-<br /> </p><div class="caption" 
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;7</span>: </span><span  
 class="content">Nominal Multivariate <img 
-src="TemplateICATT39x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> Topology</span></div><!--tex4ht:label?: x1-15061r7 -->
+src="TemplateICATT39x.png" alt="&#x02C6;&#x03C3;"  class="circ" > Topology</span></div><!--tex4ht:label?: x1-15061r7 -->
 
-   </div><hr class="endfigure" />
+<!--l. 355--><p class="indent" >   </div><hr class="endfigure">
    <span 
 class="ptmb7t-">2.4.</span>
    <h4 class="subsectionHead"><span class="titlemark">2.4    </span> <a 
@@ -3278,7 +3256,7 @@ social behavior of bird flocking and fish school. The reader
 is encouraged to consult <span class="cite">[<span 
 class="ptmb7t-">?</span>]</span> for more information on this
 algorithm.
-</p><!--l. 360--><p class="indent" >   In order to implement this, Matlab&#8217;s <span 
+<!--l. 360--><p class="indent" >   In order to implement this, Matlab&#8217;s <span 
 class="ptmri7t-">particleswarm </span><span class="cite">[<span 
 class="ptmb7t-">?</span>]</span>
 function is used to optimize the surrogate function. This
@@ -3291,7 +3269,7 @@ Essentially the particle swarm optimization coarsely hones in on
 the global optimum, at which point a gradient based optimizer
 pinpoints the solution, assuming the design space is sufficiently
 convex within the vicinity of the solution.
-</p><!--l. 362--><p class="indent" >   The particle swarm optimization process can be intuitively
+<!--l. 362--><p class="indent" >   The particle swarm optimization process can be intuitively
 commenced with <span class="lstinline"></span><span 
 class="pcrr7t-x-x-80">[</span><span 
 class="pcrr7t-x-x-80">x</span><span 
@@ -3313,7 +3291,7 @@ class="pcrr7t-x-x-80">'</span><span
 class="pcrr7t-x-x-80">)</span>.
 With a Gaussian process surrogate model constructed with 100
 samples, an objective standard deviation value of <img 
-src="TemplateICATT40x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><sub><span 
+src="TemplateICATT40x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><sub><span 
 class="cmr-7">100</span></sub> <span 
 class="cmr-10">= 5</span><span 
 class="cmmi-10">.</span><span 
@@ -3322,59 +3300,58 @@ is obtained, as shown with convergence history in Figure <a
 href="#x1-16001r8">8<!--tex4ht:ref: fig:psconv100 --></a>. With
 600 <span 
 class="ptmri7t-">true </span>objective samples, a better objective of <img 
-src="TemplateICATT41x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> <span 
+src="TemplateICATT41x.png" alt="&#x02C6;&#x03C3;"  class="circ" > <span 
 class="cmr-10">= 6</span><span 
 class="cmmi-10">.</span><span 
 class="cmr-10">17409 </span>is
 obtained, as seen in Figure <a 
 href="#x1-16002r9">9<!--tex4ht:ref: fig:psconv600 --></a>.
-</p>
-   <hr class="figure" /><div class="figure" 
+<!--l. 364--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
  id="x1-16001r8"></a>
 
 <!--l. 366--><p class="noindent" ><img 
-src="TemplateICATT42x.png" alt="PIC" class="graphics" width="248.16771pt" height="186.13086pt"  /><!--tex4ht:graphics  
+src="TemplateICATT42x.png" alt="PIC" class="graphics" width="248.16771pt" height="186.13086pt" ><!--tex4ht:graphics  
 name="TemplateICATT42x.png" src="Pics/psfval100.eps"  
 -->
-<br /> </p><div class="caption" 
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;8</span>: </span><span  
 class="content">Hybrid Particle Swarm Convergence of <img 
-src="TemplateICATT43x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> with <span 
+src="TemplateICATT43x.png" alt="&#x02C6;&#x03C3;"  class="circ" > with <span 
 class="cmmi-10">N</span><sub><span 
 class="cmmi-7">s</span></sub> <span 
 class="cmr-10">=</span>
 <span 
 class="cmr-10">100</span></span></div><!--tex4ht:label?: x1-16001r8 -->
 
-   </div><hr class="endfigure" />
-   <hr class="figure" /><div class="figure" 
+<!--l. 369--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 371--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
  id="x1-16002r9"></a>
 
 <!--l. 373--><p class="noindent" ><img 
-src="TemplateICATT44x.png" alt="PIC" class="graphics" width="248.16771pt" height="186.13086pt"  /><!--tex4ht:graphics  
+src="TemplateICATT44x.png" alt="PIC" class="graphics" width="248.16771pt" height="186.13086pt" ><!--tex4ht:graphics  
 name="TemplateICATT44x.png" src="Pics/psfval600.eps"  
 -->
-<br /> </p><div class="caption" 
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;9</span>: </span><span  
 class="content">Hybrid Particle Swarm Convergence of <img 
-src="TemplateICATT45x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> with <span 
+src="TemplateICATT45x.png" alt="&#x02C6;&#x03C3;"  class="circ" > with <span 
 class="cmmi-10">N</span><sub><span 
 class="cmmi-7">s</span></sub> <span 
 class="cmr-10">=</span>
 <span 
 class="cmr-10">600</span></span></div><!--tex4ht:label?: x1-16002r9 -->
 
-   </div><hr class="endfigure" />
+<!--l. 376--><p class="indent" >   </div><hr class="endfigure">
 <!--l. 378--><p class="indent" >   Objective values returned by the optimizer tend to get better
 as the resolution of the <span 
 class="ptmri7t-">true </span>objective function sampling
@@ -3408,8 +3385,8 @@ class="cmr-10">1000</span><span
 class="cmmi-10">,</span><span 
 class="cmr-10">2000</span><span 
 class="cmsy-10">}</span><img 
-src="TemplateICATT46x.png" alt="&#x21A6;&#x2192;"  class="mapsto"  /><img 
-src="TemplateICATT47x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> <span 
+src="TemplateICATT46x.png" alt="&#x21A6;&#x2192;"  class="mapsto" ><img 
+src="TemplateICATT47x.png" alt="&#x02C6;&#x03C3;"  class="circ" > <span 
 class="cmr-10">=</span>
 <span 
 class="cmsy-10">{</span><span 
@@ -3449,25 +3426,24 @@ class="cmmi-7">s</span></sub>. The
 Gaussian process surrogate model&#8217;s optimal design space
 topology can be seen in Figure <a 
 href="#x1-17004r12">12<!--tex4ht:ref: fig:topopt --></a>.
-</p>
-   <hr class="figure" /><div class="figure" 
+<!--l. 380--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
  id="x1-16003r10"></a>
 
 <!--l. 382--><p class="noindent" ><img 
-src="TemplateICATT48x.png" alt="PIC" class="graphics" width="248.16771pt" height="195.9837pt"  /><!--tex4ht:graphics  
+src="TemplateICATT48x.png" alt="PIC" class="graphics" width="248.16771pt" height="195.9837pt" ><!--tex4ht:graphics  
 name="TemplateICATT48x.png" src="Pics/psons.eps"  
 -->
-<br /> </p><div class="caption" 
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;10</span>:  </span><span  
 class="content">Sampling  Resolution  and  Surrogate  Objective
 Returns</span></div><!--tex4ht:label?: x1-16003r10 -->
 
-   </div><hr class="endfigure" />
+<!--l. 385--><p class="indent" >   </div><hr class="endfigure">
 <span 
 class="ptmb7t-">3.</span>
    <h3 class="sectionHead"><span class="titlemark">3    </span> <a 
@@ -3479,7 +3455,7 @@ class="cmmi-10">N</span><sub><span
 class="cmmi-7">s</span></sub> <span 
 class="cmr-10">= 600</span>, an objective surrogate function
 value of <img 
-src="TemplateICATT49x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> <span 
+src="TemplateICATT49x.png" alt="&#x02C6;&#x03C3;"  class="circ" > <span 
 class="cmr-10">= 6</span><span 
 class="cmmi-10">.</span><span 
 class="cmr-10">1741 </span>is obtained with design parameters
@@ -3537,8 +3513,7 @@ class="cmr-10">6</span>. Interestingly, the optimal design parameter
 class="cmmi-10">r</span><sub><span 
 class="cmr-7">2</span></sub><sup><span 
 class="cmsy-7">*</span></sup> tends to converge to its lower bound.
-</p>
-   <hr class="figure" /><div class="figure" 
+<!--l. 390--><p class="indent" >   <hr class="figure"><div class="figure" 
 >
 
 <a 
@@ -3547,13 +3522,13 @@ class="cmsy-7">*</span></sup> tends to converge to its lower bound.
  id="x1-18022r9"></a>
 
 <!--l. 392--><p class="noindent" >
-</p><!--l. 393--><p class="noindent" ><img 
-src="TemplateICATT50x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt"  /><!--tex4ht:graphics  
+<!--l. 393--><p class="noindent" ><img 
+src="TemplateICATT50x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt" ><!--tex4ht:graphics  
 name="TemplateICATT50x.png" src="Pics/surf-a1-r2.eps"  
 --> <a 
  id="x1-17001r1"></a>
 <img 
-src="TemplateICATT52x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT52x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">r</span><sub><span 
 class="cmr-6">2</span></sub><span 
@@ -3563,14 +3538,14 @@ class="cmr-9">) </span><span
 class="ptmr7t-x-x-90">with </span><span 
 class="cmmi-9">&#x03C9; </span><span 
 class="ptmr7t-x-x-90">optimal.</span>
-</p><!--l. 397--><p class="noindent" >
-</p><!--l. 398--><p class="noindent" ><img 
-src="TemplateICATT53x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt"  /><!--tex4ht:graphics  
+<!--l. 397--><p class="noindent" >
+<!--l. 398--><p class="noindent" ><img 
+src="TemplateICATT53x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt" ><!--tex4ht:graphics  
 name="TemplateICATT53x.png" src="Pics/surf-w-a1.eps"  
 --> <a 
  id="x1-17002r2"></a>
 <img 
-src="TemplateICATT55x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT55x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">&#x03C9;,&#x03B1;</span><sub><span 
 class="cmr-6">1</span></sub><span 
@@ -3579,14 +3554,14 @@ class="ptmr7t-x-x-90">with </span><span
 class="cmmi-9">r</span><sub><span 
 class="cmr-6">2</span></sub> <span 
 class="ptmr7t-x-x-90">optimal.</span>
-</p><!--l. 402--><p class="noindent" >
-</p><!--l. 403--><p class="noindent" ><img 
-src="TemplateICATT56x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt"  /><!--tex4ht:graphics  
+<!--l. 402--><p class="noindent" >
+<!--l. 403--><p class="noindent" ><img 
+src="TemplateICATT56x.png" alt="PIC" class="graphics" width="223.34941pt" height="167.51294pt" ><!--tex4ht:graphics  
 name="TemplateICATT56x.png" src="Pics/surf-w-r2.eps"  
 --> <a 
  id="x1-17003r3"></a>
 <img 
-src="TemplateICATT58x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /><span 
+src="TemplateICATT58x.png" alt="&#x02C6;&#x03C3;"  class="circ" ><span 
 class="cmr-9">(</span><span 
 class="cmmi-9">&#x03C9;,r</span><sub><span 
 class="cmr-6">2</span></sub><span 
@@ -3595,14 +3570,14 @@ class="ptmr7t-x-x-90">with </span><span
 class="cmmi-9">&#x03B1;</span><sub><span 
 class="cmr-6">1</span></sub> <span 
 class="ptmr7t-x-x-90">optimal.</span>
-<br /> </p><div class="caption" 
+<br /> <div class="caption" 
 ><span class="id"><span 
 class="ptmb7t-">Fig.</span><span 
 class="ptmb7t-">&#x00A0;12</span>: </span><span  
 class="content">Optimal Multivariate <img 
-src="TemplateICATT59x.png" alt="&#x02C6;&#x03C3;"  class="circ"  /> Topology</span></div><!--tex4ht:label?: x1-17004r12 -->
+src="TemplateICATT59x.png" alt="&#x02C6;&#x03C3;"  class="circ" > Topology</span></div><!--tex4ht:label?: x1-17004r12 -->
 
-   </div><hr class="endfigure" />
+<!--l. 409--><p class="indent" >   </div><hr class="endfigure">
 
 <span 
 class="ptmb7t-">4.</span>

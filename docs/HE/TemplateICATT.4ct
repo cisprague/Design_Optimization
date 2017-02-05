@@ -10,7 +10,7 @@
 \doTocEntry\tocsubsection{2.1}{\csname a:TocLink\endcsname{1}{x1-90002.1}{QQ2-1-9}{Top Surface Geometry}}{4}\relax 
 \doTocEntry\tocsubsection{2.2}{\csname a:TocLink\endcsname{1}{x1-100002.2}{QQ2-1-10}{Problem Requirements}}{4}\relax 
 \doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-110003}{QQ2-1-11}{Optimization}}{4}\relax 
-\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-120003.1}{QQ2-1-12}{Problem Formulation}}{5}\relax 
+\doTocEntry\tocsubsection{3.1}{\csname a:TocLink\endcsname{1}{x1-120003.1}{QQ2-1-12}{Problem Formulation}}{4}\relax 
 \doTocEntry\tocsubsection{3.2}{\csname a:TocLink\endcsname{1}{x1-130003.2}{QQ2-1-13}{Solvers}}{5}\relax 
 \doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-140004}{QQ2-1-14}{Implementation}}{5}\relax 
 \doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-14002}{}{\numberline {1}{Instantiation}}}{5}\relax 
