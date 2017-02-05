@@ -1,0 +1,85 @@
+*{
+	font-family: 'Cutive Mono', monospace;
+	text-decoration: none;
+	font-kerning: 10px;
+}
+
+.home {
+	 display: flex;
+ -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
+          text-align: center;
+  height: 100%;
+  background: linear-gradient(to bottom, #bbdefb , #f8bbd0); 
+}
+
+p{
+	color: white;
+}
+
+.home p{
+	color: white;
+	display:;
+	opacity: 1;
+	font-size: 30px;
+	transition: 0.3s ease-in-out;
+	letter-spacing: 10px;
+
+}
+
+
+.home img{
+	height: 50px;
+	padding: 5px;
+	background-color: transparent;
+	transition: 0.3s ease-in-out;
+	float: left;
+}
+
+.name{
+	color: white;
+	opacity: 0;
+	transition: 0.3s ease-in-out;
+	display: none;
+	font-size: 30px;
+}
+
+.footer{
+display: flex;
+ -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-flex-flow: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
+          text-align: center;
+	position: relative;
+	margin-top:-5%;
+}
+
+.des, .pic, .nts, .mail{
+	background-color: transparent;
+	filter: invert();
+}
+
+.des:hover{
+	background-color: #00757f;
+}
+
+.pic:hover{
+	background-color: #7d4e00;
+}
+
+.nts:hover{
+	background-color: #33006f;
+}
+
+.mail:hover{
+	background-color: #001a80;
+}

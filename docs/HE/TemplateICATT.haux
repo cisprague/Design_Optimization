@@ -1,0 +1,41 @@
+\@@addtocsec{htoc}{sec2}{0}{\@print{1}\quad{}Method{}}
+\newlabel{eq:heat}{{1}{X}}
+\@@addtocsec{htoc}{sec3}{1}{\@print{1.1}\quad{}Finite Volume{}}
+\citation{Eymard2000}
+\@@addtocsec{htoc}{sec4}{1}{\@print{1.2}\quad{}Green-Gauss Theorem{}}
+\citation{Pfeffer1991}
+\@@addtocsec{htoc}{sec5}{0}{\@print{2}\quad{}Parametrization{}}
+\@@addtocsec{htoc}{sec6}{1}{\@print{2.1}\quad{}Top Surface Geometry{}}
+\newlabel{eq:sin}{{6}{X}}
+\@@addtocsec{htoc}{sec7}{1}{\@print{2.2}\quad{}Problem Requirements{}}
+\@@addtocsec{htoc}{sec8}{0}{\@print{3}\quad{}Optimization{}}
+\@@addtocsec{htoc}{sec9}{1}{\@print{3.1}\quad{}Problem Formulation{}}
+\@@addtocsec{htoc}{sec10}{1}{\@print{3.2}\quad{}Solvers{}}
+\citation{Nemirovski2008}
+\citation{Boggs1995}
+\citation{Leyffer2005}
+\@@addtocsec{htoc}{sec11}{0}{\@print{4}\quad{}Implementation{}}
+\newlabel{instant}{{1}{X}}
+\@@addtocsec{htoc}{sec12}{1}{\@print{4.1}\quad{}Dynamic Coefficient Creation{}}
+\newlabel{fig:dcc}{{1}{X}}
+\@@addtocsec{htoc}{sec13}{1}{\@print{4.2}\quad{}Work Flow{}}
+\@@addtocsec{htoc}{sec14}{0}{\@print{5}\quad{}Results{}}
+\@@addtocsec{htoc}{sec15}{1}{\@print{5.1}\quad{}Initial Findings{}}
+\@@addtocsec{htoc}{sec16}{1}{\@print{5.2}\quad{}Interior-Point Optimizer{}}
+\newlabel{fig:ipopt_6_100}{{2}{X}}
+\newlabel{fig:ipopt_6_200}{{3}{X}}
+\newlabel{fig:ipopt_5_200}{{4}{X}}
+\@@addtocsec{htoc}{sec17}{1}{\@print{5.3}\quad{}Sequential Quadratic Programming{}}
+\newlabel{fig:sqp_6_200}{{5}{X}}
+\@@addtocsec{htoc}{sec18}{0}{\@print{6}\quad{}Conclusions{}}
+\bibdata{refs.bib}
+\bibcite{Eymard2000}{1}
+\bibcite{Pfeffer1991}{2}
+\bibcite{Nemirovski2008}{3}
+\bibcite{Boggs1995}{4}
+\bibcite{Leyffer2005}{5}
+\bibstyle{IEEEtran}
+\@@addtocsec{htoc}{sec20}{0}{\@print{7}\quad{}Tables{}}
+\newlabel{tab:ipopt}{{1}{X}}
+\@@addtocsec{htoc}{sec21}{0}{\@print{8}\quad{}Source Code{}}
+\newlabel{Heat_Exchanger}{{4}{X}}

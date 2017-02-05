@@ -1,0 +1,232 @@
+% Template for ESA 6th ICATT manuscripts; to be used with:
+%          spconf.sty  - LaTeX style file, and
+%          IEEEbib.bst - IEEE bibliography style file.
+% --------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{spconf,amsmath,graphicx, url, listings}
+\usepackage{courier, float}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true, language=MATLAB}
+% Example definitions.
+% --------------------
+\def\x{{\mathbf x}}
+\def\L{{\cal L}}
+
+% Title.
+% ------
+\title{Shape Optimisation of Heat Exchanger}
+%
+% Single address.
+% ---------------
+\name{Christopher Iliffe Sprague}
+\address{}
+%
+% For example:
+% ------------
+%\address{School\\
+%	Department\\
+%	Address}
+%
+% Two addresses (uncomment and modify for two-address case).
+% ----------------------------------------------------------
+%\twoauthors
+%  {A. Author-one, B. Author-two\sthanks{Thanks to XYZ agency for funding.}}
+%	{School A-B\\
+%	Department A-B\\
+%	Address A-B}
+%  {C. Author-three, D. Author-four\sthanks{The fourth author performed the work
+%	while at ...}}
+%	{School C-D\\
+%	Department C-D\\
+%	Address C-D}
+%
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    This paper examines the design optimization of a repeating two-dimensional heat exchanger section. Focus is particularly directed upon a heat exchanger section with a variable top surface shape, and straight bottom, left, and right sides. The heat exchanger's top surface is parametrized by a mathematical model, subject to section continuity and vertical thickness constraints. Its geometry is discretized into a mesh from which the heat flux per unit length is computed through finite-volume methods. Different optimization algorithms and mesh resolutions are examined in regard to their performance in maximizing the heat exchanger's flux per unit length. It is shown that through the optimization of different mathematical characterizations of the heat exchanger's top surface that, in fact, a heat flux per unit length greater than 35\% of the nominal value from a flat top surface is possible, while abiding to thickness constraints.
+\end{abstract}
+
+\tableofcontents
+\listoftables
+\listoffigures
+\lstlistoflistings
+
+\section{Method}
+In the context of a two dimensional heat exchanger without heat generation, convention leads to the use of the partial differential equation in Cartesian coordinates:
+\begin{equation}
+    \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} =0
+    \label{eq:heat}
+\end{equation}
+Through Fourier's law, the heat flux associated with the heat exchanger's temperature profile, $T(x,y)$, and thermal conductivity, $k$, becomes:
+\begin{equation}
+    \mathbf{q} = -k \nabla T
+\end{equation}
+However, when examining a heat exchanger optimization problem with a rather irregular geometrical structure, it is significantly more convenient to use methods which allow for unstructured meshes. One of such methods is the finite volume method, which essentially allows one to represent and evaluate partial differential equations, such as Equation \ref{eq:heat}, in the form of algebraic equations.
+
+\subsection{Finite Volume}
+Through the finite volume method, values must be calculated at discrete places, otherwise known as nodes, within a meshed geometry \cite{Eymard2000}. Sub-dividing the heat exchanger's spatial domain into finite volumes (i.e. cells), for a particular cell, $i$, the volume integral can be taken over the total volume of the cell, $v_i$. This results in the problem's partial differential equation transforming as follows:
+\begin{equation}
+   \nabla \cdot \mathbf{f}(\mathbf{u}) = 0 \Rightarrow \frac{1}{v_i} \oint_{s_i} \mathbf{f}(\mathbf{u}) \cdot \mathbf{n} dS = 0
+\end{equation}
+where $\mathbf{u}$ represents a vector of states, $\mathbf{f}$ represents the flux tensor, $s_i$ represents the total surface area of the cell, and $\mathbf{n}$ represents the unit vector normal to the surface of the cell pointing outward.
+
+\subsection{Green-Gauss Theorem}
+In the case of generally unstructured grid meshes, it is no longer feasible to compute the gradient of a scalar at a given volume centroid using the definition of derivatives. Rather, it is convenient to implement the conventional Green-Gauss theorem \cite{Pfeffer1991}. This theorem states that the surface integral of a scalar function is equal to the volume integral of the gradient of the scalar function; in mathematical representation:
+\begin{equation}
+   \int_V \nabla \phi dV = \int_S \phi \mathbf{n} dS
+\end{equation}
+where $\mathbf{n}$ is the surface normal pointing out from the volume, $\phi$ is a scalar, $S$ is the surface, and $V$ is the volume. After assuming the gradient of the scalar, $\nabla \phi$, is constant over the control volume and that the integral over the surface can be represented as a summation of the average scalar value in each face multiplied by the face's surface vector, the theorem can be reformulated as follows:
+\begin{equation}
+   \nabla \phi = \frac{1}{V} \sum_{i=1}^{N} \phi_i \mathbf{S}_i
+\end{equation}
+Using this methodology, the horizontal derivatives are used to correct the fluxes along the heat exchanger's faces, that have both horizontal and vertical components to the face normal. After applying Dirichlet boundary conditions to both the top and bottom surfaces of the heat exchanger's geometry and applying the Green-Gauss discretization to the geometry's mesh, the heat flux per unit length can be computed.
+
+\section{Parametrization}
+\subsection{Top Surface Geometry}
+In the effort to optimize the shape of the heat exchanger's top surface, it is fitting to apply some sort of mathematical model. Given that this particular problem requires that the shape's boundary conditions on both the left and right sides be periodic to allow continual section addition, it is convenient to select a mathematical model that is innately periodic, namely a sin series. The general form of a sin series representing the heat exchanger's vertical thickness as a function of horizontal distance, $h(x)$, can be shown as follows:
+\begin{equation}
+   h(\mathbf{a},x) = a_1 + \sum_{n=2}^{N} a_n sin \left( \frac{2 \pi (n-1) x}{L_x} \right)
+   \label{eq:sin}
+\end{equation}
+
+where $[ a_1, \dots , a_n ]^T$ represents the coefficient vector, $N$ represents the number of coefficients, and $L_x$ is the horizontal width of the heat exchanger as a whole. In the programming language of MATLAB, this formulation culminates in the form of the class instance function shown in \lstinline[language=MATLAB]{function ts = Surface(obj, a)} of Listing \ref{Heat_Exchanger}, that generates a discretized mesh of the heat exchanger's top surface in accordance to variable size vector of coefficients.
+
+\subsection{Problem Requirements}
+As required by the given problem, the heat exchanger is asserted to have several constant preexisting properties, namely: a horizontal width, $L_x$, of $5~cm$, a thermal conductivity, $\kappa$, of $20~\frac{W \cdot m}{ ^\circ K}$, and a minimum and maximum vertical thickness, $h(x)$, of $1~cm$ and $5~cm$ respectively. Beyond intrinsic parameters, the environment is modelled to assert a bottom and top temperature of $T_1 = 90^\circ K$ and $T_2 = 20^\circ K$ respectively. This environmental model closely represents the application of a radiator, in which it is desired to transfer heat from hot water, designated by $T_1$, to air, designated by $T_2$.
+
+\section{Optimization}
+\subsection{Problem Formulation}
+Essentially, the goal of this study is to maximize the heat exchanger's flux per unit length through alteration of its top surface shape, while abiding to constraints. In the conventional generalization of optimization problems, one has an objective function to be minimized, subject to inequality constraints, equality constraints, and domain bound constraints. In the case of the heat exchanger, this problem boils down to the following formulation:
+\begin{equation}
+\begin{aligned}
+& \underset{\mathbf{a}}{\text{minimize}}
+& & \mathrm{Flux}(\mathbf{a}) \\
+& \text{subject to}
+& & 1~cm \leq h(\mathbf{a},x) \leq 5~cm\\
+\end{aligned}
+\end{equation}
+where $\mathrm{Flux}(\mathbf{a})$ represents the flux per unit length as a function top surface geometry determined by the coefficient vector, $\mathbf{a} = \left[ a_1, \dots, a_N \right] ^T$, and the thickness at any point along the top surface, $h(\mathbf{a}, x)$ is within constraints. The MATLAB implementation of this formulation is shown in the objective function, \lstinline[language=matlab]{function f = Neg_Flux(obj, a)}, and the constraint function, \lstinline[language=MATLAB]{function [c, ceq] = Thickness_Limit(obj, a)} of Listing \ref{Heat_Exchanger}.
+
+\subsection{Solvers}
+In this paper MATLAB's \lstinline[language=MATLAB]{fmincon} is used to assess the effectiveness of different optimization algorithms, namely: interior point method, active set method, and sequential quadratic programming. The interior point method is capable handling large, sparse problems, as well as small dense problems, and is able to satisfy bounds at each iteration \cite{Nemirovski2008}. Sequential Quadratic Programming is an iterative method for nonlinear optimization, which is typically used on problems in which the objective function and the constraints are twice continuously differentiable \cite{Boggs1995}. The active set method, in general, is faster than the two aforementioned algorithms; however it takes large steps, as it is suited for large scale problem, which may lead inaccurate minima determination \cite{Leyffer2005}, and thus will herein escape the scope of this paper. In use, the user's discretion determines the algorithm used by passing its string designation to the function, \lstinline[language=MATLAB]{function [aopt, fval] = Optimize(obj, a0, alg)} of Listing \ref{Heat_Exchanger}.
+
+\section{Implementation}
+In the effort to enable the modular implementation of the methods and formulation described in previous sections, a Heat Exchanger class is constructed in MATLAB, as shown in Listing \ref{Heat_Exchanger}, allowing one to instantiate an object of the heat exchanger class as such:
+\begin{lstlisting}[caption={Instantiation}\label{instant}]
+HE = Heat_Exchanger(...
+  0.05,        ... % Horizontal width (m).
+  0.01,        ... % Minimum thickness (m).
+  0.05,        ... % Maximum thickness (m).
+  20,          ... % Thermal conductivity (W/mK).
+  90 + 273.15, ... % Bottom surface temp. (K).
+  20 + 273.15, ... % Top surface temp. (K).
+  100,         ... % # of horizontal elements.
+  100          ... % # of vertical elements.
+);
+\end{lstlisting}
+
+\subsection{Dynamic Coefficient Creation}
+Once the heat exchanger object has been instantiated, one can test the dynamic scaling of the top surface mesh generation function, \lstinline[]{function ts = Surface(obj, a)}, by executing the following:
+\begin{lstlisting}[caption={Dynamics Coefficient Creation}]
+figure;
+hold on;
+for n=1:10
+  a = ones(n).';
+  y = HE.Surface(a);
+  x = linspace(0, HE.Lx, HE.Nx + 1);
+  plot(x, y);
+end
+\end{lstlisting}
+from which, with some additional annotation, the plot in Figure \ref{fig:dcc} is generated. The user can specify a coefficient vector of an arbitrary length, $N$, and the top surface mesh function's sin formulation will accommodate it.
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.48\textwidth]{Pics/Dynamic_Coefficient_Creation.eps}
+    \caption{Dynamic Coefficient Creation}
+    \label{fig:dcc}
+\end{figure}
+
+\subsection{Work Flow}
+With the instantiated heat exchanger object, the user can begin the optimization process by asserting an initial guess, \lstinline[]{a0}. Then after, the initial guess is fed through the heat exchanger's class instance optimization method as follows, \lstinline[]{[aopt, fval] = HE.Optimise(a0, alg)}, where \lstinline[]{alg} is a string in the list: \lstinline[]{['interior-point', 'sqp', 'active-set']}. Finally, the user can visualize the resulting geometry simply by running \lstinline[]{HE.Visualise(aopt)}.
+
+\section{Results}
+After instantiating an object of the heat exchanger class, as shown in Listing \ref{instant}, it is rather easy to begin the process of optimization by asserting an initial guess of the optimal coefficient vector. 
+
+\subsection{Initial Findings}It was found, through trial and error, that the chance of convergence among all algorithms was maximized with an initial coefficient vector guess such that the sin series oscillates about a thickness of $3~cm$. Such as it is, the first term in all initial guesses of the coefficient vector shall herein be asserted as $a_1 = 0.03~m$.
+
+\subsection{Interior-Point Optimizer}
+Through practice it was found that through both mesh resolution and coefficient vector length alteration, that the interior-point optimizer (IPOPT) algorithm is rather finicky at lower mesh resolutions, but it was indeed shown that convergence to a performance of over 35\% greater than the nominal flat plate flux value was aided by resolution increases. For example, a coefficient vector guess of length six and vertical and horizontal resolutions of 200 nodes was optimized and visualized as follows:
+\begin{lstlisting}[caption={Implementation}]
+% Resolution
+HE.Nx = 200; HE.Ny = 200;
+% Coefficient vector guess
+a0 = [0.03; 0.0; 0.0; 0.0; 0.0]
+% Optimization
+[aopt, fval] = HE.Optimise(a0, 'interior-point');
+% Visualization
+HE.Visualise(aopt);
+\end{lstlisting}
+leading to an optimal coefficient vector of \lstinline[]{aopt = [0.0300; -0.0025; 0.0044; 0.0032; 0.0146; -0.0049]}, with a flux per unit length of $9876.19~\frac{W}{m}$. This particular case is shown in Figure \ref{fig:ipopt_5_200}. The geometries resulting from an initial coefficient vector guess of length six, as show in in Figures \ref{fig:ipopt_6_100} and \ref{fig:ipopt_6_200}, offered even higher gains in performance, garnering a flux per unit length of $10442.4008~\frac{W}{m}$ and $10518.4232~\frac{W}{m}$ respectively. These results are summarized in Table \ref{tab:ipopt}. It can be seen that accuracy is indeed confirmed through mesh refinement.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.48\textwidth]{Pics/ipopt_6_100.eps}
+    \caption{IPOPT with 6 coefficients and 100 node resolution}
+    \label{fig:ipopt_6_100}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.48\textwidth]{Pics/ipopt_6_200.eps}
+    \caption{IPOPT with 6 coefficients and 200 node resolution}
+    \label{fig:ipopt_6_200}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.48\textwidth]{Pics/ipopt_5_200.eps}
+    \caption{IPOPT with 5 coefficients and 200 node resolution}
+    \label{fig:ipopt_5_200}
+\end{figure}
+
+\subsection{Sequential Quadratic Programming}
+The method of sequential quadratic programming, otherwise known as SQP, is undoubtedly very powerful. However, in the case of the heat exchanger's top surface shape optimization, it proved to be exceedingly painstaking and slow. For nearly all of the cases that the interior point optimizer faced with acceptable results, the SQP solver tended to get stuck in local infeasible minima, while its step size became increasingly smaller until termination. However, one strike of feasibility and incredible results came with six coefficients and 200 vertical and horizontal nodes, generating an incredible heat flux per unit length of $12682.4002~\frac{W}{m}$, with a coefficient vector of \lstinline[]{aopt = [0.0300; -0.0019; -0.0015; 0.0008; -0.0190; 0.0001]}. This is an 81\% improvement over the nominal heat flux value of a flat heat exchanger with equivalent dimesions. The resulting geometry can be seen in Figure \ref{fig:sqp_6_200}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.48\textwidth]{Pics/sqp_6_200.eps}
+    \caption{SQP with 6 coefficients and 200 node resolution}
+    \label{fig:sqp_6_200}
+\end{figure}
+
+\section{Conclusions}
+It has been shown that improvements of over 35\% of the nominal value of heat flux from a flat heat exchanger can be made. The scalability of the sin series, used to model the heat exchanger's top surface was quite conducive in enabling the testing various amounts of coefficients. It has been shown that, in regards to a sin series formulation, a greater amount of coefficients tends to garner a higher value of heat flux per unit length, in this two dimensional case. Furthermore, it has been shown that increasing the resolution of the optimization process leads to a marginal gain in heat flux performance, that rather serves as an indication of accuracy, as shown in the transition between 100 to 200 nodes for the six coefficient IPOPT model. It can be seen that, although it is indicated that increasing the size of the input parameters leads to a gain in heat flux performance, it was also quite obvious that there was a loss in computational performance. With increasing resolution of the optimization, one is limited by their computer's free random access memory, and with increasing coefficient vector size, one is limited by time, as the computations become evermore prolonged.
+
+\bibliography{refs.bib} 
+\bibliographystyle{IEEEtran}
+
+
+
+\onecolumn
+
+\section{Tables}
+
+\begin{table}[h]
+\centering
+\caption{Interior Point Optimizer Performance}
+\label{tab:ipopt}
+\begin{tabular}{|l|l|l|}
+\hline
+                          & Heat Flux Per Unit Length (W/m) & Coefficient Vector                                     \\ \hline
+100 Nodes, 5 Coefficients & N/A                             & N/A                                                    \\
+100 Nodes, 6 Coefficients & 10442.4008                      & {[}0.0300; -0.0025; 0.0044; 0.0032; 0.0145; -0.0048{]} \\
+200 Nodes, 5 Coefficients & 9876.19                         & {[}0.0300; -0.0021; 0.0024; -0.0187; -0.0025{]}        \\
+200 Nodes, 6 Coefficients & 10518.4232                      & {[}0.0300; -0.0025; 0.0044; 0.0032; 0.0146; -0.0049{]} \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Source Code}
+\lstinputlisting[basicstyle=\ttfamily, frame=single, numbers=left,language=MATLAB, caption=Heat Exchanger Class \label{Heat_Exchanger}]{Code/Heat_Exchanger.m}
+
+\end{document}

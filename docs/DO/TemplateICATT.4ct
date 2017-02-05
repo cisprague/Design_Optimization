@@ -1,0 +1,50 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-1000}{QQ2-1-1}{Contents}}{2}\relax 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-2000}{QQ2-1-2}{List of Figures}}{2}\relax 
+\doTocEntry\toclikesection{}{\csname a:TocLink\endcsname{1}{x1-3000}{QQ2-1-3}{Listings}}{2}\relax 
+\doTocEntry\tocsection{1}{\csname a:TocLink\endcsname{1}{x1-40001}{QQ2-1-4}{Background}}{3}\relax 
+\doTocEntry\tocsubsection{1.1}{\csname a:TocLink\endcsname{1}{x1-50001.1}{QQ2-1-5}{Parameters}}{3}\relax 
+\doTocEntry\tocsubsubsection{1.1.1}{\csname a:TocLink\endcsname{1}{x1-60001.1.1}{QQ2-1-6}{Constants}}{3}\relax 
+\doTocEntry\tocsubsubsection{1.1.2}{\csname a:TocLink\endcsname{1}{x1-70001.1.2}{QQ2-1-7}{Design}}{3}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-7002}{}{\numberline {1}Nominal Tilt-A-Whirl Car}}{3}\relax 
+\doTocEntry\toclof{a}{\csname a:TocLink\endcsname{1}{x1-7019r1}{}{\ignorespaces Overhead\relax }}{subfigure}\relax 
+\doTocEntry\toclof{b}{\csname a:TocLink\endcsname{1}{x1-7020r2}{}{\ignorespaces Three dimensional\relax }}{subfigure}\relax 
+\doTocEntry\toclof{c}{\csname a:TocLink\endcsname{1}{x1-7021r3}{}{\ignorespaces Tangential\relax }}{subfigure}\relax 
+\doTocEntry\toclof{d}{\csname a:TocLink\endcsname{1}{x1-7022r4}{}{\ignorespaces Radial\relax }}{subfigure}\relax 
+\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-7023r2}{}{\ignorespaces Views of the Tilt-A-Whirl model.}}{figure}\relax 
+\doTocEntry\tocsubsection{1.2}{\csname a:TocLink\endcsname{1}{x1-80001.2}{QQ2-1-14}{Equation of Motion}}{6}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-8013}{}{\numberline {2}Equations of Motion}}{6}\relax 
+\doTocEntry\tocsubsection{1.3}{\csname a:TocLink\endcsname{1}{x1-90001.3}{QQ2-1-16}{Numerical Integration}}{6}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-9002}{}{\numberline {3}Numerical Integration}}{6}\relax 
+\doTocEntry\tocsection{2}{\csname a:TocLink\endcsname{1}{x1-100002}{QQ2-1-18}{Optimization}}{6}\relax 
+\doTocEntry\tocsubsection{2.1}{\csname a:TocLink\endcsname{1}{x1-110002.1}{QQ2-1-19}{True Objective Function}}{6}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-11002}{}{\numberline {4}\textit  {True} Objective Function}}{6}\relax 
+\doTocEntry\tocsubsection{2.2}{\csname a:TocLink\endcsname{1}{x1-120002.2}{QQ2-1-21}{Problem Statement}}{7}\relax 
+\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-12002r3}{}{\ignorespaces True Objective Function Sampling $\sigma (\omega )$}}{figure}\relax 
+\doTocEntry\tocsubsection{2.3}{\csname a:TocLink\endcsname{1}{x1-130002.3}{QQ2-1-23}{Surrogate model}}{10}\relax 
+\doTocEntry\tocsubsubsection{2.3.1}{\csname a:TocLink\endcsname{1}{x1-140002.3.1}{QQ2-1-24}{Sampling}}{10}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-14002}{}{\numberline {5}Latin Hypercube Sampling}}{10}\relax 
+\doTocEntry\tocsubsubsection{2.3.2}{\csname a:TocLink\endcsname{1}{x1-150002.3.2}{QQ2-1-26}{Gaussian Process}}{10}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-15002}{}{\numberline {6}Gaussian Process Hyperparameters}}{10}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-15045}{}{\numberline {7}Surrogate Objective Function}}{10}\relax 
+\doTocEntry\toclof{a}{\csname a:TocLink\endcsname{1}{x1-15054r1}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(\omega )$ with $r_2, \alpha _1$ nominal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{b}{\csname a:TocLink\endcsname{1}{x1-15055r2}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(r_2)$ with $\omega , \alpha _1$ nominal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{c}{\csname a:TocLink\endcsname{1}{x1-15056r3}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(\alpha _1)$ with $\omega , r_2$ nominal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{5}{\csname a:TocLink\endcsname{1}{x1-15057r5}{}{\ignorespaces Single Variable $\mathaccentV {hat}05E{\sigma }$}}{figure}\relax 
+\doTocEntry\toclof{a}{\csname a:TocLink\endcsname{1}{x1-15058r1}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(r_2,\alpha _1)$ with $\omega $ nominal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{b}{\csname a:TocLink\endcsname{1}{x1-15059r2}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(\omega ,\alpha _1)$ with $r_2$ nominal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{c}{\csname a:TocLink\endcsname{1}{x1-15060r3}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(\omega ,r_2)$ with $\alpha _1$ nominal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{7}{\csname a:TocLink\endcsname{1}{x1-15061r7}{}{\ignorespaces Nominal Multivariate $\mathaccentV {hat}05E{\sigma }$ Topology}}{figure}\relax 
+\doTocEntry\tocsubsection{2.4}{\csname a:TocLink\endcsname{1}{x1-160002.4}{QQ2-1-37}{Particle Swarm}}{16}\relax 
+\doTocEntry\toclof{8}{\csname a:TocLink\endcsname{1}{x1-16001r8}{}{\ignorespaces Hybrid Particle Swarm Convergence of $\mathaccentV {hat}05E{\sigma }$ with $N_s=100$}}{figure}\relax 
+\doTocEntry\toclof{9}{\csname a:TocLink\endcsname{1}{x1-16002r9}{}{\ignorespaces Hybrid Particle Swarm Convergence of $\mathaccentV {hat}05E{\sigma }$ with $N_s=600$}}{figure}\relax 
+\doTocEntry\toclof{10}{\csname a:TocLink\endcsname{1}{x1-16003r10}{}{\ignorespaces Sampling Resolution and Surrogate Objective Returns}}{figure}\relax 
+\doTocEntry\tocsection{3}{\csname a:TocLink\endcsname{1}{x1-170003}{QQ2-1-41}{Results}}{25}\relax 
+\doTocEntry\toclof{a}{\csname a:TocLink\endcsname{1}{x1-17001r1}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(r_2,\alpha _1)$ with $\omega $ optimal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{b}{\csname a:TocLink\endcsname{1}{x1-17002r2}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(\omega ,\alpha _1)$ with $r_2$ optimal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{c}{\csname a:TocLink\endcsname{1}{x1-17003r3}{}{\ignorespaces $\mathaccentV {hat}05E{\sigma }(\omega ,r_2)$ with $\alpha _1$ optimal.\relax }}{subfigure}\relax 
+\doTocEntry\toclof{12}{\csname a:TocLink\endcsname{1}{x1-17004r12}{}{\ignorespaces Optimal Multivariate $\mathaccentV {hat}05E{\sigma }$ Topology}}{figure}\relax 
+\doTocEntry\tocsection{4}{\csname a:TocLink\endcsname{1}{x1-180004}{QQ2-1-46}{Source Code}}{29}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-18002}{}{\numberline {8}Example Car Optimization}}{29}\relax 
+\doTocEntry\toclol{}{\csname a:TocLink\endcsname{1}{x1-18023}{}{\numberline {9}Car Class}}{29}\relax 
+\par 

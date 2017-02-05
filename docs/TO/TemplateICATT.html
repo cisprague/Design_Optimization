@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="generator" content="hevea 2.29">
+<style type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.footnotetext{margin:0ex; padding:0ex;}
+div.footnotetext P{margin:0px; text-indent:1em;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.titlemain{margin:1ex 2ex 2ex 1ex;}
+.titlerest{margin:0ex 2ex;}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+div table{margin-left:inherit;margin-right:inherit;margin-bottom:2px;margin-top:2px}
+td table{margin:auto;}
+table{border-collapse:collapse;}
+td{padding:0;}
+.cellpadding0 tr td{padding:0;}
+.cellpadding1 tr td{padding:1px;}
+pre{text-align:left;margin-left:0ex;margin-right:auto;}
+blockquote{margin-left:4ex;margin-right:4ex;text-align:left;}
+td p{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+.lstlisting{font-family:monospace;white-space:pre;margin-right:auto;margin-left:0pt;text-align:left}
+</style>
+<title>Stochastic Shape Optimisation of UAV Wing under Uncertainty
+</title>
+</head>
+<body >
+<!--HEVEA command line is: hevea TemplateICATT.tex -->
+<!--CUT STYLE article--><!--CUT DEF section 1 --><table class="title"><tr><td style="padding:1ex"><h1 class="titlemain">Stochastic Shape Optimisation of UAV Wing under Uncertainty</h1></td></tr>
+</table><blockquote class="abstract"><span style="font-weight:bold">Abstract: </span>
+This paper examines the design of a wing for a new long-endurance aircraft that will be used as a telecommunications platform. In particular, the problem of optimizing the shape of the wing&#X2019;s spar, acting as the aircraft&#X2019;s main structural support, in order to minimize its mass, is analyzed and solved. In doing so, a robust object-orientated programming approach is taken to transcribe the problem and flexibly find optimal solutions from user defined design guesses. Using a complex step finite difference method and stochastic collocation, the geometry of the wing&#X2019;s spar is optimized with respect to its mass, under uncertain loading conditions. It is shown that a design mass of %70 percent lower than the nominal is feasible.
+</blockquote><p>Wing Structure, Shape Optimization</p><!--TOC section id="sec1" Contents-->
+<h2 id="sec1" class="section">Contents</h2><!--SEC END -->
+<!--TOC section id="sec2" Problem Model-->
+<h2 id="sec2" class="section">1&#XA0;&#XA0;Problem Model</h2><!--SEC END -->
+<!--TOC subsection id="sec3" Specifications-->
+<h3 id="sec3" class="subsection">1.1&#XA0;&#XA0;Specifications</h3><!--SEC END --><p>
+Preceding the construction of the optimization problem, it is necessary to define the constant metrics that characterize the nature of the problem. For the case of an annular spar, the problem parametrization requires several design metrics to be taken into account, namely: wing semi-span <span style="font-style:italic">L</span>, material density &#X3C1;, Young&#X2019;s modulus <span style="font-style:italic">E</span>, ultimate tensile/compressive strength &#X3C3;<sub><span style="font-style:italic">max</span></sub>, aircraft operational mass <span style="font-style:italic">M</span>, minimum spar thickness <span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub>, minimum inner wall radius <span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub>, and maximum outer wall radius <span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub>. </p><p>Additionally, the operational conditions that the aircraft will be subjected to need to be taken into account, namely: gravitational acceleration <span style="font-style:italic">g</span>, and maximum operational G-force <span style="font-style:italic">G</span>. In this particular investigation, attention will be directed towards the case of a carbon fiber spar, whose specifications are enumerated in Table <a href="#specs">1</a>. One can instantiate a UAV of this nature through an object-oriented approach, as shown in Listing <a href="#UAV">1</a>. The full source code of the UAV class is shown in Listing <a href="#uavclass">5</a>.</p><div class="center">Listing&#XA0;1: <a id="UAV"></a>UAV Instantiation</div><p><br>
+</p><div class="lstlisting"><span style="font-size:small"><em><span style="font-size:small">% Instantiate the wing</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">Raptor</span><span style="font-size:small"> = </span><span style="font-size:small">UAV</span><span style="font-size:small">(... </span><span style="font-size:small"><em><span style="font-size:small">% With properties:</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  7.5,       ... </span><span style="font-size:small"><em><span style="font-size:small">% Wing semi-span [m].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  1600,      ... </span><span style="font-size:small"><em><span style="font-size:small">% Spar density [kg/m^3].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  7</span><span style="font-size:small">e10</span><span style="font-size:small">,      ... </span><span style="font-size:small"><em><span style="font-size:small">% Modulus of elasticity [Pa].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  600</span><span style="font-size:small">e6</span><span style="font-size:small">,     ... </span><span style="font-size:small"><em><span style="font-size:small">% Maximum spar strength [Pa].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  500,       ... </span><span style="font-size:small"><em><span style="font-size:small">% Mass of aircraft [Kg].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  9.807,     ... </span><span style="font-size:small"><em><span style="font-size:small">% Earth's gravity [m/s^2].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  2.5</span><span style="font-size:small">e</span><span style="font-size:small">-3,    ... </span><span style="font-size:small"><em><span style="font-size:small">% Minimum spar thickness [m].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  1</span><span style="font-size:small">e</span><span style="font-size:small">-2,      ... </span><span style="font-size:small"><em><span style="font-size:small">% Minimum inner spar radius [m].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  5</span><span style="font-size:small">e</span><span style="font-size:small">-2,      ... </span><span style="font-size:small"><em><span style="font-size:small">% Maximum outer spar radius [m].</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  2.5,       ... </span><span style="font-size:small"><em><span style="font-size:small">% Maximum operational G-force.</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  5,         ... </span><span style="font-size:small"><em><span style="font-size:small">% Number of collocation points.</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  4          ... </span><span style="font-size:small"><em><span style="font-size:small">% Number of perturbations pts.</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">  );</span></div><blockquote class="table"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Table 1: Problem Specifications</td></tr>
+</table></div>
+<table border=1  style="border-spacing:0;" class="cellpadding1"><tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Parameter</td><td style="text-align:left;border:solid 1px;white-space:nowrap" >Symbol</td><td style="text-align:left;border:solid 1px;white-space:nowrap" >Value </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Semi-Span</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">L</span></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >7.5&#XA0;<span style="font-style:italic">m</span> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Density</td><td style="text-align:left;border:solid 1px;white-space:nowrap" >&#X3C1;</td><td style="text-align:left;border:solid 1px;white-space:nowrap" >1600&#XA0;<span style="font-style:italic">kg</span>/<span style="font-style:italic">m</span><sup>3</sup> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Young&#X2019;s Modulus</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">E</span></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >70&#XA0;<span style="font-style:italic">GPa</span> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Ultimate Strength</td><td style="text-align:left;border:solid 1px;white-space:nowrap" >&#X3C3;<sub><span style="font-style:italic">max</span></sub></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >600&#XA0;<span style="font-style:italic">MPa</span> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Aircraft Mass</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">M</span></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >500&#XA0;<span style="font-style:italic">kg</span> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Minimum Thickness</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >2.5&#XA0;<span style="font-style:italic">mm</span> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Minimum Inner Radius</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >1&#XA0;<span style="font-style:italic">cm</span> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Maximum Outer Radius</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >5&#XA0;<span style="font-style:italic">cm</span> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >Gravity</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">g</span></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >9.81&#XA0;<span style="font-style:italic">m</span>/<span style="font-style:italic">s</span><sup>2</sup> </td></tr>
+<tr><td style="text-align:left;border:solid 1px;white-space:nowrap" >G-Force</td><td style="text-align:left;border:solid 1px;white-space:nowrap" ><span style="font-style:italic">G</span></td><td style="text-align:left;border:solid 1px;white-space:nowrap" >2.5 </td></tr>
+</table>
+<a id="specs"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
+<!--TOC subsection id="sec4" Problem Formulation-->
+<h3 id="sec4" class="subsection">1.2&#XA0;&#XA0;Problem Formulation</h3><!--SEC END --><p><a id="opt"></a>
+The objective of this optimization problem is to minimize the total mass of the spar through structural alteration, while not allowing its structural stress &#X3C3; at any spanwise location to exceed its material&#X2019;s ultimate strength &#X3C3;<sub><span style="font-style:italic">max</span></sub> during its maximal operational loading conditions. In this particular optimization process, the uncertainty of the wing&#X2019;s load distributions is taken into account. That is, the stress constraint of the spar becomes the wing&#X2019;s average stress plus six standard deviations. This statistical constraint characterization is discussed further in Section <a href="#load">1.4.1</a>. Additionally, there are also manufacturing constraints that dictate the spar&#X2019;s inner radius <span style="font-style:italic">r</span> and outer radius <span style="font-style:italic">R</span> to satisfy <span style="font-style:italic">r</span> &#X2265; <span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub> and <span style="font-style:italic">R</span> &#X2264; <span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub>, while satisfying a thickness constraints <span style="font-style:italic">R</span> &#X2212; <span style="font-style:italic">r</span> &#X2265; <span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub>. In a more formal manner, this problem&#X2019;s formulation is shown as:
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><table class="display"><tr style="vertical-align:middle"><td class="dcell"><span style="font-weight:bold"><span style="font-style:italic">R</span></span>minimize<span style="font-style:italic">m</span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>)&#XA0;&#X2223;&#XA0;<span style="font-weight:bold"><span style="font-style:italic">R</span></span>&#XA0;&#X21A6;&#XA0;{&#XA0;<span style="font-style:italic">r</span>(<span style="font-style:italic">x</span>),&#XA0;<span style="font-style:italic">R</span>(<span style="font-style:italic">x</span>)&#XA0;}&#XA0;&#X2223;&#XA0;<span style="font-style:italic">x</span>&#XA0;&#X2208;&#XA0;[0,<span style="font-style:italic">L</span>]&#XA0;&#X2200;&#XA0;<span style="font-style:italic">x</span>subject to<span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub>&#XA0;&#X2264;&#XA0;<span style="font-style:italic">r</span>(<span style="font-style:italic">x</span>)&#XA0;&#X2264;&#XA0;<span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub>&#XA0;+&#XA0;<span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub><span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub>&#XA0;&#X2264;&#XA0;<span style="font-style:italic">R</span>(<span style="font-style:italic">x</span>)&#XA0;&#X2264;&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub><span style="font-style:italic">r</span>(<span style="font-style:italic">x</span>)&#XA0;&#X2212;&#XA0;<span style="font-style:italic">R</span>(<span style="font-style:italic">x</span>)&#XA0;&#X2264;&#XA0;&#X2212;<span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub>&#XA0;<span style="font-style:italic">E</span>(&#X3C3;(<span style="font-style:italic">x</span>,&#X3BE;))&#XA0;+&#XA0;6</td><td class="dcell"><span style="font-size:x-large">&#X221A;</span></td><td class="dcell"><table style="border:0;border-spacing:1;border-collapse:separate;" class="cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td style="text-align:center;white-space:nowrap" ><span style="font-style:italic">Var</span>(&#X3C3;(<span style="font-style:italic">x</span>,&#X3BE;))</td></tr>
+</table></td><td class="dcell">&#XA0;&#X2212;&#XA0;&#X3C3;<sub><span style="font-style:italic">max</span></sub>&#XA0;&#X2264;&#XA0;0
+</td></tr>
+</table></td></tr>
+</table><p>
+Essentially, the annular spar&#X2019;s inner and outer spanwise radii { <span style="font-style:italic">r</span>(<span style="font-style:italic">x</span>), <span style="font-style:italic">R</span>(<span style="font-style:italic">x</span>) } must be manipulated until the spar&#X2019;s total mass <span style="font-style:italic">m</span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>) has reached a minimum value for all possible satisfactory forms of <span style="font-style:italic">r</span>(<span style="font-style:italic">x</span>) and <span style="font-style:italic">R</span>(<span style="font-style:italic">x</span>). </p>
+<!--TOC subsection id="sec5" Geometrical Parametrization-->
+<h3 id="sec5" class="subsection">1.3&#XA0;&#XA0;Geometrical Parametrization</h3><!--SEC END --><p>
+Because finite element methods will be used to solve this optimization problem, it is required to discretize the spar&#X2019;s geometry into a series of spanwise finite elements. Herein, the wing&#X2019;s spar will be represented by a series of nodes, indexed by <span style="font-style:italic">i</span>, where <span style="font-style:italic">i</span>=1 and <span style="font-style:italic">i</span>=<span style="font-style:italic">n</span> signify the locations of the wing&#X2019;s root and tip respectively. As such, it can be deduced that there are <span style="font-style:italic">n</span> nodes and <span style="font-style:italic">n</span>&#X2212;1 finite elements along the span of the spar. Hence, the set of node indexes <span style="color:red"><span style="font-style:italic">N</span></span> and finite element indexes <span style="color:red"><span style="font-style:italic">E</span></span> are defined as follows
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+<span style="color:red"><span style="font-style:italic">N</span></span>&#XA0;=&#XA0;[<span style="font-style:italic">i</span>,&#XA0;<span style="font-style:italic">i</span>+1,&#XA0;&#X2026;,&#XA0;<span style="font-style:italic">n</span>]&#XA0;<span style="color:red"><span style="font-style:italic">E</span></span>&#XA0;=&#XA0;[<span style="font-style:italic">j</span>,&#XA0;<span style="font-style:italic">j</span>+1,&#XA0;&#X2026;,&#XA0;<span style="font-style:italic">n</span>&#X2212;1]
+
+</td></tr>
+</table>
+<!--TOC subsubsection id="sec6" Design Vector-->
+<h4 id="sec6" class="subsubsection">1.3.1&#XA0;&#XA0;Design Vector</h4><!--SEC END --><p><a id="R"></a>
+It is appropriate to begin the optimization process with the formulation of the design vector <span style="font-weight:bold"><span style="font-style:italic">R</span></span>, composed of inner radii <span style="font-style:italic">r</span> and outer radii <span style="font-style:italic">R</span>. Abiding to the form of a column vector, it is necessary to apply a change of variables and define the design vector as follows,
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+<span style="font-weight:bold"><span style="font-style:italic">R</span></span>&#XA0;=&#XA0;[&#X3BE;<sub><span style="font-style:italic">k</span></sub>,&#XA0;&#X3BE;<sub><span style="font-style:italic">k</span>+1</sub>,&#XA0;&#X2026;,&#XA0;&#X3BE;<sub>2<span style="font-style:italic">n</span></sub>]<sup><span style="font-style:italic">T</span></sup>&#XA0;{&#X3BE;<sub>2<span style="font-style:italic">k</span>&#X2212;1</sub>,&#XA0;&#X3BE;<sub>2<span style="font-style:italic">k</span></sub>}&#XA0;&#X2190;&#XA0;{<span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub>,&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub>}&#XA0;&#X2200;&#XA0;<span style="font-style:italic">i</span>&#XA0;&#X2208;&#XA0;<span style="color:red"><span style="font-style:italic">I</span></span>
+
+</td></tr>
+</table><p>
+It can be seen that the inner and outer radii are sequenced to occur for every other index in the design vector <span style="font-weight:bold"><span style="font-style:italic">R</span></span>.</p>
+<!--TOC subsubsection id="sec7" Spanwise Location-->
+<h4 id="sec7" class="subsubsection">1.3.2&#XA0;&#XA0;Spanwise Location</h4><!--SEC END --><p>
+Having deduced the number of nodes <span style="font-style:italic">n</span> from the user supplied design vector, the spanwise location along the spar can be discretized in a similar manner as, </p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-weight:bold"><span style="font-style:italic">x</span></span>&#XA0;=&#XA0;[&#XA0;<span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub>,&#XA0;<span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span>+1</sub>,&#XA0;&#X2026;,&#XA0;<span style="font-style:italic">x</span><sub><span style="font-style:italic">n</span></sub>]&#XA0;&#X2223;&#XA0;<span style="font-style:italic">x</span><sub>1</sub>&#XA0;=&#XA0;0&#XA0;,&#XA0;<span style="font-style:italic">x</span><sub><span style="font-style:italic">n</span></sub>&#XA0;=&#XA0;<span style="font-style:italic">L</span></td></tr>
+</table><p>, where it is noted that the first and final index values of <span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub> satisfy the length of the wing&#X2019;s semi-span.</p>
+<!--TOC subsubsection id="sec8" Volume and Mass-->
+<h4 id="sec8" class="subsubsection">1.3.3&#XA0;&#XA0;Volume and Mass</h4><!--SEC END --><p>
+At each node <span style="font-style:italic">i</span> along the wing&#X2019;s span, the spar&#X2019;s cross section is represented as a circular annulus of inner and outer radii, <span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub> and <span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub>, respectively, whose area is defined by  <span style="font-style:italic">A</span><sub><span style="font-style:italic">i</span></sub> = &#X3C0; (<span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub><sup>2</sup> &#X2212; <span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub><sup>2</sup>) . Assuming this cross sectional area characterization is consistent across all nodes, the inner and outer surfaces of each finite element <span style="font-style:italic">j</span> are linearly interpolated between their corresponding nodes <span style="font-style:italic">i</span>=<span style="font-style:italic">j</span> and <span style="font-style:italic">i</span>=<span style="font-style:italic">j</span>+1. Hence the nodes&#X2019; cross sectional areas are integrated along the interpolations, yielding the volume of each finite element as follows
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">V</span><sub><span style="font-style:italic">j</span></sub>&#XA0;=&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">&#X3C0;</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center">3</td></tr>
+</table></td><td class="dcell">&#XA0;(<span style="font-style:italic">r</span><sub><span style="font-style:italic">j</span></sub><sup>2</sup>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">j</span></sub><sup>2</sup>&#XA0;+&#XA0;<span style="font-style:italic">r</span><sub><span style="font-style:italic">j</span></sub>&#XA0;<span style="font-style:italic">r</span><sub><span style="font-style:italic">j</span>+1</sub>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">j</span></sub>&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">j</span>+1</sub>&#XA0;+&#XA0;<span style="font-style:italic">r</span><sub><span style="font-style:italic">j</span>+1</sub><sup>2</sup>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">j</span>+1</sub><sup>2</sup>&#XA0;)(<span style="font-style:italic">x</span><sub><span style="font-style:italic">j</span></sub>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">x</span><sub><span style="font-style:italic">j</span>+1</sub>)&#XA0;</td></tr>
+</table><p> 
+As such, the total volume of the spar can be computed by a summation across all finite elements <span style="font-style:italic">V</span>=&#X2211;<sub><span style="font-style:italic">j</span>=1</sub><sup><span style="font-style:italic">n</span>&#X2212;1</sup> <span style="font-style:italic">V</span><sub><span style="font-style:italic">j</span></sub>. Subsequently the spar&#X2019;s total mass is obtained as <span style="font-style:italic">m</span>=&#X3C1; <span style="font-style:italic">V</span>, and hence the optimization problem&#X2019;s objective function <span style="font-style:italic">m</span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>).</p>
+<!--TOC subsection id="sec9" Material Stress Constraints-->
+<h3 id="sec9" class="subsection">1.4&#XA0;&#XA0;Material Stress Constraints</h3><!--SEC END --><p>
+As formulated in Section <a href="#opt">1.2</a>, the structural stress at any spanwise location along the spar must not exceed its material&#X2019;s ultimate strength, &#X3C3;<sub><span style="font-style:italic">i</span></sub> &#X2212; &#X3C3;<sub><span style="font-style:italic">max</span></sub> &#X2264; 0 &#XA0; &#X2200; <span style="font-style:italic">i</span> &#X2208; <span style="color:red"><span style="font-style:italic">I</span></span>. Modeling the wing&#X2019;s spar as a cantilever beam, Euler-Bernoulli beam theory can be exploited to compute the spar&#X2019;s nodal stress.</p>
+<!--TOC subsubsection id="sec10" Load Distribution-->
+<h4 id="sec10" class="subsubsection">1.4.1&#XA0;&#XA0;Load Distribution</h4><!--SEC END --><p><a id="load"></a>
+In this study, a linear load distribution is no longer assumed. Rather, the force distribution experienced by the aircraft&#X2019;s spar is formulated as the nominal linear force distribution plus a probabilistic perturbation given by </p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">&#X3B4;(<span style="font-style:italic">x</span>,&#X3BE;)=</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">4</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">&#X2211;</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span>=1</td></tr>
+</table></td><td class="dcell">&#X3BE;<sub><span style="font-style:italic">n</span></sub>cos</td><td class="dcell">&#X239B;<br>
+&#X239C;<br>
+&#X239C;<br>
+&#X239D;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">(2<span style="font-style:italic">n</span>&#X2212;1)&#X3C0;&#XA0;<span style="font-style:italic">x</span></td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center">2<span style="font-style:italic">L</span></td></tr>
+</table></td><td class="dcell">&#X239E;<br>
+&#X239F;<br>
+&#X239F;<br>
+&#X23A0;</td></tr>
+</table><p> with &#X3BE;<sub><span style="font-style:italic">n</span></sub>&#X223C;<span style="color:red"><span style="font-style:italic">N</span></span>(0,<span style="font-style:italic">f</span><sub><span style="font-style:italic">nom</span></sub>(0)/10<span style="font-style:italic">n</span>). Hence the force along the wingspan can be formulated as 
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">F</span>(<span style="font-style:italic">x</span>,&#X3BE;)&#XA0;=&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">GMg</span></td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">L</span></td></tr>
+</table></td><td class="dcell">&#XA0;</td><td class="dcell">&#X239B;<br>
+&#X239C;<br>
+&#X239C;<br>
+&#X239D;</td><td class="dcell">1&#X2212;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">x</span><sub><span style="font-style:italic">i</span></sub></td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">L</span></td></tr>
+</table></td><td class="dcell">&#XA0;</td><td class="dcell">&#X239E;<br>
+&#X239F;<br>
+&#X239F;<br>
+&#X23A0;</td><td class="dcell">+&#XA0;&#X3B4;(<span style="font-style:italic">x</span>,&#X3BE;)</td></tr>
+</table><p>.
+With the specifications given in Table <a href="#specs">1</a> and Listing <a href="#UAV">1</a>, the nature of the spar&#X2019;s perturbed force distribution can be seen in Figure <a href="#fig%3Aforce">1</a>.</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 1: Spanwise Linear and Perturbed Force Distributions</td></tr>
+</table></div>
+<img src="TemplateICATT001.png">
+<a id="fig:force"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote>
+<!--TOC subsubsection id="sec11" Second Moment of Area-->
+<h4 id="sec11" class="subsubsection">1.4.2&#XA0;&#XA0;Second Moment of Area</h4><!--SEC END --><p>
+In order to calculate the displacement of the spar at any location along its span, the second moment of inertia at each node must first be calculated. For a circular annulus describing the cross section of any node along the spar&#X2019;s span, the second moment of area is formulated as such
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">I</span><sub><span style="font-style:italic">i</span></sub>&#XA0;=&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">&#X3C0;</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center">4</td></tr>
+</table></td><td class="dcell">&#XA0;</td><td class="dcell">&#X239B;<br>
+&#X239D;</td><td class="dcell"><span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub><sup>4</sup>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub><sup>4</sup>&#XA0;</td><td class="dcell">&#X239E;<br>
+&#X23A0;</td></tr>
+</table>
+<!--TOC subsubsection id="sec12" Displacement and Stress-->
+<h4 id="sec12" class="subsubsection">1.4.3&#XA0;&#XA0;Displacement and Stress</h4><!--SEC END --><p>
+Assuming a transversely applied load distribution and cross sectional symmetry, a cubic Hermite finite-element basis is used to solve the Euler-Bernoulli beam equations. The vertical and angular displacement of the spar at each node along the beam are calculated, using the aforementioned formulations of the load distribution and second moment of area. The beam&#X2019;s vertical displacement is formulated as follows  <span style="font-weight:bold">&#X3B4;</span> = [&#X3B4;<sub><span style="font-style:italic">i</span></sub>, &#X3B4;<sub><span style="font-style:italic">i</span>+1</sub>, &#X2026;, &#X3B4;<sub><span style="font-style:italic">n</span></sub>]<sup><span style="font-style:italic">T</span></sup> . Using the spar&#X2019;s displacements, its nodal tensile stresses are computed and formulated as such
+<span style="font-weight:bold">&#X3C3;</span> = [&#X3C3;<sub><span style="font-style:italic">i</span></sub>, &#X3C3;<sub><span style="font-style:italic">i</span>+1</sub>, &#X2026;, &#X3C3;<sub><span style="font-style:italic">n</span></sub>]<sup><span style="font-style:italic">T</span></sup> . Hence the constraint function must satisfy the following 
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">E</span>(&#X3C3;<sub><span style="font-style:italic">i</span></sub>)&#XA0;+&#XA0;6</td><td class="dcell"><span style="font-size:x-large">&#X221A;</span></td><td class="dcell"><table style="border:0;border-spacing:1;border-collapse:separate;" class="cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td style="text-align:center;white-space:nowrap" ><span style="font-style:italic">Var</span>(&#X3C3;<sub><span style="font-style:italic">i</span></sub>)</td></tr>
+</table></td><td class="dcell">&#XA0;&#X2212;&#XA0;&#X3C3;<sub><span style="font-style:italic">max</span></sub>&#XA0;&#X2264;&#XA0;0&#XA0;&#XA0;&#X2200;&#XA0;<span style="font-style:italic">i</span>&#XA0;&#X2208;&#XA0;<span style="color:red"><span style="font-style:italic">I</span></span></td></tr>
+</table><p> 
+Using stochastic collocation and Gauss-Hermite quadrature, with the 4 uncorrelated Gaussian random variables indicated in Section <a href="#load">1.4.1</a>, the mean stress is computed as
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-style:italic">E</span>(&#X3C3;(<span style="font-style:italic">x</span>,&#X3BE;))=</td><td class="dcell">&#X239B;<br>
+&#X239C;<br>
+&#X239C;<br>
+&#X239C;<br>
+&#X239C;<br>
+&#X239D;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">4</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">&#X220F;</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span>=1</td></tr>
+</table></td><td class="dcell">&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">1</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><table class="display"><tr style="vertical-align:middle"><td class="dcell"><span style="font-size:x-large">&#X221A;</span></td><td class="dcell"><table style="border:0;border-spacing:1;border-collapse:separate;" class="cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td style="text-align:center;white-space:nowrap" >2&#X3C0;&#X3C3;<sub><span style="font-style:italic">n</span></sub></td></tr>
+</table></td></tr>
+</table></td></tr>
+</table></td><td class="dcell">&#X239E;<br>
+&#X239F;<br>
+&#X239F;<br>
+&#X239F;<br>
+&#X239F;<br>
+&#X23A0;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">m</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">&#X2211;</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">i</span><sub>1</sub></td></tr>
+</table></td><td class="dcell">&#XA0;&#X2026;&#XA0;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-style:italic">m</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">&#X2211;</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">i</span><sub>2</sub></td></tr>
+</table></td><td class="dcell">&#XA0;</td><td class="dcell">&#X239B;<br>
+&#X239C;<br>
+&#X239C;<br>
+&#X239D;</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center">4</td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-size:xx-large">&#X220F;</span></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">n</span>=1</td></tr>
+</table></td><td class="dcell">&#XA0;<span style="font-style:italic">w</span><sub><span style="font-style:italic">i</span><sub><span style="font-style:italic">n</span></sub></sub></td><td class="dcell">&#X239E;<br>
+&#X239F;<br>
+&#X239F;<br>
+&#X23A0;</td></tr>
+</table><p>
+Within the loop of computing the expected stress value, the standard deviation is computed as well, with the following formulation
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-size:x-large">&#X221A;</span></td><td class="dcell"><table style="border:0;border-spacing:1;border-collapse:separate;" class="cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td style="text-align:center;white-space:nowrap" ><span style="font-style:italic">Var</span>(&#X3C3;(<span style="font-style:italic">x</span>,&#X3BE;))</td></tr>
+</table></td><td class="dcell">=</td><td class="dcell"><span style="font-size:x-large">&#X221A;</span></td><td class="dcell"><table style="border:0;border-spacing:1;border-collapse:separate;" class="cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td style="text-align:center;white-space:nowrap" ><span style="font-style:italic">E</span>(&#X3C3;(<span style="font-style:italic">x</span>,&#X3BE;)<sup>2</sup>)&#X2212;<span style="font-style:italic">E</span>(&#X3C3;(<span style="font-style:italic">x</span>,&#X3BE;))<sup>2</sup></td></tr>
+</table></td></tr>
+</table><p>.
+The nominal statistics for the average expected stress distribution can be seen in Figure <a href="#fig%3Anomstress">2</a>
+</p><blockquote class="figure"><div class="center"><div class="center"><hr style="width:80%;height:2"></div>
+<img src="TemplateICATT002.png">
+<div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 2: Nominal Stress Statistics with 20 Nodes</td></tr>
+</table></div>
+<a id="fig:nomstress"></a>
+<div class="center"><hr style="width:80%;height:2"></div></div></blockquote><p>
+The unadjusted abscissas and weights corresponding to the <span style="font-style:italic">m</span> collocation points are computed through the Gauss-Hermite subroutine given in Listing <a href="#gh">2</a>.
+</p><div class="center">Listing&#XA0;2: <a id="gh"></a>Gauss-Hermite Abscissas and Weights</div><p><br>
+</p><div class="lstlisting"><span style="font-size:small"><span style="font-weight:bold">function</span></span><span style="font-size:small"> [</span><span style="font-size:small">xi</span><span style="font-size:small">, </span><span style="font-size:small">w</span><span style="font-size:small">] = </span><span style="font-size:small">GaussHermite</span><span style="font-size:small">(</span><span style="font-size:small">obj</span><span style="font-size:small">,</span><span style="font-size:small">n</span><span style="font-size:small">)</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small"><em><span style="font-size:small">% Computes abscissas x and weights w</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small"><em><span style="font-size:small">% for Gauss-Hermite quadrature of order n</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">i</span><span style="font-size:small">   = 1:</span><span style="font-size:small">n</span><span style="font-size:small">-1;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">a</span><span style="font-size:small">   = </span><span style="font-size:small"><span style="font-weight:bold">sqrt</span></span><span style="font-size:small">(</span><span style="font-size:small">i</span><span style="font-size:small">/2);</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small"><em><span style="font-size:small">% Use a diagonal matrix for real roots</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">CM</span><span style="font-size:small">  = </span><span style="font-size:small"><span style="font-weight:bold">diag</span></span><span style="font-size:small">(</span><span style="font-size:small">a</span><span style="font-size:small">,1) + </span><span style="font-size:small"><span style="font-weight:bold">diag</span></span><span style="font-size:small">(</span><span style="font-size:small">a</span><span style="font-size:small">,-1);</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small"><em><span style="font-size:small">% V = column eigenvectors</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small"><em><span style="font-size:small">% D = diagonal matrix of eigenvalues</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">    [</span><span style="font-size:small">V</span><span style="font-size:small"> </span><span style="font-size:small">D</span><span style="font-size:small">]   = </span><span style="font-size:small"><span style="font-weight:bold">eig</span></span><span style="font-size:small">(</span><span style="font-size:small">CM</span><span style="font-size:small">);</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small"><em><span style="font-size:small">% Get abscissas</span></em></span><span style="font-size:small">
+</span><span style="font-size:small">    [</span><span style="font-size:small">xi</span><span style="font-size:small"> </span><span style="font-size:small">i</span><span style="font-size:small">] = </span><span style="font-size:small"><span style="font-weight:bold">sort</span></span><span style="font-size:small">(</span><span style="font-size:small"><span style="font-weight:bold">diag</span></span><span style="font-size:small">(</span><span style="font-size:small">D</span><span style="font-size:small">));</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">V</span><span style="font-size:small">       = </span><span style="font-size:small">V</span><span style="font-size:small">(:,</span><span style="font-size:small">i</span><span style="font-size:small">)</span><span style="font-size:small"><span style="font-size:small">';</span><span style="font-size:small">
+</span><span style="font-size:small">    % Weights</span><span style="font-size:small">
+</span><span style="font-size:small">    w       = sqrt(pi) * V(:,1).^2;</span><span style="font-size:small">
+</span><span style="font-size:small">end</span></span></div><p>For further background on the derrivation of this method, the reader is advised to consult [<a href="#Lazarov2012"></a>].</p>
+<!--TOC subsection id="sec13" Manufacturing Constraints-->
+<h3 id="sec13" class="subsection">1.5&#XA0;&#XA0;Manufacturing Constraints</h3><!--SEC END --><p>
+As required by the optimization problem&#X2019;s specifications, the inner and outer radii of each annular cross section cannot be less than <span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub> apart, the inner radius cannot be smaller than <span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub>, and the outer radius cannot be larger than <span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub>.</p>
+<!--TOC subsubsection id="sec14" Radii Bounds-->
+<h4 id="sec14" class="subsubsection">1.5.1&#XA0;&#XA0;Radii Bounds</h4><!--SEC END --><p>
+In formulating the range to which the inner radii <span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub> and outer radii <span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub> are bounded, it is necessary to formally define lower and upper bound vectors <span style="font-weight:bold"><span style="font-style:italic">L</span></span> and <span style="font-weight:bold"><span style="font-style:italic">U</span></span>, respectively, that satisfy <span style="font-weight:bold"><span style="font-style:italic">L</span></span> &#X2264; <span style="font-weight:bold"><span style="font-style:italic">R</span></span> &#X2264; <span style="font-weight:bold"><span style="font-style:italic">U</span></span>, corresponding to the form of the transformed design vector <span style="font-weight:bold"><span style="font-style:italic">R</span></span> described in Section <a href="#R">1.3.1</a>. The lower and upper bounds for the radii, corresponding to the constraints described in Section <a href="#opt">1.2</a>, are formulated as such
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell">
+<span style="font-weight:bold"><span style="font-style:italic">L</span></span>&#XA0;=&#XA0;[&#X3BB;<sub><span style="font-style:italic">k</span></sub>,&#XA0;&#X2026;,&#XA0;&#X3BB;<sub>2<span style="font-style:italic">n</span></sub>]<sup><span style="font-style:italic">T</span></sup>&#XA0;&#X2223;&#XA0;{&#XA0;&#X3BB;<sub>2<span style="font-style:italic">k</span>&#X2212;1</sub>,&#XA0;&#X3BB;<sub>2<span style="font-style:italic">k</span></sub>&#XA0;}&#XA0;&#X2190;&#XA0;{&#XA0;<span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub>,&#XA0;<span style="font-style:italic">r</span><sub><span style="font-style:italic">min</span></sub>&#XA0;+&#XA0;<span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub>&#XA0;}&#XA0;<span style="font-weight:bold"><span style="font-style:italic">U</span></span>&#XA0;=&#XA0;[&#X3C5;<sub><span style="font-style:italic">k</span></sub>,&#XA0;&#X2026;,&#XA0;&#X3C5;<sub>2<span style="font-style:italic">n</span></sub>]<sup><span style="font-style:italic">T</span></sup>&#XA0;&#X2223;&#XA0;{&#XA0;&#X3C5;<sub>2<span style="font-style:italic">k</span>&#X2212;1</sub>,&#XA0;&#X3C5;<sub>2<span style="font-style:italic">k</span></sub>&#XA0;}&#XA0;&#X2190;&#XA0;{&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub>,&#XA0;<span style="font-style:italic">R</span><sub><span style="font-style:italic">max</span></sub>&#XA0;}
+
+</td></tr>
+</table>
+<!--TOC subsubsection id="sec15" Thickness-->
+<h4 id="sec15" class="subsubsection">1.5.2&#XA0;&#XA0;Thickness</h4><!--SEC END --><p>
+In order to enforce the constraint that the annular spar&#X2019;s wall thickness may not be smaller than <span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub> and that the outer radii must always be greater than the inner radii <span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub> &gt; <span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub> &#XA0; &#X2200; <span style="font-style:italic">i</span> &#X2208; <span style="color:red"><span style="font-style:italic">I</span></span>, linear inequality constraints must be instantiated. In doing so, it is required to formulate a <span style="font-style:italic">n</span> &#XD7; 2<span style="font-style:italic">n</span> matrix <span style="font-weight:bold"><span style="font-style:italic">A</span></span> and <span style="font-style:italic">n</span> &#XD7; 1 column vector <span style="font-weight:bold"><span style="font-style:italic">b</span></span> that satisfy <span style="font-weight:bold"><span style="font-style:italic">A</span></span><span style="font-weight:bold"><span style="font-style:italic">R</span></span> &#X2264; <span style="font-weight:bold"><span style="font-style:italic">b</span></span>. The matrices are defined as follows
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><table class="display"><tr style="vertical-align:middle"><td class="dcell">
+<span style="font-weight:bold"><span style="font-style:italic">A</span></span>&#XA0;=&#XA0;
+</td><td class="dcell"><table class="display"><tr style="vertical-align:middle"><td class="dcell">&#X23A1;<br>
+&#X23A2;<br>
+&#X23A2;<br>
+&#X23A2;<br>
+&#X23A3;</td><td class="dcell"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="text-align:center;white-space:nowrap" >&#XA0;&#XA0;&#X3B1;<sub><span style="font-style:italic">i</span>,<span style="font-style:italic">k</span></sub></td><td style="text-align:center;white-space:nowrap" >&#X22EF;</td><td style="text-align:center;white-space:nowrap" >&#X3B1;<sub><span style="font-style:italic">i</span>,2<span style="font-style:italic">n</span></sub>&#XA0;</td></tr>
+<tr><td style="text-align:center;white-space:nowrap" >&#XA0;&#XA0;&#X22EE;</td><td style="text-align:center;white-space:nowrap" >&#X22F1;</td><td style="text-align:center;white-space:nowrap" >&#X22EE;&#XA0;&#XA0;</td></tr>
+<tr><td style="text-align:center;white-space:nowrap" >&#XA0;&#XA0;&#X3B1;<sub><span style="font-style:italic">n</span>,<span style="font-style:italic">k</span></sub></td><td style="text-align:center;white-space:nowrap" >&#X22EF;</td><td style="text-align:center;white-space:nowrap" >&#X3B1;<sub><span style="font-style:italic">n</span>,2<span style="font-style:italic">n</span></sub>&#XA0;</td></tr>
+<tr><td style="text-align:center;white-space:nowrap" >&#XA0;</td></tr>
+</table></td><td class="dcell">&#X23A4;<br>
+&#X23A5;<br>
+&#X23A5;<br>
+&#X23A5;<br>
+&#X23A6;</td></tr>
+</table></td><td class="dcell">
+&#X2223;&#XA0;{&#XA0;&#X3B1;<sub><span style="font-style:italic">i</span>,2<span style="font-style:italic">i</span>&#X2212;1</sub>,&#XA0;&#X3B1;<sub><span style="font-style:italic">i</span>,2<span style="font-style:italic">i</span></sub>&#XA0;}&#XA0;&#X2190;&#XA0;{1,&#X2212;1&#XA0;}&#XA0;&#XA0;<span style="font-weight:bold"><span style="font-style:italic">b</span></span>&#XA0;=&#XA0;[&#X3B2;<sub><span style="font-style:italic">i</span></sub>,&#XA0;&#X2026;,&#XA0;&#X3B2;<sub><span style="font-style:italic">n</span></sub>]<sup><span style="font-style:italic">T</span></sup>&#XA0;&#X2223;&#XA0;&#X3B2;<sub><span style="font-style:italic">i</span></sub>&#XA0;&#X2190;&#XA0;&#X2212;<span style="font-style:italic">T</span><sub><span style="font-style:italic">min</span></sub>
+</td></tr>
+</table></td></tr>
+</table><p>
+where <span style="font-weight:bold"><span style="font-style:italic">R</span></span> is defined as the 2<span style="font-style:italic">n</span> &#XD7; 1 column vector described in Section <a href="#R">1.3.1</a>. For further information on formatting constraints and objectives to accommodate Matlab&#X2019;s built in functions, the reader is advised to consult [<a href="#Attaway2013"></a>].</p>
+<!--TOC section id="sec16" Optimization-->
+<h2 id="sec16" class="section">2&#XA0;&#XA0;Optimization</h2><!--SEC END -->
+<!--TOC subsection id="sec17" Sequential Quadratic Programming-->
+<h3 id="sec17" class="subsection">2.1&#XA0;&#XA0;Sequential Quadratic Programming</h3><!--SEC END --><p>
+Sequential quadratic programming (SQP) has proven itself as one of the most successful methods for solving nonlinearly constrained optimization problems. Essentially, SQP aims to model the nonlinear programming problem (NLP) at a given approximate solution <span style="font-weight:bold"><span style="font-style:italic">R</span></span><sup><span style="font-style:italic">h</span></sup> by a quadratic programming subproblem, then use the subproblem to construct a better approximation <span style="font-weight:bold"><span style="font-style:italic">R</span></span><sup><span style="font-style:italic">h</span>+1</sup>. This process is iterated until convergence to a solution <span style="font-weight:bold"><span style="font-style:italic">R</span></span><sup>*</sup> is achieved. SQP is not a feasible point method; neither the point nor any of the subsequent iterates are required to be feasible. However, the SQP method does satisfy the bounds <span style="font-weight:bold"><span style="font-style:italic">L</span></span> and <span style="font-weight:bold"><span style="font-style:italic">U</span></span> at every iteration, and is ideal for small to medium scale problem such as in the case of this paper&#X2019;s optimization problem, where optimality returns are generally diminished for <span style="font-style:italic">n</span>&gt;40. This method of nonlinear constrained optimization is handled natively by Matlab&#X2019;s <code>fmincon</code> function [<a href="#Attaway2013"></a>], and described in more detail in [<a href="#Boggs1995"></a>].</p>
+<!--TOC subsection id="sec18" Objective and Constraint Gradients-->
+<h3 id="sec18" class="subsection">2.2&#XA0;&#XA0;Objective and Constraint Gradients</h3><!--SEC END --><p>
+In order to achieve an optimal design vector <span style="font-weight:bold"><span style="font-style:italic">R</span></span><sup>*</sup> that satisfies <span style="font-style:italic">m</span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span><sup>*</sup>) &#X2264; <span style="font-style:italic">m</span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>) &#X2200; <span style="font-weight:bold"><span style="font-style:italic">R</span></span> &#X21A6; {<span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub>} &#X2200; <span style="font-style:italic">i</span> &#X2208; <span style="color:red"><span style="font-style:italic">I</span></span>, both the necessary and sufficient conditions for optimality need to be realized. It is necessary for an optima at a stationary point <span style="font-weight:bold"><span style="text-decoration:overline">R</span></span> to have a first derivative of zero &#X2207; <span style="font-weight:bold"><span style="text-decoration:overline">R</span></span> = <span style="font-weight:bold">0</span>. It is sufficient to call the stationary point a local minimum <span style="font-weight:bold"><span style="font-style:italic">R</span></span><sup><span style="font-weight:bold">*</span></sup> if &#X2207;<sup>2</sup> <span style="font-weight:bold"><span style="font-style:italic">R</span></span><sup><span style="font-weight:bold">*</span></sup> &gt; <span style="font-weight:bold">0</span>. For further information on conditions of optimality, the reader should consult [<a href="#Kuhn1951"></a>].</p>
+<!--TOC subsubsection id="sec19" Forward Difference-->
+<h4 id="sec19" class="subsubsection">2.2.1&#XA0;&#XA0;Forward Difference</h4><!--SEC END --><p>
+Among the simplest methods of finite difference derivative approximations is the forward step method
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-weight:bold">&#X2207;</span><sub>&#X3BE;<sub><span style="font-style:italic">i</span></sub></sub><span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>)&#XA0;=
+</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>&#XA0;+&#XA0;<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub><span style="font-weight:bold"><span style="font-style:italic">e</span></span><sub><span style="font-style:italic">i</span></sub>)&#XA0;&#X2212;&#XA0;<span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>)</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub></td></tr>
+</table></td><td class="dcell">&#XA0;+&#XA0;<span style="color:red"><span style="font-style:italic">O</span></span>(<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub>)</td></tr>
+</table><p>
+, where <span style="font-weight:bold"><span style="font-style:italic">e</span></span><sub><span style="font-style:italic">i</span></sub> represents a vector of zeros with the <span style="font-style:italic">i</span><sup><span style="font-style:italic">th</span></sup> index equal to 1, <span style="color:red"><span style="font-style:italic">O</span></span>(<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub>) represents the truncation error, and <span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub> represents the step size. Herein, <span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub> represents the positive distance from | &#X3BE;<sub><span style="font-style:italic">i</span></sub> | to the next larger floating-point number of the same precision as &#X3BE;<sub><span style="font-style:italic">i</span></sub>. It should be noted that <span style="font-weight:bold"><span style="font-style:italic">f</span></span> may represent either the problem&#X2019;s objective function <span style="font-style:italic">m</span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>) or constraint function <span style="font-weight:bold"><span style="font-style:italic">c</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>).</p>
+<!--TOC subsubsection id="sec20" Central Difference-->
+<h4 id="sec20" class="subsubsection">2.2.2&#XA0;&#XA0;Central Difference</h4><!--SEC END --><p>
+Similarly to the forward difference method, the approximate derivative of either the objective or constraint functions may be approximated with a perturbation to the design vector <span style="font-weight:bold"><span style="font-style:italic">R</span></span>. Under the central difference paradigm, the finite difference derivative approximation becomes
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-weight:bold">&#X2207;</span><sub>&#X3BE;<sub><span style="font-style:italic">i</span></sub></sub><span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>)&#XA0;=
+</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>&#XA0;+&#XA0;<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub><span style="font-weight:bold"><span style="font-style:italic">e</span></span><sub><span style="font-style:italic">i</span></sub>)&#XA0;&#X2212;&#XA0;<span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>&#XA0;&#X2212;&#XA0;<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub><span style="font-weight:bold"><span style="font-style:italic">e</span></span><sub><span style="font-style:italic">i</span></sub>)</td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center">2<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub></td></tr>
+</table></td><td class="dcell">&#XA0;+&#XA0;<span style="color:red"><span style="font-style:italic">O</span></span>(<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub><sup>2</sup>)</td></tr>
+</table><p>
+It should be noticed that the central difference method is second-order accurate since the dominate term in its truncation error is <span style="color:red"><span style="font-style:italic">O</span></span>(<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub><sup>2</sup>). Therefor the central difference method is more accurate than the forward difference method due to its smaller truncation error.</p>
+<!--TOC subsubsection id="sec21" Complex Step-->
+<h4 id="sec21" class="subsubsection">2.2.3&#XA0;&#XA0;Complex Step</h4><!--SEC END --><p>
+Among the best of the finite difference methods is complex-step. It has shown to be very accurate, robust, and easy to implement, while maintaining a reasonable computational cost. The relationship between the real and imaginary parts of the function at hand is exploited to yield a derivative approximation of the following form
+</p><table class="display dcenter"><tr style="vertical-align:middle"><td class="dcell"><span style="font-weight:bold">&#X2207;</span><sub>&#X3BE;<sub><span style="font-style:italic">i</span></sub></sub><span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>)&#XA0;=
+</td><td class="dcell"><table class="display"><tr><td class="dcell" style="text-align:center"><table class="display"><tr style="vertical-align:middle"><td class="dcell">&#X2111;&#XA0;[&#XA0;<span style="font-weight:bold"><span style="font-style:italic">f</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>&#XA0;+&#XA0;<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub><span style="font-weight:bold"><span style="font-style:italic">e</span></span><sub><span style="font-style:italic">i</span></sub>&#XA0;</td><td class="dcell"><span style="font-size:x-large">&#X221A;</span></td><td class="dcell"><table style="border:0;border-spacing:1;border-collapse:separate;" class="cellpadding0"><tr><td class="hbar"></td></tr>
+<tr><td style="text-align:center;white-space:nowrap" >&#X2212;1</td></tr>
+</table></td><td class="dcell">)&#XA0;]&#XA0;</td></tr>
+</table></td></tr>
+<tr><td class="hbar"></td></tr>
+<tr><td class="dcell" style="text-align:center"><span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub></td></tr>
+</table></td><td class="dcell">&#XA0;+&#XA0;<span style="color:red"><span style="font-style:italic">O</span></span>(<span style="font-style:italic">h</span><sub><span style="font-style:italic">i</span></sub><sup>2</sup>)</td></tr>
+</table><p>The complex step method converges quadratically with decreasing step size. This method is particularly advantageous because it is insensitive to small step sizes and eventually achieves the accuracy of its function evaluations. The reader can learn more about its derivation in [<a href="#Lyness1968"></a>]. Herein, focus will be directed towards the use of the complex step method to approximate the gradients of both the objective function <span style="font-style:italic">m</span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>) and constraint function <span style="font-weight:bold"><span style="font-style:italic">C</span></span>(<span style="font-weight:bold"><span style="font-style:italic">R</span></span>). The complex step method can be formulated to approximate the functions&#X2019; Jacobian matrices as shown in Listing <a href="#complexalg">3</a>. As an example, to approximate the gradient of the objective function, one should execute <code>obj</code><code>.</code><code>Complex_Jacobian</code><code>(</code><code>@obj</code><code>.</code><code>Stress_Constraints</code><code>,&#XA0;</code><code>R</code><code>)</code>.</p><div class="center">Listing&#XA0;3: <a id="complexalg"></a>Complex Step Method</div><p><br>
+</p><div class="lstlisting"><span style="font-size:small"><span style="font-weight:bold">function</span></span><span style="font-size:small"> </span><span style="font-size:small">jac</span><span style="font-size:small"> = </span><span style="font-size:small">Complex_Jacobian</span><span style="font-size:small">(</span><span style="font-size:small">obj</span><span style="font-size:small">, </span><span style="font-size:small">funct</span><span style="font-size:small">, </span><span style="font-size:small">R</span><span style="font-size:small">)</span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small">fval</span><span style="font-size:small"> = </span><span style="font-size:small">funct</span><span style="font-size:small">(</span><span style="font-size:small">R</span><span style="font-size:small">);</span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small">n</span><span style="font-size:small">    = </span><span style="font-size:small">numel</span><span style="font-size:small">(</span><span style="font-size:small">R</span><span style="font-size:small">);</span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small">m</span><span style="font-size:small">    = </span><span style="font-size:small">numel</span><span style="font-size:small">(</span><span style="font-size:small">fval</span><span style="font-size:small">);</span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small">jac</span><span style="font-size:small">  = </span><span style="font-size:small"><span style="font-weight:bold">zeros</span></span><span style="font-size:small">(</span><span style="font-size:small">m</span><span style="font-size:small">,</span><span style="font-size:small">n</span><span style="font-size:small">);</span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small">h</span><span style="font-size:small">    = </span><span style="font-size:small"><span style="font-weight:bold">eps</span></span><span style="font-size:small">(</span><span style="font-size:small">R</span><span style="font-size:small">)*</span><span style="font-size:small">n</span><span style="font-size:small">;</span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small"><span style="font-weight:bold">for</span></span><span style="font-size:small"> </span><span style="font-size:small">I</span><span style="font-size:small">=1:</span><span style="font-size:small">n</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">r</span><span style="font-size:small">        = </span><span style="font-size:small">R</span><span style="font-size:small">;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">r</span><span style="font-size:small">(</span><span style="font-size:small">I</span><span style="font-size:small">,1)   = </span><span style="font-size:small">r</span><span style="font-size:small">(</span><span style="font-size:small">I</span><span style="font-size:small">,1) + </span><span style="font-size:small">h</span><span style="font-size:small">(</span><span style="font-size:small">I</span><span style="font-size:small">,1)*</span><span style="font-size:small">i</span><span style="font-size:small">;</span><span style="font-size:small">
+</span><span style="font-size:small">    </span><span style="font-size:small">jac</span><span style="font-size:small">(:,</span><span style="font-size:small">I</span><span style="font-size:small">) = </span><span style="font-size:small"><span style="font-weight:bold">imag</span></span><span style="font-size:small">(</span><span style="font-size:small">funct</span><span style="font-size:small">(</span><span style="font-size:small">r</span><span style="font-size:small">))/</span><span style="font-size:small">h</span><span style="font-size:small">(</span><span style="font-size:small">I</span><span style="font-size:small">,1);</span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small"><span style="font-weight:bold">end</span></span><span style="font-size:small">
+</span><span style="font-size:small">  </span><span style="font-size:small">jac</span><span style="font-size:small"> = </span><span style="font-size:small">jac</span><span style="font-size:small">.</span><span style="font-size:small"><span style="font-size:small">';</span><span style="font-size:small">
+</span><span style="font-size:small">end</span></span></div>
+<!--TOC section id="sec22" Results-->
+<h2 id="sec22" class="section">3&#XA0;&#XA0;Results</h2><!--SEC END --><p>
+Having instantiated an aircraft with the specifications enumerated in Table <a href="#specs">1</a>, one can supply an initial guess to the optimizer. The initial guess of the 2<span style="font-style:italic">n</span> &#XD7; 1 design vector <span style="font-weight:bold"><span style="font-style:italic">R</span></span><sub><span style="font-weight:bold">0</span></sub> will characterize the nominal design of the spar&#X2019;s radii, such that  {<span style="font-style:italic">r</span><sub><span style="font-style:italic">i</span></sub>, <span style="font-style:italic">R</span><sub><span style="font-style:italic">i</span></sub>} &#X2190; {0.0415, 0.05 } &#X2200; <span style="font-style:italic">i</span> &#X2208; <span style="color:red"><span style="font-style:italic">I</span></span>, yielding an initial total spar mass of <span style="font-style:italic">m</span><sub>0</sub> = 29.32&#XA0;<span style="font-style:italic">kg</span>. With the use of the complex step finite difference method and a varying amount of collocation points, the optimizer settled upon a final mass of <span style="font-style:italic">m</span>=8.59221&#XA0;<span style="font-style:italic">kg</span>, which is a %70.7026 decrease from the nominal mass, as shown through the convergence of the optimizer in Figure <a href="#fig%3Aconv">4</a>. The resulting spar geometries are seen in Figure <a href="#fig%3Ageo">6</a>. As one can see from Figure <a href="#fig%3Aoptstats">8</a>, the average stress and standard deviations are markedly different from the corresponding nominal plot in Figure <a href="#fig%3Anomstress">2</a>. It is also seen throughout the figures that varying the number of collocation points did not affect the final optimal mass of the spar. It is seen that the new constraints enforced by the uncertainty model have made their effect known, as it is seen in Figure <a href="#fig%3Aoptstats">8</a> that the six standard deviations above the mean stress have settled upon the constraint.</p><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div><p>0.49@percent
+<img src="TemplateICATT003.png"> 
+</p><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 3: Complex Step Convergence with 25 Nodes and 3 Collocation Points</td></tr>
+</table></div><p>0.49@percent
+<img src="TemplateICATT004.png">
+</p><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 4: Complex Step Convergence with 25 Nodes and 5 Collocation Points</td></tr>
+</table></div><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 5: Complex step convergence</td></tr>
+</table></div><p>
+<a id="fig:conv"></a>
+</p><div class="center"><hr style="width:80%;height:2"></div></blockquote><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div><p>0.49@percent
+<img src="TemplateICATT005.png"> 
+</p><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 6: Optimized Design with 25 Nodes and 3 Collocation Points</td></tr>
+</table></div><p>0.49@percent
+<img src="TemplateICATT006.png">
+</p><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 7: Optimized Design with 25 Nodes and 5 Collocation Points</td></tr>
+</table></div><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 8: Optimized Geometry</td></tr>
+</table></div><p>
+<a id="fig:geo"></a>
+</p><div class="center"><hr style="width:80%;height:2"></div></blockquote><blockquote class="figure"><div class="center"><hr style="width:80%;height:2"></div><p>0.49@percent
+<img src="TemplateICATT007.png"> 
+</p><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 9: Optimized Stress Statistics with 25 Nodes and 3 Collocation Points.</td></tr>
+</table></div><p>0.49@percent
+<img src="TemplateICATT008.png">
+</p><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 10: Optimized Stress Statistics with 25 Nodes and 5 Collocation Points.</td></tr>
+</table></div><div class="caption"><table style="border-spacing:6px;border-collapse:separate;" class="cellpading0"><tr><td style="vertical-align:top;text-align:left;" >Figure 11: Optimized Stress Statistics</td></tr>
+</table></div><p>
+<a id="fig:optstats"></a>
+</p><div class="center"><hr style="width:80%;height:2"></div></blockquote>
+<!--TOC subsection id="sec23" Source Code-->
+<h3 id="sec23" class="subsection">3.1&#XA0;&#XA0;Source Code</h3><!--SEC END --><div class="center">Listing&#XA0;4: <a id="uavex"></a>UAV Optimization Example</div><p><br>
+</p><div class="lstlisting"><span style="font-weight:bold">clear</span> <span style="font-weight:bold">all</span>
+<em>% Instantiate the wing</em>
+Raptor = UAV(... <em>% With properties:</em>
+  7.5,       ... <em>% Wing semi-span [m].</em>
+  1600,      ... <em>% Spar density [kg/m^3].</em>
+  7e10,      ... <em>% Modulus of elasticity [Pa].</em>
+  600e6,     ... <em>% Maximum spar strength [Pa].</em>
+  500,       ... <em>% Mass of aircraft [Kg].</em>
+  9.807,     ... <em>% Earth's gravity [m/s^2].</em>
+  2.5e-3,    ... <em>% Minimum spar thickness [m].</em>
+  1e-2,      ... <em>% Minimum inner spar radius [m].</em>
+  5e-2,      ... <em>% Maximum outer spar radius [m].</em>
+  2.5,       ... <em>% Maximum operational G-force.</em>
+  5,         ... <em>% Number of collocation points.</em>
+  4          ... <em>% Number of perturbations pts.</em>
+  );
+
+<em>% Take an initial guess of the spar's radii.</em>
+R = <span style="font-weight:bold">zeros</span>(80,1);
+<span style="font-weight:bold">for</span> I=1:Raptor.N_Nodes(R)
+    R(2*I-1,1) = 0.0415;
+    R(2*I, 1)  = 0.05;
+<span style="font-weight:bold">end</span>
+[x,fval,exitflag,output,lambda,grad,hessian] = Raptor.Optimize(R,'complex')
+Raptor.Plot_Stress_Stats(x</div><div class="center">Listing&#XA0;5: <a id="uavclass"></a>UAV Class</div><p><br>
+</p><div class="lstlisting">)classdef UAV
+    properties
+        Length;   <em>% Wing semi-span [metres].</em>
+        Density;  <em>% Density of spar [kg/m^3].</em>
+        E;        <em>% Longitudinal modulus [Pascals].</em>
+        Strength; <em>% Ultimate strength [Pa].</em>
+        Mass;     <em>% Aircraft operational weight [Kg].</em>
+        Gravity;  <em>% Gravity [m/s^2].</em>
+        Tmin;     <em>% Minimum spar thickness [m]</em>
+        Rimin;    <em>% Minimum inner spar radius [m]</em>
+        Romax;    <em>% Maximum outer spar radius [m]</em>
+        Gmax;     <em>% Maximum operational G-force.</em>
+        NCol;     <em>% Number of collocation points.</em>
+        NPert;    <em>% Number of perturbation pts.</em>
+    <span style="font-weight:bold">end</span>
+
+    methods
+        <span style="font-weight:bold">function</span> obj = UAV(L, dens, E, stren, m, ...
+                g, tmin, rimin, romax, Gmax,NCol,NPert)
+            <em>% Constructs an instance of the UAV class.</em>
+            obj.Length   = L;
+            obj.Density  = dens;
+            obj.E        = E;
+            obj.Strength = stren;
+            obj.Mass     = m;
+            obj.Gravity  = g;
+            obj.Tmin     = tmin;
+            obj.Rimin    = rimin;
+            obj.Romax    = romax;
+            obj.Gmax     = Gmax;
+            obj.NCol     = NCol;
+            obj.NPert    = NPert;
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> NN = N_Nodes(obj, R)
+            <em>% Returns the integer number of nodes</em>
+            <em>% according to the number of radii given.</em>
+            NN = <span style="font-weight:bold">length</span>(R)/2;
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> NE = N_Elements(obj, R)
+            <em>% Returns the integer number of finite</em>
+            <em>% elements.</em>
+            NE = obj.N_Nodes(R) - 1;
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> X = Span_Mesh(obj, R)
+            <em>% Returns the spanwise coordinates [m]</em>
+            X = <span style="font-weight:bold">linspace</span>(0, obj.Length, obj.N_Nodes(R)).';
+        end
+
+        function Iyy = Second_Moment(obj, R)
+            % Returns the second moment of area for a
+            % circular annulus at each spanwise
+            % location [m^4].
+            for I = 1:obj.N_Nodes(R)
+                Iyy(I,1) = (pi/4)*(R(2*I)^4 - R(2*I-1)^4);
+            end
+        end
+
+        function [Fn,Fp,df] = Sectional_Force(obj, R)
+            % Returns the wing's force distribution at a
+            <em>% G-force [N].</em>
+            <em>% Gravitational acceleration [m/s^2]</em>
+            g = obj.Gravity*obj.Gmax;
+            <em>% Spanwise mesh</em>
+            x = obj.Span_Mesh(R);
+            <em>% Length of spar</em>
+            L = obj.Length;
+            <em>% Approximately linear force distribution</em>
+            <em>% Nominal force distribution</em>
+            Fn = g*(obj.Mass/L)*...
+                (1-(x./obj.Length));
+            <em>% Initialize probabalistic perturbation</em>
+            df = <span style="font-weight:bold">zeros</span>(<span style="font-weight:bold">size</span>(Fn));
+            <span style="font-weight:bold">for</span> n=1:4
+                <em>% Uniform random variable</em>
+                xi = normrnd(0,Fn(1)/(10*n));
+                <em>% Probabilistic perturbation</em>
+                df = df + xi*<span style="font-weight:bold">cos</span>(((2*n-1)*<span style="font-weight:bold">pi</span>.*x)/(2*L));
+            <span style="font-weight:bold">end</span>
+            Fp = Fn + df;
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> Plot_Sectional_Force(obj, R)
+            <em>% Plots the spanwise load distribution.</em>
+            [Fn,Fp] = obj.Sectional_Force(R);
+            x = obj.Span_Mesh(R)
+            <span style="font-weight:bold">figure</span>;
+            <span style="font-weight:bold">plot</span>(x,Fn,'ks-',x,Fp,'ko-')
+            <span style="font-weight:bold">xlabel</span>('Spanwise Distance [m]');
+            <span style="font-weight:bold">ylabel</span>('Sectional Force [N]');
+            <span style="font-weight:bold">legend</span>('Nominal','Perturbed')
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> [SD, SDV, SDp, SDVp] = Spar_Displacement(obj, R)
+            <em>% Nominal and perturbed sectional force</em>
+            [F,Fp] = obj.Sectional_Force(R);
+            <em>% Returns 2 DoF spar displacement at each</em>
+            <em>% node. [m, rad].</em>
+            SD = CalcBeamDisplacement(...
+                obj.Length, obj.E, obj.Second_Moment(R), ...
+                F, obj.N_Elements(R) ...
+                );
+            SDp = CalcBeamDisplacement(...
+                obj.Length, obj.E, obj.Second_Moment(R), ...
+                Fp, obj.N_Elements(R) ...
+                );
+            SDV = SD(1:2:2*(obj.N_Nodes(R)));
+            SDVp  = SDp(1:2:2*(obj.N_Nodes(R)));
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> Plot_Spar_Displacement(obj, R)
+            <em>% Plots the spar's spanwise vertical</em>
+            <em>% displacement.</em>
+            [SD,SDV,SDp,SDVp] = obj.Spar_Displacement(R);
+            x = obj.Span_Mesh(R);
+            <span style="font-weight:bold">figure</span>;
+            <span style="font-weight:bold">plot</span>(x,SDV,'ks-',x,SDVp,'ko-');
+            <em>%axis equal;</em>
+            <span style="font-weight:bold">xlabel</span>('Spanwise Distance [m]');
+            <span style="font-weight:bold">ylabel</span>('Vertical Spar Displacement [m]');
+            <span style="font-weight:bold">legend</span>('Nominal','Perturbed');
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> [xi, w] = GaussHermite(obj,n)
+            <em>% Computes absciasas x and weights w</em>
+            <em>% for Gauss-Hermite quadrature of order n</em>
+            i   = 1:n-1;
+            a   = <span style="font-weight:bold">sqrt</span>(i/2);
+            <em>% Use a diagonal matrix to guarentee real roots</em>
+            CM  = <span style="font-weight:bold">diag</span>(a,1) + <span style="font-weight:bold">diag</span>(a,-1);
+            <em>% V = column eigenvectors</em>
+            <em>% D = diagnonal matrix of eigenvalues</em>
+            [V D]   = <span style="font-weight:bold">eig</span>(CM);
+            <em>% Get abscissas</em>
+            [xi i] = <span style="font-weight:bold">sort</span>(<span style="font-weight:bold">diag</span>(D));
+            V       = V(:,i)';
+            % Weights
+            w       = sqrt(pi) * V(:,1).^2;
+        end
+
+        function zmax = Max_Height(obj, R)
+            % Returns the maximum height at each node [m].
+            for I=1:obj.N_Nodes(R)
+                zmax(I,1) = R(2*I);
+            end
+        end
+
+        function [SS,SSp] = Spar_Stress(obj, R)
+            % Returns the spar's stress at each node [Pa].
+            hmax = obj.Max_Height(R);
+            [SD,SDV,SDp,SDVp] = obj.Spar_Displacement(R);
+            NE = obj.N_Elements(R);
+            L = obj.Length;
+            E = obj.E;
+            SS = CalcBeamStress(L,E,hmax,SD,NE);
+            SSp = CalcBeamStress(L,E,hmax,SDp,NE);
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> [avg,stdv] = Stochastic_Stress(obj,R)
+            <em>% Generate Guass-Hermite quadrature pts.</em>
+            [xi,w] = obj.GaussHermite(obj.NCol);
+            <em>% We adjust the weights</em>
+            w = w./<span style="font-weight:bold">sqrt</span>(<span style="font-weight:bold">pi</span>);
+            <em>% Compute the nominal force distribution</em>
+            Fn = obj.Sectional_Force(R);
+            <em>% Span mesh</em>
+            x = obj.Span_Mesh(R);
+            <em>% Spar length</em>
+            L = obj.Length;
+            <em>% Nominal root force</em>
+            Fn0 = Fn(1);
+            <em>% Second moment</em>
+            Iyy = obj.Second_Moment(R);
+            <em>% Spar Length</em>
+            L = obj.Length;
+            <em>% Modulus</em>
+            E = obj.E;
+            <em>% Number of elements</em>
+            NE = obj.N_Elements(R);
+            <em>% Number of nodes</em>
+            NN = obj.N_Nodes(R);
+            <em>% Max Height</em>
+            hmax = obj.Max_Height(R);
+            <em>% Normal distribution parameters</em>
+            mu = 0;
+            xir = <span style="font-weight:bold">length</span>(xi);
+            sigma = @(n) Fn0/(10*n);
+            <em>% Initialize average</em>
+            avg = <span style="font-weight:bold">zeros</span>(<span style="font-weight:bold">size</span>(Fn));
+            stdv = <span style="font-weight:bold">zeros</span>(<span style="font-weight:bold">size</span>(Fn));
+            <span style="font-weight:bold">for</span> i1=1:xir
+                pt1 = <span style="font-weight:bold">sqrt</span>(2)*sigma(1)*xi(i1) + mu;
+                <span style="font-weight:bold">for</span> i2=1:xir
+                    pt2 = <span style="font-weight:bold">sqrt</span>(2)*sigma(2)*xi(i2) + mu;
+                    <span style="font-weight:bold">for</span> i3=1:xir
+                        pt3 = <span style="font-weight:bold">sqrt</span>(2)*sigma(3)*xi(i3) + mu;
+                        <span style="font-weight:bold">for</span> i4=1:xir
+                            pt4 = <span style="font-weight:bold">sqrt</span>(2)*sigma(4)*xi(i4) + mu;
+                            pts = [pt1;pt2;pt3;pt4];
+                            <em>% Probabalistic perturbation</em>
+                            df = <span style="font-weight:bold">zeros</span>(<span style="font-weight:bold">size</span>(x));
+                            <span style="font-weight:bold">for</span> pti=1:<span style="font-weight:bold">length</span>(pts)
+                                df = df + pts(pti).*<span style="font-weight:bold">cos</span>(((2*pti-1)*<span style="font-weight:bold">pi</span>.*x)./(L*2));
+                            <span style="font-weight:bold">end</span>
+                            <em>% Perturbed force distribution</em>
+                            Fp = Fn + df;
+                            SD = CalcBeamDisplacement(...
+                                obj.Length, obj.E, Iyy, ...
+                                Fp, NE);
+                            SS = CalcBeamStress(L,E,hmax,SD,NE);
+                            weight = w(i1)*w(i2)*w(i3)*w(i4);
+                            avg = avg + weight.*SS;
+                            stdv = stdv + weight.*SS.^2;
+                        <span style="font-weight:bold">end</span>
+                    <span style="font-weight:bold">end</span>
+                <span style="font-weight:bold">end</span>
+            <span style="font-weight:bold">end</span>
+            stdv = <span style="font-weight:bold">sqrt</span>(stdv-avg.^2);
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> Plot_Stress_Stats(obj,R)
+            [mu,stdv] = obj.Stochastic_Stress(R);
+            x = obj.Span_Mesh(R);
+            <span style="font-weight:bold">figure</span>;
+            <span style="font-weight:bold">plot</span>(x,mu,'ks-',x,mu+6.*stdv,'ko-',x,mu-6.*stdv,'ko-');
+            <span style="font-weight:bold">xlabel</span>('Spanwise Distance [m]');
+            <span style="font-weight:bold">ylabel</span>('Magnitude of Normal Stress [m]');
+            <span style="font-weight:bold">legend</span>({'$E(\sigma(x,\xi))$','$E(\sigma(x,\xi)) \pm 6\sqrt{Var(\sigma (x,\xi))}$' },'Interpreter','latex');
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> Plot_Spar_Stress(obj, R)
+            <em>% Plots the spar's spanwise stress.</em>
+            x = obj.Span_Mesh(R);
+            [SS,SSp] = obj.Spar_Stress(R);
+            <span style="font-weight:bold">figure</span>;
+            <span style="font-weight:bold">plot</span>(x,SS,'ks-',x,SSp,'ko-');
+            <span style="font-weight:bold">xlabel</span>('Spanwise Distance [m]');
+            <span style="font-weight:bold">ylabel</span>('Magnitude of Normal Stress [Pa]');
+            <span style="font-weight:bold">legend</span>('Nominal','Perturbed');
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> [V, VS] = Spar_Volume(obj, R)
+            <em>% Returns volume of spar [m^3].</em>
+            <em>% V = Total volume [m^3].</em>
+            <em>% VS = Spanwise volume [m^3].</em>
+            x = obj.Span_Mesh(R);
+            <em>% Loop over all the elements.</em>
+            <span style="font-weight:bold">for</span> I=1:obj.N_Elements(R)
+                <em>% Index the radii nodes.</em>
+                r1    = R(2*I-1,1); <em>% First inner radius [m].</em>
+                r2    = R(2*I+1,1); <em>% Second inner radius [m].</em>
+                R1    = R(2*I,1);   <em>% First outer radius [m].</em>
+                R2    = R(2*I+2,1); <em>% Second outer radius [m].</em>
+                x1    = x(I);       <em>% First node location [m].</em>
+                x2    = x(I+1);     <em>% Second node location [m].</em>
+                <em>% Volume for this element [m^3].</em>
+                VS(I,1) = (<span style="font-weight:bold">pi</span>./3)*...
+                    (r1.^2-R1.^2+r1*r2+r2.^2-R1*R2-R2.^2)*...
+                    (x1-x2);
+            <span style="font-weight:bold">end</span>
+            V = <span style="font-weight:bold">sum</span>(VS); <em>% Summation of volumes.</em>
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> [m, ms] = Spar_Mass(obj, R)
+            <em>% Returns the mass of the spar [Kg].</em>
+            <em>% m = Total mass [Kg].</em>
+            <em>% ms = Spanwise mass [Kg].</em>
+            [V, VS] = obj.Spar_Volume(R);
+            m       = V.*obj.Density;
+            ms      = VS.*obj.Density;
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> [lb, ub] = Bound_Constraints(obj, R)
+            <em>% Returns the lower and upper bounds for</em>
+            <em>% the design vector.</em>
+            <span style="font-weight:bold">for</span> I=1:obj.N_Nodes(R)
+                lb(2*I-1,1) = obj.Rimin;
+                lb(2*I,1)   = obj.Rimin + obj.Tmin;
+                ub(2*I-1,1) = obj.Romax - obj.Tmin;
+                ub(2*I,1)   = obj.Romax;
+            <span style="font-weight:bold">end</span>
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> c = Stress_Constraints(obj, R)
+            <em>% Returns the nonlinear inequality constraint.</em>
+            c = obj.Spar_Stress(R) - obj.Strength;
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> [A, b] = Linear_Constraints(obj, R)
+            <em>% Returns the linear constraints, dictating</em>
+            <em>% that the minimum thickness is abided to.</em>
+            <span style="font-weight:bold">for</span> I=1:obj.N_Nodes(R)
+                A(I,2*I-1) = 1;
+                A(I,2*I)   = -1;
+                b(I,1)     = -obj.Tmin;
+            <span style="font-weight:bold">end</span>
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> jac = Complex_Jacobian(obj, funct, R)
+            <em>% Returns the Jacobian matrix of a function</em>
+            <em>% using the complex step method.</em>
+            fval = funct(R);    <em>% Function value.</em>
+            n    = numel(R);    <em>% Number of variables.</em>
+            m    = numel(fval); <em>% Number of dependents.</em>
+            jac  = <span style="font-weight:bold">zeros</span>(m,n);  <em>% Memory allocation.</em>
+            h    = <span style="font-weight:bold">eps</span>(R)*n;    <em>% Small step size.</em>
+            <span style="font-weight:bold">for</span> I=1:n
+                r        = R;                     <em>% Copy</em>
+                r(I,1)   = r(I,1) + h(I,1)*i;     <em>% Perturb</em>
+                jac(:,I) = <span style="font-weight:bold">imag</span>(funct(r))/h(I,1); <em>% Diff</em>
+            <span style="font-weight:bold">end</span>
+            <em>% Transpose to fit dimensions of problem.</em>
+            jac = jac.';
+        end
+
+        function [f, fgrad] = Objective_Function(obj, R)
+            f     = obj.Spar_Mass(R);        % Value
+            fgrad = obj.Complex_Jacobian(... % Gradient
+                @obj.Spar_Mass, R);
+        end
+
+        function [c, ceq, gradc, gradceq] = Ineq_Constraints(obj, R)
+            % Nonlinear constraint
+            c       = obj.Stress_Constraints(R);
+            ceq     = [];                        % No ineq constraint
+            % Gradient of nonlinear constraint
+            gradc   = obj.Complex_Jacobian(@obj.Stress_Constraints, R);
+            gradceq = []; % No ineq constraint, no gradient.
+        end
+
+        function c = Stochastic_Stress_Constraints(obj, R)
+            % Returns the nonlinear inequality constraint.
+            [avg,stdv] = obj.Stochastic_Stress(R);
+            c = avg + 6.*stdv - obj.Strength;
+        end
+
+        function [c,ceq,gradc,gradceq] = Stochastic_Ineq_Constraints(obj,R)
+            c = obj.Stochastic_Stress_Constraints(R);
+            ceq = [];
+            % Complex Jacobian
+            gradc = obj.Complex_Jacobian(@obj.Stochastic_Stress_Constraints,R);
+            gradceq = [];
+        end
+
+        function [x,fval,exitflag, ...
+                output,lambda,grad,hessian] = Optimize(obj, R, step_type)
+            fun      = @obj.Objective_Function; % Objective function.
+            x0       = R; % Initial guess of spar radii [m].
+            [A, b]   = obj.Linear_Constraints(R);
+            Aeq      = [];
+            beq      = [];
+            [lb, ub] = obj.Bound_Constraints(R);
+            nonlcon  = @obj.Stochastic_Ineq_Constraints;
+            % Step type specified?
+            if ~exist('step_type', 'var')
+                step_type = 'central';
+            end
+            if (step_type == 'central') | (step_type == 'forward')
+                % Don't need to specify gradients.
+                objgrad = false; constrgrad = false;
+            <span style="font-weight:bold">end</span>
+            <span style="font-weight:bold">if</span> step_type == 'complex'
+                <em>% Must specify gradients.</em>
+                objgrad = true; constrgrad = true;
+            <span style="font-weight:bold">end</span>
+            options  = optimoptions('fmincon', ...
+                'Display', 'iter-detailed', ...
+                'Algorithm', 'sqp',  ...
+                'UseParallel', true, ...
+                'PlotFcn', @optimplotfval, ...
+                'ScaleProblem', true, ...
+                'SpecifyObjectiveGradient', objgrad, ...
+                'SpecifyConstraintGradient', constrgrad, ...
+                'OptimalityTolerance', 1e-12, ...
+                'StepTolerance', 1e-12, ...
+                'ConstraintTolerance', 1e-12);
+            <em>% Fmincon implementation.</em>
+            [x,fval,exitflag, ...
+                output,lambda,grad,hessian] = fmincon(fun,x0,A,b,Aeq,beq,...
+                lb,ub,nonlcon,options)
+        <span style="font-weight:bold">end</span>
+
+        <span style="font-weight:bold">function</span> Plot_Spar_Shape(obj, R)
+            <em>% Returns a plot of the spar's geometry.</em>
+            <span style="font-weight:bold">for</span> I=1:obj.N_Nodes(R);
+                Ri(I) = R(2*I-1,1);
+                Ro(I) = R(2*I,1);
+            <span style="font-weight:bold">end</span>
+            <span style="font-weight:bold">figure</span>;
+            x = obj.Span_Mesh(R);
+            <span style="font-weight:bold">plot</span>(x,Ri,'ks-',x,Ro,'ks-',x,-Ri,'ks-',x,-Ro,'ks-');
+            <span style="font-weight:bold">xlabel</span>('Spanwise Distance [m]');
+            <span style="font-weight:bold">ylabel</span>('Transverse Distance [m]');
+        <span style="font-weight:bold">end</span>
+
+    <span style="font-weight:bold">end</span>
+<span style="font-weight:bold">end</span></div><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<hr style="height:2"><blockquote class="quote"><em>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</em><a href="http://hevea.inria.fr/index.html"><em>H</em><em><span style="font-size:small"><sup>E</sup></span></em><em>V</em><em><span style="font-size:small"><sup>E</sup></span></em><em>A</em></a><em>.</em></blockquote></body>
+</html>

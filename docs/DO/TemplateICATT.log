@@ -1,0 +1,1049 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=latex 2017.2.4)  5 FEB 2017 11:44
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\makeatletter\def\HCode{\futurelet\HCode\HChar}\def\HChar{\ifx"\HCode\def\HCo
+de"##1"{\Link##1}\expandafter\HCode\else\expandafter\Link\fi}\def\Link#1.a.b.c.
+{\g@addto@macro\@documentclasshook{\RequirePackage[#1,html]{tex4ht}}\let\HCode\
+documentstyle\def\documentstyle{\let\documentstyle\HCode\expandafter\def\csname
+ tex4ht\endcsname{#1,html}\def\HCode####1{\documentstyle[tex4ht,}\@ifnextchar[{
+\HCode}{\documentstyle[tex4ht]}}}\makeatother\HCode xhtml,.a.b.c.\input Templat
+eICATT
+(./TemplateICATT.tex (/usr/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2016-07-18-16:08
+Package: tex4ht 
+--------------------------------------
+--- Note --- for _ at preamble, use the command line option `early_'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ at preamble, use the command line option `early^'
+--------------------------------------
+\tmp:toks=\toks14
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/usepackage.4ht
+version 2016-07-01-09:18
+) (./spconf.sty)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/06/28 v2.15d AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen103
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks16
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks17
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 99.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2016/07/10 v3.1a Driver-dependent file (DPC,SPQR)
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count99
+\lst@gtempboxa=\box28
+\lst@token=\toks21
+\lst@length=\count100
+\lst@currlwidth=\dimen114
+\lst@column=\count101
+\lst@pos=\count102
+\lst@lostspace=\dimen115
+\lst@width=\dimen116
+\lst@newlines=\count103
+\lst@lineno=\count104
+\lst@maxwidth=\dimen117
+
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count105
+\lst@skipnumbers=\count106
+\lst@framebox=\box29
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texmf-dist/tex/latex/psnfss/courier.sty
+Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
+)
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count107
+\float@exts=\toks22
+\float@box=\box30
+\@float@everytoks=\toks23
+\@floatcapt=\box31
+)
+(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen118
+\captionmargin@=\dimen119
+\captionwidth=\dimen120
+\caption@tempdima=\dimen121
+\caption@indent=\dimen122
+\caption@parindent=\dimen123
+\caption@hangindent=\dimen124
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@
+tempboxa \hbox {#1. #2} \ifdim \wd \@tempboxa >\hsize #1. #2\par \else \hbox to
+\hsize {\hfil \box \@tempboxa \hfil } \fi .
+\c@ContinuedFloat=\count108
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+) (/usr/share/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+\c@subfigure=\count109
+\c@subtable=\count110
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/tex4ht.4ht
+version 2009-01-07-07:11
+--------------------------------------
+--- Note --- for additional information, use the command line option `info'
+--------------------------------------
+
+::::::::::::::::::::::::::::::::::::::::::
+ TeX4ht info is available in the log file 
+::::::::::::::::::::::::::::::::::::::::::
+) (/usr/share/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2016-07-18-16:08
+
+--- needs --- tex4ht TemplateICATT ---
+\tmp:cnt=\count111
+\openout15 = `TemplateICATT.tmp'.
+
+(./TemplateICATT.tmp)
+\tmp:dim=\skip46
+ (./TemplateICATT.xref)
+\:refout=\write3
+\openout3 = `TemplateICATT.xref'.
+
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+--------------------------------------
+--- Note --- to remove the <?xml version=...?> processing instruction use the c
+ommand line option `no-VERSION'
+--------------------------------------
+--------------------------------------
+--- Note --- to remove the DOCTYPE declaration use the command line option `no-
+DOCTYPE'
+--------------------------------------
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+)
+--------------------------------------
+--- Note --- for marking of the base font, use the command line option `fonts+'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for non active _, use the command line option `no_'
+--------------------------------------
+--------------------------------------
+--- Note --- for _ of catcode 13, use the command line option `_13'
+--------------------------------------
+--------------------------------------
+--- Note --- for non active ^, use the command line option `no^'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ of catcode 13, use the command line option `^13'
+--------------------------------------
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+--------------------------------------
+--- Note --- for alternative charset, use the command line option `charset=...'
+
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS font decoration, use the `NoFonts' command line opti
+on
+--------------------------------------
+--------------------------------------
+--- Note --- for jpg bitmaps of pictures, use the `jpg' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for gif bitmaps of pictures, use the `gif' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for content and toc in 2 frames, use the command line option `fram
+es'
+--------------------------------------
+--------------------------------------
+--- Note --- for content, toc, and footnotes in 3 frames, use the command line 
+option `frames-fn'
+--------------------------------------
+--------------------------------------
+--- Note --- for file extension name xht, use the command line option `xht'
+--------------------------------------
+TeX4ht package options: xhtml,html
+--------------------------------------
+--- Note --- To print a timestamp, use the command line option timestamp
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS code, use the command line option `-css
+--------------------------------------
+--------------------------------------
+--- Note --- for inline CSS code, use the command line option `css-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for pop ups on mouse over, use the command line option `mouseover'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for addressing images in a subdirectory, use the command line opti
+on `imgdir:.../'
+--------------------------------------
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+)
+\:tokwrite=\toks24
+\:tokpage=\toks25
+--------------------------------------
+--- Note --- for back links to toc, use the command line option `sections+'
+--------------------------------------
+--------------------------------------
+--- Note --- for linear crosslinks of pages, use the command line option `next'
+
+--------------------------------------
+\openout15 = `TemplateICATT.4ct'.
+
+\:tocout=\write4
+\openout4 = `TemplateICATT.4tc'.
+
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/latex.4ht
+version 2016-08-11-16:11
+LaTeX Info: Redefining \_ on input line 168.
+--------------------------------------
+--- Note --- for links into captions, instead of float heads, use the command l
+ine option `refcaption'
+--------------------------------------
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+--------------------------------------
+--- Note --- For mini tocs immediately aftter the header use the command line o
+ption `minitoc<'
+--------------------------------------
+--------------------------------------
+--- Note --- for enumerated list elements with valued data, use the command lin
+e option `enumerate+'
+--------------------------------------
+--------------------------------------
+--- Note --- for enumerated list elements li's with value attributes, use the c
+ommand line option `enumerate-'
+--------------------------------------
+--------------------------------------
+--- Note --- for CSS2 code, use the command line option `css2'
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial tabular, use the command line option `pic-tabular'
+--------------------------------------
+--------------------------------------
+--- Note --- for bitmap fbox'es, use the command line option `pic-fbox'
+--------------------------------------
+--------------------------------------
+--- Note --- for bitmap framebox'es, use the command line option `pic-framebox'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for inline footnotes use command line option `fn-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for tracing of latex font commands, use the command line option `f
+onts'
+--------------------------------------
+--------------------------------------
+--- Note --- for width specifications of tabular p entries, use the `p-width' c
+ommand line option or a configuration similar to \Configure{HColWidth}{\HCode{ 
+style="width:\HColWidth"}}
+--------------------------------------
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+--------------------------------------
+--- Note --- for pictorial eqnarray, use the command line option `pic-eqnarray'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial array, use the command line option `pic-array'
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ environments, use the command line option `pic
+-m' (not recommended!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ and $$...$$ environments with latex alt, use t
+he command line option `pic-m+' (not safe!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial array, use the command line option `pic-array'
+--------------------------------------
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/fontmath.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/article.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+--------------------------------------
+--- Note --- for automatic sectioning pagination, use the command line option `
+1', `2', `3', '4', '5', '6', or '7'
+--------------------------------------
+--------------------------------------
+--- Note --- for files named derived from section titles, use the command line 
+option `sec-filename'
+--------------------------------------
+--------------------------------------
+--- Note --- for i-columns index, use the command line option `index=i' (e.g., 
+index=2)
+--------------------------------------
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/amsmath.4ht
+version 2009-05-21-09:32
+\tmp:muskip=\muskip12
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/amstext.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/amsbsy.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/amsopn.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/graphicx.4ht
+version 2015-08-05-15:37
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/graphics.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+--------------------------------------
+--- Note --- if included graphics are of degraded quality, try the command line
+ options `graphics-num' or `graphics-'. The `num' should provide the density of
+ pixels in the bitmaps (e.g., 110). 
+--------------------------------------
+--------------------------------------
+--- Note --- for key dimensions try the option `Gin-dim'; for key dimensions wh
+en bounding box is unavailable try `Gin-dim+'; neither is recommended
+--------------------------------------
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/dvips.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/url.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+--------------------------------------
+--- Note --- for URL encoding within href use the command line option `url-enc'
+
+--------------------------------------
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/listings.4ht
+version 2016-07-17-16:23
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+--------------------------------------
+--- Note --- to ensure proper alignments use fixed size fonts (see listings.dtx
+)
+--------------------------------------
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/float.4ht
+version 2009-05-21-09:32
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/caption.4ht
+version 2013-03-03-19:41
+
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+))
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2016-07-01-08:29
+)
+(/usr/share/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2009-05-18-23:01
+)) (./TemplateICATT.aux)
+\openout1 = `TemplateICATT.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 47.
+ (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+\c@lstlisting=\count112
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: Incompatible package detected (regarding \caption).
+(caption)             \caption = macro:->\:CheckOption {refcaption}\if:Option \
+SkipRefstepAnchor \fi \refstepcounter \@captype \@dblarg {\@caption \@captype }
+.
+Package caption Info: Incompatible package detected (regarding \@caption).
+(caption)             \@caption = macro:->\ifx \EndPicture \:UnDef \expandafter
+ \n:@caption: \else \expandafter \o:@caption: \fi .
+
+
+Package caption Warning: \caption will not be redefined since it's already
+(caption)                redefined by a document class or package which is
+(caption)                unknown to the caption package.
+See the caption package documentation for explanation.
+
+
+! Package caption Error: The `subcaption' package does not work correctly
+(caption)                in compatibility mode.
+
+See the caption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.47 \begin{document}
+                     
+? 
+Package caption Info: End \AtBeginDocument code.
+--- file TemplateICATT.css ---
+[1
+
+
+
+]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
+
+
+LaTeX Warning: Citation `Kautz1994' on page 2 undefined on input line 52.
+
+
+LaTeX Warning: Citation `Kautz1994' on page 2 undefined on input line 52.
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 55.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 57.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 57.
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) (./TemplateICATT.4ct)
+(./TemplateICATT.4ct) (./TemplateICATT.4ct) [2
+
+]
+
+LaTeX Warning: Citation `Kautz1994' on page 3 undefined on input line 62.
+
+
+LaTeX Warning: Citation `Kautz1994' on page 3 undefined on input line 66.
+
+l. 66 Writing TemplateICATT.idv[1] (TemplateICATT0x.png)
+l. 66 Writing TemplateICATT.idv[2] (TemplateICATT1x.png)
+l. 69 Writing TemplateICATT.idv[3] (TemplateICATT2x.png)
+l. 69 Writing TemplateICATT.idv[4] (TemplateICATT3x.png)
+l. 69 Writing TemplateICATT.idv[5] (TemplateICATT4x.png)
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 72.
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 81.
+[3] [4
+
+
+]
+l.93 --- TeX4ht warning --- File `Pics/tawplan.xbb' not found ---
+l.93 --- TeX4ht warning --- Cannot determine size of graphic in Pics/tawplan.xb
+b (no BoundingBox) ---
+l. 93 --- needs --- Pics/tawplan.png ---
+l.98 --- TeX4ht warning --- File `Pics/tawperspective.xbb' not found ---
+l.98 --- TeX4ht warning --- Cannot determine size of graphic in Pics/tawperspec
+tive.xbb (no BoundingBox) ---
+l. 98 --- needs --- Pics/tawperspective.png ---
+l.103 --- TeX4ht warning --- File `Pics/tawtangential.xbb' not found ---
+l.103 --- TeX4ht warning --- Cannot determine size of graphic in Pics/tawtangen
+tial.xbb (no BoundingBox) ---
+l. 103 --- needs --- Pics/tawtangential.png ---
+l.108 --- TeX4ht warning --- File `Pics/tawradial.xbb' not found ---
+l.108 --- TeX4ht warning --- Cannot determine size of graphic in Pics/tawradial
+.xbb (no BoundingBox) ---
+l. 108 --- needs --- Pics/tawradial.png ---
+
+LaTeX Warning: Citation `Kautz1994' on page 5 undefined on input line 113.
+
+[5
+
+
+]
+
+LaTeX Warning: Citation `Kautz1994' on page 6 undefined on input line 118.
+
+l. 119 Writing TemplateICATT.idv[6] (TemplateICATT5x.png)
+l. 124 Writing TemplateICATT.idv[7] (TemplateICATT6x.png)
+
+LaTeX Warning: Citation `Matlab' on page 6 undefined on input line 159.
+
+l. 170 Writing TemplateICATT.idv[8] (TemplateICATT7x.png)
+l. 170 Writing TemplateICATT.idv[9] (TemplateICATT8x.png)
+l. 170 Writing TemplateICATT.idv[10] (TemplateICATT9x.png)
+l. 173 Writing TemplateICATT.idv[11] (TemplateICATT10x.png)
+l. 173 Writing TemplateICATT.idv[12] (TemplateICATT11x.png)
+l. 173 Writing TemplateICATT.idv[13] (TemplateICATT12x.png)
+l. 187 Writing TemplateICATT.idv[14] (TemplateICATT13x.png)
+
+LaTeX Warning: Citation `Matlab' on page 6 undefined on input line 189.
+
+[6
+
+]
+l. 193 Writing TemplateICATT.idv[15] (TemplateICATT14x.png)
+ [7
+
+] [8
+
+
+]
+l.206 --- TeX4ht warning --- File `Pics/stddphi.xbb' not found ---
+l.206 --- TeX4ht warning --- Cannot determine size of graphic in Pics/stddphi.x
+bb (no BoundingBox) ---
+l. 206 --- needs --- Pics/stddphi.png ---
+[9
+
+
+]
+
+LaTeX Warning: Citation `Matlab' on page 10 undefined on input line 215.
+
+
+LaTeX Warning: Citation `Helton2003' on page 10 undefined on input line 247.
+
+
+LaTeX Warning: Citation `Rasmussen2004' on page 10 undefined on input line 250.
+
+
+l. 298 Writing TemplateICATT.idv[16] (TemplateICATT15x.png)
+l. 298 Writing TemplateICATT.idv[17] (TemplateICATT16x.png)
+[10
+
+] [11
+
+
+]
+l. 316 Writing TemplateICATT.idv[18] (TemplateICATT17x.png)
+File: Pics/stddphi-omega.eps Graphic file (type eps)
+ <Pics/stddphi-omega.eps>
+l. 317 Writing TemplateICATT.idv[19] (TemplateICATT18x.png)
+l. 317 Writing TemplateICATT.idv[20] (TemplateICATT19x.png)
+l. 321 Writing TemplateICATT.idv[21] (TemplateICATT20x.png)
+File: Pics/stddphi-r2.eps Graphic file (type eps)
+ <Pics/stddphi-r2.eps>
+l. 322 Writing TemplateICATT.idv[22] (TemplateICATT21x.png)
+l. 322 Writing TemplateICATT.idv[23] (TemplateICATT22x.png)
+l. 326 Writing TemplateICATT.idv[24] (TemplateICATT23x.png)
+File: Pics/stddphi-alpha1.eps Graphic file (type eps)
+
+<Pics/stddphi-alpha1.eps>
+l. 327 Writing TemplateICATT.idv[25] (TemplateICATT24x.png)
+l. 327 Writing TemplateICATT.idv[26] (TemplateICATT25x.png)
+l. 330 Writing TemplateICATT.idv[27] (TemplateICATT26x.png)
+ [12
+
+]
+l. 334 Writing TemplateICATT.idv[28] (TemplateICATT27x.png)
+l. 334 Writing TemplateICATT.idv[29] (TemplateICATT28x.png)
+l. 334 Writing TemplateICATT.idv[30] (TemplateICATT29x.png)
+ [13
+
+
+] [14
+
+
+]
+l. 339 Writing TemplateICATT.idv[31] (TemplateICATT30x.png)
+File: Pics/surf-a1-r2-nom.eps Graphic file (type eps)
+ <Pics/surf-a1-r2-nom.eps>
+l. 340 Writing TemplateICATT.idv[32] (TemplateICATT31x.png)
+l. 340 Writing TemplateICATT.idv[33] (TemplateICATT32x.png)
+l. 344 Writing TemplateICATT.idv[34] (TemplateICATT33x.png)
+File: Pics/surf-w-a1-nom.eps Graphic file (type eps)
+
+<Pics/surf-w-a1-nom.eps>
+l. 345 Writing TemplateICATT.idv[35] (TemplateICATT34x.png)
+l. 345 Writing TemplateICATT.idv[36] (TemplateICATT35x.png)
+l. 349 Writing TemplateICATT.idv[37] (TemplateICATT36x.png)
+File: Pics/surf-w-r2-nom.eps Graphic file (type eps)
+ <Pics/surf-w-r2-nom.eps>
+l. 350 Writing TemplateICATT.idv[38] (TemplateICATT37x.png)
+l. 350 Writing TemplateICATT.idv[39] (TemplateICATT38x.png)
+l. 353 Writing TemplateICATT.idv[40] (TemplateICATT39x.png)
+ [15
+
+
+]
+
+LaTeX Warning: Citation `Kennedy1995' on page 16 undefined on input line 358.
+
+
+LaTeX Warning: Citation `Matlab' on page 16 undefined on input line 360.
+
+
+LaTeX Warning: Citation `Matlab' on page 16 undefined on input line 360.
+
+l. 362 Writing TemplateICATT.idv[41] (TemplateICATT40x.png)
+l. 362 Writing TemplateICATT.idv[42] (TemplateICATT41x.png)
+[16
+
+
+] [17
+
+
+]
+l. 366 Writing TemplateICATT.idv[43] (TemplateICATT42x.png)
+File: Pics/psfval100.eps Graphic file (type eps)
+ <Pics/psfval100.eps>
+l. 367 Writing TemplateICATT.idv[44] (TemplateICATT43x.png)
+ [18
+
+
+] [19
+
+
+] [20
+
+
+]
+l. 373 Writing TemplateICATT.idv[45] (TemplateICATT44x.png)
+File: Pics/psfval600.eps Graphic file (type eps)
+ <Pics/psfval600.eps>
+l. 374 Writing TemplateICATT.idv[46] (TemplateICATT45x.png)
+ [21
+
+
+]
+l. 378 Writing TemplateICATT.idv[47] (TemplateICATT46x.png)
+l. 378 Writing TemplateICATT.idv[48] (TemplateICATT47x.png)
+
+[22
+
+
+] [23
+
+
+]
+l. 382 Writing TemplateICATT.idv[49] (TemplateICATT48x.png)
+File: Pics/psons.eps Graphic file (type eps)
+ <Pics/psons.eps> [24
+
+
+]
+l. 388 Writing TemplateICATT.idv[50] (TemplateICATT49x.png)
+ [25
+
+
+] [26
+
+
+]
+l. 393 Writing TemplateICATT.idv[51] (TemplateICATT50x.png)
+File: Pics/surf-a1-r2.eps Graphic file (type eps)
+ <Pics/surf-a1-r2.eps>
+l. 394 Writing TemplateICATT.idv[52] (TemplateICATT51x.png)
+l. 394 Writing TemplateICATT.idv[53] (TemplateICATT52x.png)
+l. 398 Writing TemplateICATT.idv[54] (TemplateICATT53x.png)
+File: Pics/surf-w-a1.eps Graphic file (type eps)
+
+<Pics/surf-w-a1.eps>
+l. 399 Writing TemplateICATT.idv[55] (TemplateICATT54x.png)
+l. 399 Writing TemplateICATT.idv[56] (TemplateICATT55x.png)
+l. 403 Writing TemplateICATT.idv[57] (TemplateICATT56x.png)
+File: Pics/surf-w-r2.eps Graphic file (type eps)
+ <Pics/surf-w-r2.eps>
+l. 404 Writing TemplateICATT.idv[58] (TemplateICATT57x.png)
+l. 404 Writing TemplateICATT.idv[59] (TemplateICATT58x.png)
+l. 407 Writing TemplateICATT.idv[60] (TemplateICATT59x.png)
+ [27
+
+
+]
+No file TemplateICATT.bbl.
+[28
+
+
+] (./Code/Optimization.m
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <10> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 1.
+LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 2.
+) (./Code/Car.m)
+Overfull \hbox (53709.55522pt too wide) in paragraph at lines 417--417
+\OT1/ptm/m/n/10 Class[][][][]\OT1/pcr/m/n/10 x[][][][][][][][][][]x[][][][][][]
+[]x[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]x[]
+[][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]x[][][][
+][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][]
+[]x[][][][][][][][][][][][][][][][][][][][][]x[][][][][][][]x[][][][][][][]x[][
+][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][
+][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][
+][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][]
+[][][][][][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][]x[][][]
+[][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]
+[][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][]x[][][][][][][]
+[][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][
+][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x
+[][][][]x[][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x
+[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][]
+[][][][][]x[][][][]x[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][]
+[][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]x[][][]
+[][][][][][][][][][][][][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][][
+][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][
+][]x[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][]x[][][][][
+][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][]
+[][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]x[][][][
+][][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][
+][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]
+[][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][
+][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][]
+[][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[]x[][][][][][][][][][][][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]
+[][][][][][][][]x[][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][
+][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][
+][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]
+x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][]x[][][][][][][][][]x[][][][][][][]x[][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][]
+[][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]x[][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][
+][][][][][][][]x[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]x[
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][
+][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]x[][][][][][][][][][][]
+[][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][
+][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][
+][][][]x[][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][
+][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][
+][][][][][][][][][]x[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][]
+x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][
+][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x
+[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][]
+[][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][]x[][][][]x[][][][][][][][][][][][][][][][][][][][][][]
+[][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][
+][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][
+]x[][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][]x[][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]
+[][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][
+][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][]x[][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][]x[][][][][][][]x[][]
+[][][][][]x[][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][]x[][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][]
+[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][]
+[]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][
+][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[]
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][]
+x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][
+][]x[][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][
+]x[][][][]x[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][
+][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][]
+[][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]
+[][]x[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][
+][]x[][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]x[][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][
+][][][][]x[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][]x[][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][]x[][][][][][][][][][]
+[][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][]x[][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]
+[][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][
+][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][]
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][]
+[][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]x[][][
+][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]x[]
+[][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]
+x[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]x[][][][][][][][]
+[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]x[][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][
+][][][][]x[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][]
+[][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]
+[][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][
+][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][]x[][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][
+][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][]
+[][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][
+][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x
+[][][][][][][][][][][][][][][]x[][][][][][][]x[][][][][][][][][][][][][][][][][
+][][]x[][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][]
+[][][][][][]x[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]x[][]
+[][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][]x[
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[
+][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][
+][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][]
+[][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][]x[][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][
+][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][]
+[][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][
+][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][]
+[][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][
+][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][
+][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]x[][]
+[][][][][]x[][][][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][]x[][][][][][][][][][][][][][][][][][][][][
+][][]x[][][][][][][]x[][][][][][][]x[][][][][][]  
+ []
+
+[29
+
+] (./TemplateICATT.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 9085 strings out of 493014
+ 117949 string characters out of 6139344
+ 676660 words of memory out of 5000000
+ 12454 multiletter control sequences out of 15000+600000
+ 16750 words of font info for 51 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 38i,14n,44p,1509b,1593s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on TemplateICATT.dvi (29 pages, 294036 bytes).

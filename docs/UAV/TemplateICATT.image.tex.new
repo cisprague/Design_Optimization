@@ -1,0 +1,10 @@
+\newif\ifimagen\imagentrue
+\documentclass{article}
+\usepackage{spconf,amsmath,graphicx, url, listings}\usepackage{courier, float}\usepackage{caption}\usepackage{subcaption}\def\x{{\mathbf x}}
+\def\L{{\cal L}}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+\begin{document}
+\includegraphics[width=0.48\textwidth]{./Pics/Span_Force.eps}
+\clearpage% page: 0

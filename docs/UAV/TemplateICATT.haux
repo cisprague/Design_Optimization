@@ -1,0 +1,40 @@
+\@@addtocsec{htoc}{sec2}{0}{\@print{1}\quad{}Problem Model{}}
+\@@addtocsec{htoc}{sec3}{1}{\@print{1.1}\quad{}Specifications{}}
+\newlabel{UAV}{{1}{X}}
+\newlabel{specs}{{1}{X}}
+\@@addtocsec{htoc}{sec4}{1}{\@print{1.2}\quad{}Problem Formulation{}}
+\newlabel{opt}{{1.2}{X}}
+\@@addtocsec{htoc}{sec5}{1}{\@print{1.3}\quad{}Geometrical Parametrization{}}
+\@@addtocsec{htoc}{sec6}{2}{\@print{1.3.1}\quad{}Design Vector{}}
+\newlabel{R}{{1.3.1}{X}}
+\@@addtocsec{htoc}{sec7}{2}{\@print{1.3.2}\quad{}Spanwise Location{}}
+\@@addtocsec{htoc}{sec8}{2}{\@print{1.3.3}\quad{}Volume and Mass{}}
+\@@addtocsec{htoc}{sec9}{1}{\@print{1.4}\quad{}Material Stress Constraints{}}
+\@@addtocsec{htoc}{sec10}{2}{\@print{1.4.1}\quad{}Load Distribution{}}
+\newlabel{fig:force}{{1}{X}}
+\@@addtocsec{htoc}{sec11}{2}{\@print{1.4.2}\quad{}Second Moment of Area{}}
+\@@addtocsec{htoc}{sec12}{2}{\@print{1.4.3}\quad{}Displacement and Stress{}}
+\citation{Kuo2006}
+\@@addtocsec{htoc}{sec13}{1}{\@print{1.5}\quad{}Manufacturing Constraints{}}
+\@@addtocsec{htoc}{sec14}{2}{\@print{1.5.1}\quad{}Radii Bounds{}}
+\@@addtocsec{htoc}{sec15}{2}{\@print{1.5.2}\quad{}Thickness{}}
+\citation{Attaway2013}
+\@@addtocsec{htoc}{sec16}{0}{\@print{2}\quad{}Optimization{}}
+\@@addtocsec{htoc}{sec17}{1}{\@print{2.1}\quad{}Sequential Quadratic Programming{}}
+\citation{Attaway2013}
+\citation{Boggs1995}
+\@@addtocsec{htoc}{sec18}{1}{\@print{2.2}\quad{}Objective and Constraint Gradients{}}
+\citation{Kuhn1951}
+\@@addtocsec{htoc}{sec19}{2}{\@print{2.2.1}\quad{}Forward Difference{}}
+\@@addtocsec{htoc}{sec20}{2}{\@print{2.2.2}\quad{}Central Difference{}}
+\@@addtocsec{htoc}{sec21}{2}{\@print{2.2.3}\quad{}Complex Step{}}
+\citation{Lyness1968}
+\newlabel{complexalg}{{2}{X}}
+\@@addtocsec{htoc}{sec22}{0}{\@print{3}\quad{}Results{}}
+\newlabel{40n}{{3}{X}}
+\@@addtocsec{htoc}{sec23}{0}{\@print{4}\quad{}Conclusions{}}
+\bibdata{refs.bib}
+\bibstyle{IEEEtran}
+\@@addtocsec{htoc}{sec24}{0}{\@print{5}\quad{}Appendix{}}
+\@@addtocsec{htoc}{sec25}{1}{\@print{5.1}\quad{}Optimization Outputs{}}
+\newlabel{forward40}{{4}{X}}
